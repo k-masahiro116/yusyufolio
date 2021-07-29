@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">graph</h1>
+    </div>
+{% endblock %}
+
+{% block head %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="c5">
+        <h1>Graph</h1>
+        <h5>下にNormal Graphを表示している</h5>
+        <h5>縦軸に温度、横軸に月</h5>
+    </div>
+{% endblock %}
+
+{% block sub_content%}
+    <div class="title"><h1>Plotlyのグラフを描写</h1></div>
+    {% autoescape off %}
+        <div class="graph">
+            {{plot|safe}}
+        </div>
+    {% endautoescape %}
+{% endblock %}

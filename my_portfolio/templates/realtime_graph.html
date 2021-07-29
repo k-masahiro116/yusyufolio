@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">graph</h1>
+    </div>
+{% endblock %}
+
+{% block head %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="c5">
+        <h1>Realtime_Graph</h1>
+        <h5>下にAdvanced Graphを表示している</h5>
+        <h5>縦軸に乱数、横軸に0~100</h5>
+        <h5>更新するたびに値が変化するようになっている</h5>
+    </div>
+{% endblock %}
+
+{% block sub_content%}
+    <div class="title"><h1>Realtime_graph</h1></div>
+    {% autoescape off %}
+    <div class="graph">{{plot|safe}}</div>
+    {% endautoescape %}
+{% endblock %}

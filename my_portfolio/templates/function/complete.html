@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="back1">
+    <h1 class="text-danger">Contact</h1>
+</div>
+{% endblock %}
+
+{% block content%}
+<section>
+    <div class="inner">
+            <h2 class="heading">送信完了</h2>
+            <a href="{% url 'function:complete' %}">
+            <a href='/contact'><font size="4">Topへ</font></a></p>
+    </div>
+</section>
+<style>
+    .heading{
+        font-size: 2rem;
+    }
+    .inner{
+        padding: 20px 5%;
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    *{
+        box-sizing: border-box;
+    }
+</style>
+{% endblock %}

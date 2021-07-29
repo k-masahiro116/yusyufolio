@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Portfolio</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="c2">
+            <div class="c2">
+            <article>
+                <section>
+                    <img src=" {% static 'assets/img/cat.png'%} " width="15%" height="15%" border="0">
+                </section>
+                <!-- 自己紹介 -->
+                <section>
+                    <div class="c4">
+                        <div class="stg">
+                            <h2>Masahiro</h2>
+                        </div>
+                        <div class="ul1">
+                            </p>
+                            <ul>
+                                <li>生年月日: 1998年11月6日</li>
+                                <li>出身: 栃木県</li>
+                                <li>好きな食べ物: ラーメン</li>
+                                <li>趣味: 読書, ゲーム, 音楽を聴くこと</li>
+                                <li>プログラミング歴: 4年</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            </div>
+            
+            <!-- カテゴリー一覧 -->
+            <div class="stg1"><h2 class="text-primary">〜Free Introduction〜<h2></div>
+            <div class="stg2"><h2>Products</h2></div>
+                <ul>
+                    <li><a href="#">HDS-R逐次式入力システム</a></li>
+                    <li><a href="#">HDS-Rバッチ式評価システム</a></li>
+                    <li><a href="#">my_portfolio</a></li>
+                    <li><a href="#">Calc_Ingredients</a></li>
+                </ul>
+            </p>
+            <div class="stg2"><h2>Accounts</h2></div>
+                <ul>
+                    <li><a href="https://qiita.com/oral_anime_love">Qiiita</a></li>
+                    <li><a href="https://github.com/k-masahiro116">Github</a></li>
+                </ul>
+            </p>
+            <div class="stg2"><h2>Favorite books</h2></div>
+                <ul>
+                    <li><a href="https://www.shoeisha.co.jp/book/detail/9784798156668">Pythonで動かして学ぶ自然言語処理入門</a></li>
+                    <li><a href="https://yomou.syosetu.com/rank/top/">なろう小説</a></li>
+                </ul>
+            </p>
+            <div class="stg2"><h2>Favorite games</h2></div>
+                <ul>
+                    <li><a href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%BA_%E3%83%88%E3%83%AB%E3%83%8D%E3%82%B3%E3%81%AE%E5%A4%A7%E5%86%92%E9%99%BA3_%E4%B8%8D%E6%80%9D%E8%AD%B0%E3%81%AE%E3%83%80%E3%83%B3%E3%82%B8%E3%83%A7%E3%83%B3">トルネコの大冒険3</a></li>
+                    <ul>
+                    <li><a href="http://dqff.sakura.ne.jp/torneko-yado/data/s2/shop.html">異世界の迷宮 価格表</a></li>
+                    </ul>
+                    <li><a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%8B%E3%82%AF%E3%83%AB_%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%BB%E3%82%AA%E3%83%96%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%88">ファイナルファンタジー・クリスタルクロニクル リング・オブ・フェイト</a></li>
+                    <li><a href="https://ja.wikipedia.org/wiki/%E5%B0%86%E6%A3%8B%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%BA">将棋ウォーズ</a></li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <style>
+        body {
+            margin: 40px 10px;
+            padding: 0;
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        }
+        img {
+            border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+            width:  180px;       /* ※縦横を同値に */
+            height: 180px;       /* ※縦横を同値に */
+            border: 3px solid skyblue;
+        }
+        .ul1 {
+            border: 2px skyblue dashed;
+        }
+        ul {
+            margin-bottom: 30px;
+        }
+        .stg2 {
+            font-family: 'Vollkorn', serif;
+        }
+        #calendar {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+

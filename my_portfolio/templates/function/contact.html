@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="back1">
+    <h1 class="text-danger">Contact</h1>
+</div>
+{% endblock %}
+
+{% block content%}
+<section>
+    <div class="inner">
+            <h2 class="heading">お問い合わせはこちら</h2>
+            <p><span class="red">※</span>は必須項目です。</p>
+            <form action="{% url 'function:contact' %}" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table}}
+                </table>
+                <br>
+
+                <input type="submit" value="送信">
+            </form>
+    </div>
+</section>
+<style>
+    .heading{
+        font-size: 2rem;
+    }
+    .inner{
+        padding: 20px 5%;
+    }
+    form {
+        width: 100%; }
+    .form-label {
+        margin-top: 16px;
+        display: block;
+        width: 100%; 
+    }
+    input {
+        width: 100%; 
+    }
+    textarea {
+        width: 100%; 
+    }
+    .red {
+        font-size: 0.8rem;
+        color: red; 
+    }
+    *{
+        box-sizing: border-box;
+    }
+</style>
+{% endblock %}

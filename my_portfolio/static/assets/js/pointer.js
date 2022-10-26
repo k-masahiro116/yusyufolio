@@ -7,7 +7,7 @@ $(document).ready(function(){
 		var settings = {
 			size : 80,
 			spd : 300,
-			color : skyblue,
+			color : "#e0ffff"
 		}
 		settings = $.extend(settings, options);
 		

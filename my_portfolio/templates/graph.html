@@ -3,18 +3,35 @@
 
 {% block main %}
     <div class="back1">
-        <h1 class="text-primary">graph</h1>
+        <h1 class="text-primary">Graph</h1>
     </div>
 {% endblock %}
 
 {% block head %}
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>  
+    <!--CodePenプレビュー用にコメントアウトしています。※CodePenで読み込んだJSとHTMLで読み込んだJSがバッティングして挙動がおかしくなっているため。ご利用の際はコメントを取り除いてご利用ください。-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/lang_graph.css' %}">
 {% endblock %}
 
 {% block content %}
     <div class="c5">
         <h1>Graph</h1>
-        <h5>下にNormal Graphを表示している</h5>
+        <h4>下にjsによるグラフとdjangoによるグラフを表示</h4></p>
+        <h5>js graph</h5>
+        <h5>縦軸に求人数、横軸に時</h5>
+    
+        <button type="button" onclick="">更新</button><br>
+        
+        <div class="box">
+            <h2>言語別求人数の推移</h2>
+            <canvas id="chart02" height="220"></canvas>
+            <div id="json_link" title="{% static 'assets/json/job_request_languages.json' %}"></div>
+            <script src="{% static 'assets/js/lang_graph.js' %}"></script>
+        </div>
+        
+        <h5>django graph</h5>
         <h5>縦軸に温度、横軸に月</h5>
     </div>
 {% endblock %}

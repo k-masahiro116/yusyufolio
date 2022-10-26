@@ -3,7 +3,7 @@
 
 {% block main %}
     <div class="back1">
-        <h1 class="text-primary">Tokenizer</h1>
+        <h1 class="text-primary">Cognitive function evaluation</h1>
     </div>
 {% endblock %}
 
@@ -12,18 +12,17 @@
         <div class="c4">
             <article>
                 <section>
-                    <div class="c6">
-                        <h3>Tokenizer</h3>
-                        <p>You can tokenize here. Let's try.</p>
-                        <form method="post" action="">
-                            {% csrf_token %}
+                    <h3>認知機能評価システム</h3>
+                    <p>Sentencesに評価したい文書を入力し、下のボタンを押すと認知機能評価を行ってくれます。</p>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <center>
                             <table>{{ form.as_table}}</table>
-                            <input type="submit" value="&#xf002">
-                        </form>
-                    </div>
+                        </center>
+                        <input type="submit" value="&#xf002">
+                    </form>
                     <div class="c6">
-                        <p>Tokenized result will be here.</p>
-                        <div class="add_index">{{add_index}}</div>
+                        <div class="add_index">認知機能評価結果は...{{add_index}}</div>
                     </div>
                 </section>
             </article>
@@ -44,6 +43,10 @@
         #calendar {
             max-width: 1100px;
             margin: 0 auto;
+        }
+        textarea {
+            width: 500px;
+            height: 25em;
         }
     </style>
 {% endblock %}

@@ -36,4 +36,6 @@ urlpatterns = [
     path("chat/", include("chat.urls")),
     path("schedule/", include("schedule.urls")),
     path("tokenizer/", include("tokenizer.urls")),
+    path("memorize/", include("memorize.urls")),
+    path('blog/', include('blog.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

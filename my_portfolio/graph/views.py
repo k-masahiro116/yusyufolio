@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import plotly.graph_objects as go
 import numpy as np
+print(np.__version__)
 
 
 def line_char():

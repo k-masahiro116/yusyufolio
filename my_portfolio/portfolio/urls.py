@@ -7,5 +7,5 @@ app_name = "portfolio"
 urlpatterns = [
     #viewsからindexを読み込んで、nameをindexに
     # path("", views.add_index, name="index"),
-    path("", views.add_index, name="jump"),
+    path("", views.add_index, name="index"),
 ]

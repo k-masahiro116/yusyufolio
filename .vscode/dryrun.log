@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/masahiro/Desktop/my_portfolio'
+make: Leaving directory `/Users/masahiro/Desktop/my_portfolio'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

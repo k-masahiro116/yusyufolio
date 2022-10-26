@@ -1,0 +1,26 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+
+{% block content %}
+<p><b>{{ post.title }}</b></p>
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+        <th class="table_font">TITLE</th>
+        <td class="form_title">{{ form.title }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">TEXT</th>
+        <td>{{ form.text }}</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">SEND</button>
+    {% csrf_token %}
+</form>
+<style>
+    textarea {
+        width: 800px;
+        height: 25em;
+    }
+</style>
+{% endblock %}

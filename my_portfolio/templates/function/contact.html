@@ -10,8 +10,8 @@
 {% block content%}
 <section>
     <div class="inner">
-            <h2 class="heading">お問い合わせはこちら</h2>
-            <p><span class="red">※</span>は必須項目です。</p>
+        <h2 class="heading">お問い合わせはこちら</h2>
+        <p><span class="red">※</span>は必須項目です。</p>
             <form action="{% url 'function:contact' %}" method="post">
                 {% csrf_token %}
                 <table>

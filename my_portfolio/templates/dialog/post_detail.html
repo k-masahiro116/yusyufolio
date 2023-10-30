@@ -1,0 +1,20 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+        <th class="table_font">SPEAKER</th>
+        <td>{{ post.speaker }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">TEXT</th>
+        <!-- linebreaksbk を入れると改行タグでちゃんと改行して表示されるようになる -->
+        <td>{{ post.text | linebreaksbr}}</td>
+        </tr>
+        <tr>
+        <th class="table_font">DATE</th>
+        <td>{{ post.date }}</td>
+        </tr>
+    </table>
+{% endblock %}

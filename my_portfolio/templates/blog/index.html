@@ -3,33 +3,20 @@
 
 {% block main %}
     <div class="back1">
-        <h1 class="text-primary">Blog</h1>
+        <h1 class="text-primary"><a href="{% url 'blog:post_list' %}">Yusyu's  Blog</a></h1>
     </div>
 {% endblock %}
 
 {% block blog %}
-<nav class="crumbs">
-    <ol>
-        <li class="crumb"><a class="nav-item nav-link active" href="{% url 'blog:post_list' %}">Top</a></li>
-        <li class="crumb"><a class="nav-item nav-link active" href="{% url 'blog:post_create' %}">Post</a></li>
-    </ol>
-</nav>
-<div class="container">
-
     <style>
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        }
         blog{
             text-align: center;
         }
+        .text-primary {
+            font-family: 'Sacramento', cursive;
+        }
         .ul1 {
             border: 2px skyblue dashed;
-        }
-        ul {
-            margin-bottom: 30px;
         }
         .stg2 {
             font-family: 'Vollkorn', serif;
@@ -44,7 +31,61 @@
         .table_font{
             font-family: 'Vollkorn', serif;
         }
+        .btn-primary {
+            color: #fff;
+            background-color: skyblue;
+            border-bottom: 5px solid #6495ed;
+            -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        }
+        .btn-primary:hover {
+            margin-top: 3px;
+            color: #fff;
+            background: skyblue;
+            border-bottom: 2px solid #6495ed;
+        }
+        .more_btn {
+            float: right;
+            margin-right: 20px;
+        }
     </style>
 {% endblock %}
 
+{% block right_aside %}
+<div class="weathers">
+    {{weather|linebreaks}}
+    {{temp_high}}
+    {{temp_low|linebreaks}}
+    {{rain_probability|linebreaks}}
+    {{rain_probability_0006|linebreaks}}
+    {{rain_probability_0612|linebreaks}}
+    {{rain_probability_1218|linebreaks}}
+    {{rain_probability_1824|linebreaks}}
+</div>
+{% endblock %}
 
+{% block right_aside_content %}
+<div class="div-hidden col-md-4 mt-4">
+    <h2 class="mb-n">カテゴリー</h2>
+    <ul class="list-unstyled mb-4 category_list" id="category_list">
+        {% for category_name in category_list %}
+            <li><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
+        {% endfor %}
+    </ul>
+    
+    <h2 class="mb-n">月別アーカイブ</h2>
+    <ul class="list-unstyled mb-0">
+        {% for post_month in post_month_list %}
+            <li><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">
+                {{ post_month|date:"Y年m月" }}
+            </a></li>
+        {% endfor %}
+    </ul>
+</div>
+<style>
+    .div-hidden {
+        visibility: hidden;
+    }
+</style>
+
+{% endblock %}

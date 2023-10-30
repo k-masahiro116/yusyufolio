@@ -1,0 +1,30 @@
+{% extends 'liveCamera/index.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Live Camera</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <div>
+        {% if id is not None %}
+        <h2>画像が登録されました</h2>
+        <p>画像のIDは {{id}} です</p>
+        {% endif %}
+    </div>
+    <div>
+        <h2>画像を登録する</h2>
+        <form action="{% url 'liveCamera:image_upload' %}" method="post" enctype="multipart/form-data">
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <p>{{ upload_form.as_p }}</p>
+            <p><input type="submit" value="アップロード"></p>
+        </form>
+    </div>
+    <style>
+    </style>
+{% endblock %}
+
+

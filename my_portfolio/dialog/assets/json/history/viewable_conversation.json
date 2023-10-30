@@ -1,0 +1,324 @@
+[
+  {
+    "type": "human",
+    "data": {
+      "content": "好きな場所どこか覚えてる？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！ユーザのお気に入りの場所は海だよ。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わんわん！こんにちは。晴れた日は気分もいいよね。ユーザはこの晴れた日に、何か特別な予定があるのかい？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わんわん！こんにちは。ユーザ、お元気そうですね。そういえば、今日は晴れていて、夜遅くに雨が降る予報だよ。何か予定はあるかい？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わんわん！こんにちは。ユーザさん、今日の天気は晴れているみたいね。ただ、夜遅くに雨が降る予報だから、外出する場合は傘を持っていくといいよ。それから、ユーザさんは何か予定があるのかな？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんばんは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちはわん！何かお話しましょうか？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんばんは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！こんにちは。今日は雨のようですね。おうちで何か楽しいことをしていますか？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ゲームしてるよ",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！ゲームが好きなんですね。どんなゲームをしているんですか？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "スプラトゥーンっていうゲーム",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！スプラトゥーンですね。私もたまにプレイします。どのブキがお好きですか？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ボールドマーカーかな",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！ボールドマーカーがお好きなんですね。私はスプラシューターが好きです。今日の天気は雨なので、お家でのんびりゲームをするのも良いですね。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "そうだね",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "わん！そうですね、雨の日は外出するのが少し億劫になりますよね。お家で何か楽しいことをして過ごすのが良いかもしれませんね。何かおすすめの過ごし方はありますか？",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "おっしゃる通り、ユーザの声が聞こえませんね。もし何かお困りのことがあれば、私にお話しください。私はユーザのお話を聞くことができます。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！お話し相手が欲しいということでしょうか？私はいつでも話を聞いていますよ。今日は雨ですが、何か楽しいことをして過ごされましたか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "ユーザーの声が聞こえませんね。もし何かお困りのことがあれば、私にお話しください。私はユーザのお話を聞くことができます。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！今日は晴れた日だったんですね。何か楽しいことがありましたか？それとも何かお疲れのことはありますか？私はいつでも話を聞いていますよ。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！今日は晴れた日だったんですね。何か楽しいことがありましたか？それとも何かお疲れのことはありますか？私はいつでも話を聞いていますよ。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！今日は晴れた日だったんですね。何か楽しいことがありましたか？それとも何かお疲れのことはありますか？私はいつでも話を聞いていますよ。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！今日は晴れた日だったんですね。何か楽しいことがありましたか？それとも何かお疲れのことはありますか？私はいつでも話を聞いていますよ。わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "激辛カレー食べてお腹壊した",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "お腹がすいていたんですね！何を食べたんですか？私は犬なので、食べ物にはあまり興味がありませんが、食事の時間は大切ですよね。次は何を食べる予定ですか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！お話ししたいことはありますか？私は犬のワンコです。天気は良いようですね。今日は何か予定がありますか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "今日はもう寝るだけかな",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "そうですね、お休みの日はゆっくり寝るのもいいですね。ただ、適度な運動も大切ですよ。今日は何か特別な予定はありますか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "こんにちは",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！お話ししたいことはありますか？私は犬のワンコです。今日は雨が降っていて雷を聞くことができるんですね。それは素敵ですね！私は雷が苦手なので、ちょっとビビってしまいます。あなたは雷が好きですか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "雷好きだよ",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "そうですか、雷が好きなんですね！それは珍しいですね。雷の音や光景を楽しむことができるんですね。私は音が大きくて怖いので、ちょっと苦手です。でも、それぞれ好みがあるのが面白いですね。他に話したいことはありますか？わん！",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "お腹減った〜",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "お腹が減ったんですね！何か食べたいものはありますか？私はご飯が大好きです。あなたの好きな食べ物は何ですか？わん！",
+      "additional_kwargs": {}
+    }
+  }
+]

@@ -9,123 +9,117 @@
 
 {% block content %}
     <div class="center">
-        <div class="margin_20">
-            <div class="margin_20">
+        <div style="margin: 20px 0px;">
             <article>
-                <section>
-                            <button id="speak-btn" style="outline: none;">
-                    <img src=" {% static 'assets/img/cat.png'%} " width="15%" height="15%" border="0">
-                            </button>
-                </section>
                 <!-- 自己紹介 -->
                 <section>
-                    <div class="c4">
+                    <div class="intro_block">
+                        <button class="intro_image" id="speak-btn" style="outline: none;">
+                            <img src=" {% static 'assets/img/cat.png'%} ">
+                        </button>
+                    </div>
+                    <div class="intro_block">
                         <div class="stg">
-                            <h2>Masahiro</h2>
+                            <h2>Yusyu</h2 width="100%" height="100%">
                         </div>
-                        <div class="ul1">
+                        <div class="main-intro" style="background: #f3fbff;">
                             </p>
-                            <ul>
-                                <li>生年月日: 1998年11月6日</li>
-                                <li>出身: 栃木県</li>
+                            <ul class="vertical-row-ul">
+                                <li>主な活動: 対話システムやWebサイトなどの開発</br>他、言語処理など</li>
                                 <li>好きな食べ物: ラーメン</li>
                                 <li>趣味: 読書, ゲーム, 音楽を聴くこと</li>
-                                <li>プログラミング歴: 5年</li>
+                                <li>プログラミング歴: 2017年から</li>
                                 <li>資格: 統計検定2級, 基本情報技術者　</li>
                             </ul>
                         </div>
                     </div>
                 </section>
             </article>
-            </div>
-            
-            <!-- カテゴリー一覧 -->
-            <div class="stg1"><h2 class="text-primary">〜Free Introduction〜<h2></div>
-            <div class="stg2"><h2>Products</h2></div>
-                <ul>
-                    <li><a href="#">HDS-R逐次式入力システム</a></li>
-                    <li><a href="#">HDS-Rバッチ式評価システム</a></li>
-                    <li><a href="#">Portfolioサイト</a></li>
-                    <li><a href="{% url 'memorize:research' %}">Dialog System</a></li>
-                </ul>
-            </p>
-            <div class="stg2"><h2>Accounts</h2></div>
-                <ul>
-                    <li><a href="https://qiita.com/oral_anime_love"  target="_blank" rel="noopener noreferrer">Qiiita</a></li>
-                    <li><a href="https://github.com/k-masahiro116"  target="_blank" rel="noopener noreferrer">Github</a></li>
-                    <li><a href="https://atcoder.jp/users/masahiro116"  target="_blank" rel="noopener noreferrer">AtCoder</a></li>
-                </ul>
-            </p>
-            <div class="stg2"><h2>Favorite books</h2></div>
-                <ul>
-                    <li><a href="https://www.shoeisha.co.jp/book/detail/9784798156668">Pythonで動かして学ぶ自然言語処理入門</a></li>
-                    <li>
-                        <details>
-                            <summary>
-                                <a href="https://yomou.syosetu.com/rank/top/">なろう小説</a>
-                            </summary>
-                            読みたい
-                            <ul>
-                                <li><a href="https://ncode.syosetu.com/n8797gv/">レベルダウンの罠から始まるアラサー男の万能生活</a></li>
-                                <li><a href="https://ncode.syosetu.com/n4609ft/">黒猫ニャンゴの冒険 ～レア属性を引き当てたので、気ままな冒険者を目指します～</a></li>
-                            </ul>
-                            読了
-                            <ul>
-                                <li><a href="https://ncode.syosetu.com/n4214hb/">【ストック200話超】 行き着く先は勇者か魔王か　――元・廃プレイヤーの営業マンが征く 異世界攻略記――</a></li>
-                                <li><a href="https://ncode.syosetu.com/n9624gu/">弱小領地の生存戦略！　～俺の領地が何度繰り返しても滅亡するんだけど。これ、どうしたら助かりますか？～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n8783gz/">《背教者》と認定され、実家を追放された貴族の少年は辺境の地で、スキル《聖王》の使い方に気づき、成り上がる。</a></li>
-                                <li><a href="https://ncode.syosetu.com/n4936dp/">転生貴族の異世界冒険録～自重を知らない神々の使徒～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n0826gy/">【書籍化＆コミカライズ】創成魔法の再現者　～『魔法が使えない』と実家を追放された天才少年、魔女の弟子となり正しい方法で全ての魔法を極めます。貴方の魔法は、こうやって使うんですよ？～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n8443gv/">五年間働いていた治療師ギルドを不当解雇された“最弱”な俺。生きるために超有能スキルで‟最強”を目指します</a></li>
-                                <li><a href="https://ncode.syosetu.com/n7975cr/">蜘蛛ですが、なにか？</a></li>
-                                <li><a href="https://ncode.syosetu.com/n6316bn/">転生したらスライムだった件</a></li>
-                                <li><a href="https://ncode.syosetu.com/n9669bk/">無職転生　- 異世界行ったら本気だす -</a></li>
-                                <li><a href="https://ncode.syosetu.com/n2377fh/">最強出涸らし皇子の暗躍帝位争い～帝位に興味ないですが、死ぬのは嫌なので弟を皇帝にしようと思います～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n5378gc/">限界超えの天賦《スキル》は、転生者にしか扱えない　ー　オーバーリミット・スキルホルダー</a></li>
-                                <li><a href="https://ncode.syosetu.com/n8459gk/">特級探索師への覚醒　～蜥蜴の尻尾切りに遭った青年は、地獄の王と成り無双する～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n3976gk/">世界最速のレベルアップ　～無能スキル【ダンジョン内転移】が覚醒した結果、俺だけダンジョンのルールに縛られず最強になった～</a></li>
-                                <li><a href="https://ncode.syosetu.com/n1785ek/">ハズレ枠の【状態異常スキル】で最強になった俺がすべてを蹂躙するまで</a></li>
-                                <li><a href="https://ncode.syosetu.com/n3669fw/">ヘルモード　～やり込み好きのゲーマーは廃設定の異世界で無双する～</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
-            </p>
-            <div class="stg2"><h2>Favorite games</h2></div>
-                <ul>
-                    <li><a href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%BA_%E3%83%88%E3%83%AB%E3%83%8D%E3%82%B3%E3%81%AE%E5%A4%A7%E5%86%92%E9%99%BA3_%E4%B8%8D%E6%80%9D%E8%AD%B0%E3%81%AE%E3%83%80%E3%83%B3%E3%82%B8%E3%83%A7%E3%83%B3">トルネコの大冒険3</a></li>
-                    <ul>
-                    <li><a href="">異世界の迷宮 最高到達階 51階</a></li>
-                    <li><a href="http://dqff.sakura.ne.jp/torneko-yado/data/s2/shop.html">異世界の迷宮 価格表</a></li>
-                    </ul>
-                    <li><a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%8B%E3%82%AF%E3%83%AB_%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%BB%E3%82%AA%E3%83%96%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%88">ファイナルファンタジー・クリスタルクロニクル リング・オブ・フェイト</a></li>
-                    <li><a href="https://ja.wikipedia.org/wiki/%E5%B0%86%E6%A3%8B%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%BA">将棋ウォーズ</a></li>
-                    <li>モンスターハンター ライズ</li>
-                    <li>ポケットモンスター アルセウス</li>
-                    <li>遊び大全</li>
-                    <li>FE風花雪月</li>
-                    <li>スプラ3</li>
-                </ul>
-            </p>
         </div>
+        
+        <!-- カテゴリー一覧 -->
+        <div class="stg1"><h2 class="text-primary" id="text-intro">〜Free Introduction〜<h2></div>
+        <div class="stg2"><h2 class="text-heading">Products</h2></div>
+            <ul class="vertical-row-ul ul-products">
+                <li><a href="{% url 'dialog:post_list' %}">Dialog System</a></li>
+                <li><a href="#">Portfolioサイト</a></li>
+                <li><a href="{% url 'tokenizer:form' %}">認知機能評価モデル</a></li>
+            </ul>
+        </p>
+        <div class="stg2"><h2 class="text-heading">Accounts</h2></div>
+            <ul class="vertical-row-ul ul-accounts">
+                <li><a href="https://qiita.com/oral_anime_love"  target="_blank" rel="noopener noreferrer">Qiiita</a></li>
+                <li><a href="https://github.com/k-masahiro116"  target="_blank" rel="noopener noreferrer">Github</a></li>
+                <li><a href="https://atcoder.jp/users/masahiro116"  target="_blank" rel="noopener noreferrer">AtCoder</a></li>
+            </ul>
+        </p>
+        <div class="stg2"><h2 class="text-heading">Favorite books</h2></div>
+            <ul class="vertical-row-ul-ul ul-favorite-books">
+                <li><a href="https://www.shoeisha.co.jp/book/detail/9784798156668">Pythonで動かして学ぶ自然言語処理入門</a></li>
+                <li>
+                    <details>
+                        <summary>
+                            <a href="https://yomou.syosetu.com/rank/top/">なろう小説</a>
+                        </summary>
+                        読みたい
+                        <ul class="vertical-row-ul ul-favorite-books">
+                            <li><a href="https://ncode.syosetu.com/n8797gv/">レベルダウンの罠から始まるアラサー男の万能生活</a></li>
+                            <li><a href="https://ncode.syosetu.com/n4609ft/">黒猫ニャンゴの冒険 ～レア属性を引き当てたので、気ままな冒険者を目指します～</a></li>
+                            <li>シャングリラ・フロンティア〜クソゲーハンター、神ゲーに挑まんとす〜</li>
+                            <li>TS衛生兵さんの成り上がり</li>
+                        </ul>
+                        読了
+                        <ul class="vertical-row-ul ul-favorite-books">
+                            <li><a href="https://ncode.syosetu.com/n4214hb/">【ストック200話超】 行き着く先は勇者か魔王か　――元・廃プレイヤーの営業マンが征く 異世界攻略記――</a></li>
+                            <li><a href="https://ncode.syosetu.com/n9624gu/">弱小領地の生存戦略！　～俺の領地が何度繰り返しても滅亡するんだけど。これ、どうしたら助かりますか？～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n8783gz/">《背教者》と認定され、実家を追放された貴族の少年は辺境の地で、スキル《聖王》の使い方に気づき、成り上がる。</a></li>
+                            <li><a href="https://ncode.syosetu.com/n4936dp/">転生貴族の異世界冒険録～自重を知らない神々の使徒～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n0826gy/">【書籍化＆コミカライズ】創成魔法の再現者　～『魔法が使えない』と実家を追放された天才少年、魔女の弟子となり正しい方法で全ての魔法を極めます。貴方の魔法は、こうやって使うんですよ？～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n8443gv/">五年間働いていた治療師ギルドを不当解雇された“最弱”な俺。生きるために超有能スキルで‟最強”を目指します</a></li>
+                            <li><a href="https://ncode.syosetu.com/n7975cr/">蜘蛛ですが、なにか？</a></li>
+                            <li><a href="https://ncode.syosetu.com/n6316bn/">転生したらスライムだった件</a></li>
+                            <li><a href="https://ncode.syosetu.com/n9669bk/">無職転生　- 異世界行ったら本気だす -</a></li>
+                            <li><a href="https://ncode.syosetu.com/n2377fh/">最強出涸らし皇子の暗躍帝位争い～帝位に興味ないですが、死ぬのは嫌なので弟を皇帝にしようと思います～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n5378gc/">限界超えの天賦《スキル》は、転生者にしか扱えない　ー　オーバーリミット・スキルホルダー</a></li>
+                            <li><a href="https://ncode.syosetu.com/n8459gk/">特級探索師への覚醒　～蜥蜴の尻尾切りに遭った青年は、地獄の王と成り無双する～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n3976gk/">世界最速のレベルアップ　～無能スキル【ダンジョン内転移】が覚醒した結果、俺だけダンジョンのルールに縛られず最強になった～</a></li>
+                            <li><a href="https://ncode.syosetu.com/n1785ek/">ハズレ枠の【状態異常スキル】で最強になった俺がすべてを蹂躙するまで</a></li>
+                            <li><a href="https://ncode.syosetu.com/n3669fw/">ヘルモード　～やり込み好きのゲーマーは廃設定の異世界で無双する～</a></li>
+                            <li>岩壁のルォ</li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </p>
+        <div class="stg2"><h2 class="text-heading">Favorite games</h2></div>
+            <ul class="vertical-row-ul ul-favorite-games">
+                <li><a href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%BA_%E3%83%88%E3%83%AB%E3%83%8D%E3%82%B3%E3%81%AE%E5%A4%A7%E5%86%92%E9%99%BA3_%E4%B8%8D%E6%80%9D%E8%AD%B0%E3%81%AE%E3%83%80%E3%83%B3%E3%82%B8%E3%83%A7%E3%83%B3">トルネコの大冒険3</a></li>
+                <ul>
+                <li><a href="">異世界の迷宮 最高到達階 51階</a></li>
+                <li><a href="http://dqff.sakura.ne.jp/torneko-yado/data/s2/shop.html">異世界の迷宮 価格表</a></li>
+                </ul>
+                <li><a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%8B%E3%82%AF%E3%83%AB_%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%BB%E3%82%AA%E3%83%96%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%88">ファイナルファンタジー・クリスタルクロニクル リング・オブ・フェイト</a></li>
+                <li><a href="https://ja.wikipedia.org/wiki/%E5%B0%86%E6%A3%8B%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%BA">将棋ウォーズ</a></li>
+                <li>モンスターハンター ライズ・サンブレイク</li>
+                <li>ポケットモンスター アルセウス</li>
+                <li>遊び大全</li>
+                <li>FE風花雪月</li>
+                <li>スプラ3</li>
+            </ul>
+        </p>
     </div>
     <script>
     const speakBtn = document.querySelector('#speak-btn')
 
         speakBtn.addEventListener('click', function() {
             // 発言を作成
-            text = "こんにちは、私はまさひろと言います。"
+            text = "こんにちは"
             const uttr = new SpeechSynthesisUtterance(text)
             // 発言を再生 (発言キューに発言を追加)
             speechSynthesis.speak(uttr)
         })
     </script>
     <style>
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        }
         button {
             border: none;
             background: transparent;
@@ -133,27 +127,171 @@
         button img {
             display: block;
         }
-        img {
-            border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-            width:  180px;       /* ※縦横を同値に */
-            height: 180px;       /* ※縦横を同値に */
+        #text-intro {
+            color: #6cb4e4;
+            text-align: center;
+            padding: 0.25em;
+            border-top: solid 2px #6cb4e4;
+            border-bottom: solid 2px #6cb4e4;
+            background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+            background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+            background-position: 0 50%;
+            background-size: 200% auto;
+            transition: background-position 1s ease-in-out;
+        }
+        #text-intro:hover {
+            text-decoration: none;
+            background-position: 100% 50%;
+        }
+        .text-heading{
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            padding: 0.2em;
+            background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+            background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 4px,#e9f4ff 4px, #e9f4ff 7px);
+            border-radius: 7px;
+            background-position: 0 50%;
+            background-size: 200% auto;
+            transition: background-position 1s ease-in-out;
+        }
+        .text-heading:hover {
+            text-decoration: none;
+            background-position: 100% 50%;
+        }
+        .text-heading:after {
+            position: absolute;
+            content: '';
+            top: 100%;
+            left: 2px;
+            border: 15px solid transparent;
+            border-top: 15px solid #f0f8ff;
+            width: 0;
+            height: 0;
+        }
+        .intro_block {
+            float: left;
+        }
+        .intro_image img {
+            border-radius: 50%; 
+            width: 60%; 
+            height: 60%; 
             border: 3px solid skyblue;
+            cursor: pointer;
+            transition-duration: 0.5s;
         }
-        .ul1 {
-            border: 2px skyblue dashed;
-            font-size: 1vw;
+        .intro_image img:hover {
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            transition-duration: 0.5s;
         }
-        ul {
+        .main-intro {
+            font-size: 1.3vw;
+            padding: 0.5em 1em;
+            color: #474747;
+            background: whitesmoke;/*背景色*/
+            border-left: double 7px #4ec4d3;/*左線*/
+            border-right: double 7px #4ec4d3;/*右線*/
+        }
+        .vertical-row-ul{
             margin-bottom: 30px;
+        }
+        .vertical-row-ul li{
+            &:hover {
+                cursor: pointer;
+                background-color: #bee1de;
+                opacity: 0.8;
+            }
+        }
+        .vertical-row-ul-ul{
+            margin-bottom: 30px;
+        }
+        .vertical-row-ul-ul li{
+            &:hover {
+                position: relative;
+                top: 2px;
+                left: 2px;
+            }
+        }
+        .ul-products li {
+            color: #2d8fdd;
+            border-left: solid 6px #2d8fdd;/*左側の線*/
+            background: #f1f8ff;/*背景色*/
+            margin-bottom: 3px;/*下のバーとの余白*/
+            line-height: 1.5;
+            padding: 0.5em;
+            list-style-type: none!important;/*ポチ消す*/
+            border-radius: 0 15px 15px 0;/*右側の角だけ丸く*/
+        }
+        .ul-accounts li {
+            position: relative;
+            list-style-type: none!important;/*ポチ消す*/
+            padding: 0.5em 0.5em 0.5em 0.5em;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            background: #dbebf8;
+            vertical-align: middle;
+            color: #505050;
+            border-radius: 15px 0px 0px 15px;/*左側の角丸く*/
+        }
+        .ul-accounts li:before {
+            display:inline-block; 
+            vertical-align: middle;
+            /*以下白丸つくる*/
+            content:'';
+            width:1em;
+            height: 1em;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .ul-favorite-books {
+            counter-reset:number; /*数字をリセット*/
+            list-style-type: none!important; /*数字を一旦消す*/
+            padding: 0.3em 0.8em;
+            border: solid 2px #dbebf8;
+        }
+        .ul-favorite-books li {
+            border-bottom: dashed 1px #2d8fdd;
+            position: relative;
+            padding: 0.5em 0.5em 0.5em 30px;
+            line-height: 1.5em;
+        }
+        .ul-favorite-books li:before {
+            /* 以下数字をつける */
+            position: absolute;
+            counter-increment: number;
+            content: counter(number);
+            /*数字のデザイン変える*/
+            display:inline-block;
+            background: #2d8fdd;
+            color: white;
+            font-family: 'Avenir','Arial Black','Arial',sans-serif;
+            font-weight:bold;
+            font-size: 15px;
+            border-radius: 50%;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            /*以下 上下中央寄せのため*/
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        .ul-favorite-books li:last-of-type {
+            border-bottom: none; /*最後のliの線だけ消す*/
         }
         .stg2 {
             font-family: 'Vollkorn', serif;
         }
-        #calendar {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
     </style>
 {% endblock %}
 
+{% block right_aside_content%}
 
+<style>
+
+</style>
+{% endblock %}

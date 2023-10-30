@@ -1,0 +1,20 @@
+{% extends 'liveCamera/index.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Live Camera</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <div>
+        <h2>ID:{{id}}の画像</h2>
+        <img src="{{url}}" width="50%" height="50%" border="0">
+    </div>
+    <style>
+    </style>
+{% endblock %}
+
+

@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-_z+1mttbpff(m6ci=72a=3mz*9tik6zzl3t3oj8tk3-u$zi_7_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.1.3"]
+ALLOWED_HOSTS = ["localhost", "192.168.1.3", "192.168.1.15"]
 
 
 # Application definition
@@ -43,24 +43,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_summernote',
     'account',
     'function',
     'portfolio',
     'graph',
-    'realtime_graph',
     'chat',
     'schedule',
     'tokenizer',
     'memorize',
     'blog.apps.BlogConfig',
+    'liveCamera.apps.LivecameraConfig',
+    'dialog.apps.DialogConfig',
 ]
-
+SUMMERNOTE_THEME = 'bs4'
+X_FRAME_OPTOPNS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

@@ -13,5 +13,5 @@ urlpatterns = [
     path("diary", views.diary, name="diary"),
     path("corona", views.corona, name="corona"),
     path("youtube", views.youtube, name="youtube"),
-    path("research", views.research, name="research"),
+    path("practice", views.practice, name="practice"),
 ]

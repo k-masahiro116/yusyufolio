@@ -1,0 +1,24 @@
+{% extends 'liveCamera/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="POST">
+        <table class="table">
+            <tr>
+            <th class="table_font">TITLE</th>
+            <td>{{ uploadimage.image }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">ID</th>
+            <td>{{ uploadimage.id }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">DATE</th>
+            <td>{{ uploadimage.date }}</td>
+            </tr>
+        </table>
+        <p>こちらのデータを削除します。</p>
+        <button type="submit">SEND</button>
+        {% csrf_token %}
+    </form>
+{% endblock %}

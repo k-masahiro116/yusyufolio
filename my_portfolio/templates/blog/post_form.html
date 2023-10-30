@@ -2,24 +2,37 @@
 {% load static %}
 
 {% block content %}
-<p><b>{{ post.title }}</b></p>
-<form action="" method="POST">
-    <table class="table">
-        <tr>
-        <th class="table_font">TITLE</th>
-        <td class="form_title">{{ form.title }}</td>
-        </tr>
-        <tr>
-        <th class="table_font">TEXT</th>
-        <td>{{ form.text }}</td>
-        </tr>
-    </table>
-    <button type="submit" class="btn btn-primary">SEND</button>
-    {% csrf_token %}
-</form>
+    <p><b>{{ post.title }}</b></p>
+    <form action="" method="POST">
+        <table class="table">
+            <tr>
+                <th class="table_font">TITLE</th>
+                <div class="form_format">
+                    <td class="form_title">{{ form.title }}</td>
+                </div>
+            </tr>
+            <tr>
+                <th class="table_font">CATEGORY</th>
+                <div class="form_format">
+                    <td class="form_category">{{ form.category }}</td>
+                </div>
+            </tr>
+            <tr>
+                <th class="table_font">TEXT</th>
+                {% csrf_token %} 
+                <td>{{ form.text }}</td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">SEND</button>
+        {% csrf_token %}
+    </form>
 <style>
-    textarea {
-        width: 800px;
+    input {
+        max-width: 720px;
+        width: 100%;
+    }
+    .note-editable {
+        width: 100%;
         height: 25em;
     }
 </style>

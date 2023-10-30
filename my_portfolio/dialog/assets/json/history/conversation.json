@@ -1,0 +1,79 @@
+[
+  {
+    "type": "ai",
+    "data": {
+      "content": "すみません、また同じ発話が繰り返されてしまっています。他に話したいことはありますか？わん。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "{\"utterance\": \"\\u3053\\u3093\\u306b\\u3061\\u306f\", \"nextTopic\": \"\\u8a71\\u984c\\u306e\\u7d99\\u7d9a\", \"option\": {\"weather\": \"\\u6674\\u308c\\u3000\\u591c\\u306e\\u306f\\u3058\\u3081\\u9803\\u3000\\u304f\\u3082\\u308a\"}}",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！お話ししたいことはありますか？私は犬のワンコです。天気は良いようですね。今日は何か予定がありますか？わん。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "{\"utterance\": \"\\u4eca\\u65e5\\u306f\\u3082\\u3046\\u5bdd\\u308b\\u3060\\u3051\\u304b\\u306a\", \"nextTopic\": \"\\u8a71\\u984c\\u306e\\u7d99\\u7d9a\", \"option\": {\"weather\": \"\\u6674\\u308c\\u3000\\u591c\\u306e\\u306f\\u3058\\u3081\\u9803\\u3000\\u304f\\u3082\\u308a\"}}",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "そうですね、お休みの日はゆっくり寝るのもいいですね。ただ、適度な運動も大切ですよ。今日は何か特別な予定はありますか？わん。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "{\"utterance\": \"\\u3053\\u3093\\u306b\\u3061\\u306f\", \"nextTopic\": \"\\u8a71\\u984c\\u306e\\u7d99\\u7d9a\", \"option\": {\"weather\": \"\\u304f\\u3082\\u308a\\u3000\\u6240\\u306b\\u3088\\u308a\\u3000\\u96e8\\u3000\\u3067\\u3000\\u96f7\\u3092\\u4f34\\u3046\"}}",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "こんにちは！お話ししたいことはありますか？私は犬のワンコです。今日は雨が降っていて雷を聞くことができるんですね。それは素敵ですね！私は雷が苦手なので、ちょっとビビってしまいます。あなたは雷が好きですか？わん。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "{\"utterance\": \"\\u96f7\\u597d\\u304d\\u3060\\u3088\", \"nextTopic\": \"\\u8a71\\u984c\\u306e\\u7d99\\u7d9a\", \"option\": {\"weather\": \"\\u304f\\u3082\\u308a\\u3000\\u6240\\u306b\\u3088\\u308a\\u3000\\u96e8\\u3000\\u3067\\u3000\\u96f7\\u3092\\u4f34\\u3046\"}}",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "そうですか、雷が好きなんですね！それは珍しいですね。雷の音や光景を楽しむことができるんですね。私は音が大きくて怖いので、ちょっと苦手です。でも、それぞれ好みがあるのが面白いですね。他に話したいことはありますか？わん。",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "{\"utterance\": \"\\u304a\\u8179\\u6e1b\\u3063\\u305f\\u301c\", \"nextTopic\": \"\\u8a71\\u984c\\u306e\\u7d99\\u7d9a\", \"option\": {\"weather\": \"\\u304f\\u3082\\u308a\\u3000\\u6240\\u306b\\u3088\\u308a\\u3000\\u96e8\\u3000\\u3067\\u3000\\u96f7\\u3092\\u4f34\\u3046\"}}",
+      "additional_kwargs": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "お腹が減ったんですね！何か食べたいものはありますか？私はご飯が大好きです。あなたの好きな食べ物は何ですか？わん",
+      "additional_kwargs": {}
+    }
+  }
+]

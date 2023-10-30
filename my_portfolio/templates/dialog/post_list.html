@@ -1,0 +1,104 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="get" class="request_from">
+        <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
+    </form></br>
+    <table style="width:100%; margin-bottom: 20px;">
+        <thead>
+            <tr>
+                <form action="http://localhost:8080/dialog/post_create" method="POST">
+                    <th width="1%"><label for="speaker" class="table_font" style="width:5%;">SPEAKER</label></th>
+                    <th width="4%"><input name="speaker" id="speaker" class="textbox" value="ユーザ" /></th>
+                    <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px;">TEXT</label></th>
+                    <th width="35%"><input name="text" id="text" class="textbox2" value="" /></th>
+                    <th width="5%"><button type="submit" class="btn btn-primary btn--cubic" style="margin-left: 10px;" onclick="OnRedirectClick();">POST</button></th>
+                </form>
+            </tr>
+        </thead>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+            <th class="table_font" id="dialog_speaker">SPEAKER</th>
+            <th class="table_font" id="dialog_text">TEXT</th>
+            <th class="table_font">DATE</th>
+            <th class="super_command"></th>
+            <th class="super_command"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in post_list reversed%}
+                <tr>
+                <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
+                <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
+                <td id="dialog_text">{{ post.text }}</td>
+                <td>{{ post.date }}</td>
+                <td class="super_command">
+                    <!-- superuserでログインしている時にのみ表示 -->
+                    {% if user.is_superuser %}
+                    <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
+                    <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
+                    {% endif %}
+                </td>
+                <td class="super_command">
+                    {% if user.is_superuser %}
+                    <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <style>
+        thead, tbody {
+            display: block;
+        }
+        th, td {
+            width: 200px;
+        }
+        #dialog_text {
+            width: 600px;
+        }
+        #dialog_speaker {
+            width: 100px;
+        }
+        .super_command {
+            width: 50px;
+        }
+        .search_box {
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox2 {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        tbody {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 500px;
+        }
+    </style>
+    <script>
+        function OnRedirectClick() {
+            document.location.href = "/dialog/post_list";
+        }
+        function get_last_post() {
+            var str = {{ last_post | safe }}
+            const uttr = new SpeechSynthesisUtterance(str)
+            // 発言を再生 (発言キューに発言を追加)
+            speechSynthesis.speak(uttr)
+        }
+    </script>
+{% endblock %}

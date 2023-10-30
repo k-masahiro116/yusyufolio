@@ -30,13 +30,13 @@
                             </br>
                             <ol>
                                 <li>ユーザが発話すると、入力としてシステムの入力認識機能/デコーダーによってプレーンテキストに変換される(以下例)</li>
-                                    <ul>
+                                    <ul class="vertical-row-ul">
                                         <li>自動音声認識装置(ASR)</li>
                                         <li>ジェスチャー認識</li>
                                         <li>手書き認識</li>
                                     </ul>
                                 <li>テキストは、自然言語理解(NLU)ユニットによって分析される(以下例)</li>
-                                    <ul>
+                                    <ul class="vertical-row-ul">
                                         <li>固有名の識別</li>
                                         <li>音声部分のタグづけ</li>
                                         <li>構文/意味パーサー</li>
@@ -44,13 +44,13 @@
                                 <li>意味情報(セマンティック情報)は、DMによって分析される。DMは、ダイアログの履歴と状態を保持し、会話の一般的なフローを管理する。</li>
                                 <li>通常、DMは、特定のタスクドメインを知っている1つ以上のタスクマネージャーに接続している</li>
                                 <li>DMは、出力ジェネレータを使用して出力を生成する(以下例)</li>
-                                    <ul>
+                                    <ul class="vertical-row-ul">
                                         <li>自然言語生成</li>
                                         <li>ジェスチャー生成</li>
                                         <li>レイアウト マネージャー</li>
                                     </ul>
                                 <li>最後に、出力は出力レンダラーを使用してレンダリングされる(以下例)</li>
-                                    <ul>
+                                    <ul class="vertical-row-ul">
                                         <li>テキスト読み上げエンジン(TTS)</li>
                                         <li>Computer facial animation</li>
                                         <li>ロボットまたはアバター</li>
@@ -73,7 +73,7 @@
                             対話に積極的に参加できるようにする方法として、混合イニシアチブというものがあります。しかし、混合イニシアチブの存在だけでは、自然な対話システム
                             として分類されるには不十分である。その他の重要な側面としては以下のようなものがある。</br>
                             </br>
-                            <ul>
+                            <ul class="vertical-row-ul">
                                 <li>システムの適応性</li>
                                 <li>暗黙の確認のサポート</li>
                                 <li>検証質問の使用</li>
@@ -98,26 +98,14 @@
         </div>
     </div>
     <style>
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        }
         blog{
             text-align: center;
         }
         .ul1 {
             border: 2px skyblue dashed;
         }
-        ul {
+        .vertical-row-ul {
             margin-bottom: 30px;
-        }
-        .stg2 {
-            font-family: 'Vollkorn', serif;
-        }
-        #calendar {
-            max-width: 1100px;
-            margin: 0 auto;
         }
     </style>
 {% endblock %}

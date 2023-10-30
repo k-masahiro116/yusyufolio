@@ -1,0 +1,25 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+<p><b>{{ post.title }}</b></p>
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+        <th class="table_font">SPEAKER</th>
+        <td class="form_title">{{ form.speaker }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">TEXT</th>
+        <td>{{ form.text }}</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">SEND</button>
+</form>
+<style>
+    textarea {
+        width: 800px;
+        height: 25em;
+    }
+</style>
+{% endblock %}

@@ -10,7 +10,9 @@
             </tr>
             <tr>
             <th class="table_font">TEXT</th>
-            <td>{{ post.text }}</td>
+            {% autoescape off %}
+            <td>{{ post.text | linebreaksbr}}</td>
+            {% endautoescape %}
             </tr>
             <tr>
             <th class="table_font">DATE</th>
@@ -18,7 +20,7 @@
             </tr>
         </table>
         <p>こちらのデータを削除します。</p>
-        <button type="submit">SEND</button>
+        <button class="btn btn-primary" type="submit">SEND</button>
         {% csrf_token %}
     </form>
 {% endblock %}

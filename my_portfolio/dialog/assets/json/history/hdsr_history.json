@@ -1,0 +1,828 @@
+[
+    {
+        "type": "human",
+        "data": {
+        "content": "診断して",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "はい。では、まずあなたの名前について教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "山田",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "山田さんですね。次に、あなたの年齢を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "24",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "24歳ですね。次の質問に移ります。今日は何年、何月、何日、何曜日かを教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "えっと、2023年",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "2023年ですね。あと何月、何日、何曜日かを教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "6月26日",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "6月26日ですね。あと何曜日かを教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "火曜日",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "火曜日ですね。ありがとうございます。では次に、今から私が言う三つの言葉を覚えてください。また、同じ言葉を私に言ってください。桜、猫、電車。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜猫電車",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に100引く7の計算をしてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "92",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "92ですね。では次に今から言う数字を逆から言ってください。2、8、6。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "687",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "はい、ありがとうございます。では先ほど覚えてもらった三つの言葉を教えて頂けますか。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。では最後に知っている野菜をできるだけ多く答えてください。どうぞ。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "キャベツ白菜きゅうりにんじん玉ねぎ",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他にも知っている野菜があれば教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "ごぼう長ネギじゃがいも",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他にも知っている野菜があれば教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "かぼちゃスイカ",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。これで質問は終了です。お疲れ様でした。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "診断して",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "はい、診断を始めます。まずはあなたの名前を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "山田です",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "山田さん、よろしくお願いします。では、まずはあなたの年齢を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "24歳",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、今日の年月日と曜日を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "2023年9月22日",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。それでは、次に今日は何曜日か教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "金曜日",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜猫電車",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、100引く7の計算結果を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "93",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、93引く7の計算結果を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "85",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った数字を逆から言ってください。2、8、6です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "682",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った数字を逆から言ってください。3、5、2、9です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "9253",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "次に、先ほど覚えてもらった三つの言葉を教えて頂けますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜猫電車",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "最後に、知っている野菜をできるだけ多く答えてください。どうぞ。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "キャベツ白菜",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "小松菜じゃがいもなす",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "はい。ごぼう長ネギ玉ねぎ赤玉ねぎ",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "山芋里芋",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "ほうれん草きゅうり",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。これで質問は終了です。お疲れ様でした。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "診断して",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "はい、診断を始めます。まずはあなたの名前を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "山岡",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "山岡さん、よろしくお願いします。では、まずはあなたの年齢を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "21歳です",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、今日の年月日と曜日を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "2023年9月のえっと",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": " 2023年9月ですね。あと何日、何曜日かを教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "26日火曜日",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "26日火曜日ですね。ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜猫電車",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、100引く7の計算結果を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "90",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った数字を逆から言ってください。2、8、6です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "68",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、先ほど覚えてもらった三つの言葉を教えて頂けますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。最後に、知っている野菜をできるだけ多く答えてください。どうぞ。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "きゅうり白菜にんじんごぼう里芋",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "長芋トマトなすスイカメロン",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "小松菜青梗菜",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "ほうれん草いちご",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。これで質問は終了です。お疲れ様でした。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "診断して",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "はい、診断を始めます。まずはあなたの名前を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "中田です",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "中田さん、よろしくお願いします。では、まずはあなたの年齢を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "29歳",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、今日の年月日と曜日を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "2023年のえーっと",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "2023年ですね。あと何月、何日、何曜日かを教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "確か9月25日月曜日かな",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "桜猫",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、100引く7の計算結果を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "93",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、93引く7の計算結果を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "86",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、私が言った数字を逆から言ってください。2、8、6です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "682",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "次に、私が言った数字を逆から言ってください。3、5、2、9です。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "9253",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。次に、先ほど覚えてもらった三つの言葉を教えて頂けますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "あーなんだっけな",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "大丈夫です。ヒントを言いますね。植物、動物、乗り物です。覚えていらっしゃいますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "あー桜と猫と電車だ",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。最後に、知っている野菜をできるだけ多く答えてください。どうぞ。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "キャベツじゃがいもにんじん",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "白菜とあとなんかあるかな",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "きゅうり生姜ニンニクブロッコリー",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "あとはね。長ネギ長いも青梗菜",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "ありがとうございます。他に知っている野菜はありますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "もうないかな",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "わかりました。これで質問は終了です。お疲れ様でした。",
+        "additional_kwargs": {}
+        }
+    }
+]

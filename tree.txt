@@ -1,0 +1,65 @@
+tree -P "chitchat.py|strict_task.py|*.py" -I "__pycache__|node_modules|myvenv|schedule|realtime_graph|graph|chat|tokenizer|memorize|account|blog|function|portfolio" > tree.txt
+└── my_portfolio
+    ├── dialog
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── assets
+    │   │   ├── json
+    │   │   │   ├── history
+    │   │   │   └── results
+    │   │   └── text
+    │   ├── chains
+    │   │   ├── __init__.py
+    │   │   ├── chitchat.py
+    │   │   ├── concat_chain.py
+    │   │   ├── intent_detector.py
+    │   │   ├── memory.py
+    │   │   └── strict_task.py
+    │   ├── forms.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── sensors
+    │   │   ├── __init__.py
+    │   │   ├── forecasts.py
+    │   │   └── silent_play.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── liveCamera
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── forms.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   ├── 0002_uploadimage_date.py
+    │   │   ├── 0003_alter_uploadimage_image.py
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── manage.py
+    ├── media
+    │   └── img
+    ├── my_portfolio
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── routing.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── static
+    │   └── assets
+    │       ├── css
+    │       ├── img
+    │       ├── js
+    │       └── json
+    └── templates
+        ├── dialog
+        └── liveCamera
+
+24 directories, 38 files

@@ -17,7 +17,7 @@ filenames = {
     "diary": "diary.html",
     "corona": "corona.html",
     "youtube": "youtube.html",
-    "research": "research.html",
+    "practice": "practice.html",
 }
 
 def add_index(request):
@@ -124,3 +124,5 @@ def youtube(request):
 def research(request):
     return render(request, dir+filenames["research"])
 
+def practice(request):
+    return render(request, dir+filenames["practice"])

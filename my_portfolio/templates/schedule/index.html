@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Schedule</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id='calendar'></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: true,
+                selectable: true,
+                locale: 'ja',
+                eventAdd: function(obj) { // イベントが追加すると発生するイベント
+                    console.log(obj);
+                },
+                eventChange: function(obj) { // イベントが修正されたら発生するイベント
+                    console.log(obj);
+                },
+                eventRemove: function(obj){ // イベントが削除すると発生するイベント
+                    console.log(obj);
+                },
+                events: function (info, successCallback, failureCallback) {
+                    axios
+                    .post("/schedule/list/", {
+                        start_date: info.start.valueOf(),
+                        end_date: info.end.valueOf(),
+                    })
+                    .then((response) => {
+                        calendar.removeAllEvents();
+                        successCallback(response.data);
+                    })
+                    .catch(() => {
+                        // バリデーションエラーなど
+                        alert("登録に失敗しました");
+                    });
+                },
+                eventClick: function(arg){
+                    var result = "";
+                    if (Boolean({{is_superuser}})){
+                        result = confirm(arg.event.title+"\nこのイベントを編集しますか？");
+                    };
+                    if (result) {
+                        const eventName = prompt("新しいイベントを入力してください", arg.event.title);
+                        if (result) {
+                            axios
+                                .post("/schedule/edit/", {
+                                    start_date: arg.event.startStr,
+                                    end_date: arg.event.endStr,
+                                    event_name: arg.event.title,
+                                    new_event_name: eventName,
+                                })
+                                .then(() => {
+                                    if (eventName != null){
+                                        arg.event.setProp( 'title', eventName );
+                                    }
+                                    alert("編集しました");
+                                })
+                                .catch(() => {
+                                    alert("編集に失敗しました");
+                                });
+                        };
+                    } else {
+                        if (Boolean({{is_superuser}})){
+                            result = confirm(arg.event.title+"\nこのイベントを削除しますか？");
+                        };
+                        if (result) {
+                            axios
+                                .post("/schedule/remove/", {
+                                    start_date: arg.event.startStr,
+                                    end_date: arg.event.endStr,
+                                    event_name: arg.event.title,
+                                })
+                                .then(() => {
+                                    alert(arg.event.title+"を削除しました");
+                                    arg.event.remove();
+                                })
+                                .catch(() => {
+                                    alert("削除に失敗しました");
+                                });
+                        };
+                    };
+                    calendar.unselect();
+                },
+                select: function (info) {
+                    var eventName = ""
+                    if (Boolean({{is_superuser}})){
+                        eventName = prompt("イベントを入力してください");
+                    };
+                    if (eventName) {
+                        axios
+                            .post("/schedule/add/", {
+                                start_date: info.start.valueOf(),
+                                end_date: info.end.valueOf(),
+                                event_name: eventName,
+                            })
+                            .then(() => {
+                                // イベントの追加
+                                calendar.addEvent({
+                                    title: eventName,
+                                    start: info.start,
+                                    end: info.end,
+                                    allDay: true,
+                                });
+                            })
+                            .catch(() => {
+                                // バリデーションエラーなど
+                                alert("登録に失敗しました");
+                            });
+                    };
+                    calendar.unselect();
+                },
+                eventTimeFormat: { hour: 'numeric', minute: '2-digit' }
+            });
+            calendar.render();
+        });
+    </script>
+    <style>
+        #calendar {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+

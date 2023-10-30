@@ -2,19 +2,87 @@
 {% load static %}
 
 {% block content %}
-    <table class="table">
-        <tr>
-        <th class="table_font">TITLE</th>
-        <td>{{ post.title }}</td>
-        </tr>
-        <tr>
-        <th class="table_font">TEXT</th>
-        <!-- linebreaksbk を入れると改行タグでちゃんと改行して表示されるようになる -->
-        <td>{{ post.text | linebreaksbr}}</td>
-        </tr>
-        <tr>
-        <th class="table_font">DATE</th>
-        <td>{{ post.date }}</td>
-        </tr>
-    </table>
+    <div id="container" style="height: auto !inportant;">
+        <div id="singleMeta">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span class="date">{{ post.date|date:"Y/m/d"  }}</span>
+            <i class="fa fa-refresh" aria-hidden="true"></i> <span class="date">{{ post.redate|date:"Y/m/d" }}</span>
+            <span class="cat"><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">  {{ post.category }}</a></span>
+            <h1>{{ post.title }}</h1>
+        </div>
+        <div class="post-content">
+            {% autoescape off %}
+                <td>{{ post.text | linebreaksbr}}</td>
+            {% endautoescape %}
+        </div>
+        <ul class="super-tr">
+            <li class="super-td">
+                <!-- superuserでログインしている時にのみ表示 -->
+                {% if user.is_superuser %}
+                <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
+                <a href="{% url 'blog:post_update' post.pk %}">Edit</a>
+                {% endif %}
+            </li>
+            <li class="super-td">
+                {% if user.is_superuser %}
+                <a href="{% url 'blog:post_delete' post.pk %}">Delete</a>
+                {% endif %}
+            </li>
+        </ul>
+        <a href="/blog/post_detail/{{ next_pk }}" style="color: white;">
+            <div class="more_btn btn btn-primary btn--cubic" id="next_btn">
+                次のブログ
+            </div>
+        </a>
+        <a href="/blog/post_detail/{{ pre_pk }}" style="color: white;">
+            <div class="more_btn btn btn-primary btn--cubic" id="pre_btn">
+                前のブログ
+            </div>
+        </a>
+    </div>
+    <script>
+        console.log({{next_pk}})
+        if ({{next_pk}}=={{post.pk}}){
+            document.getElementById('next_btn').style.visibility = 'hidden'
+        }else{
+            document.getElementById('next_btn').style.visibility = 'visible'
+        }
+        if ({{pre_pk}}=={{post.pk}}){
+            document.getElementById('pre_btn').style.visibility = 'hidden'
+        }else{
+            document.getElementById('pre_btn').style.visibility = 'visible'
+        }
+    </script>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+        #singleMeta {
+            padding: 30px 20px 0;
+            color: #333;
+            z-index: 1;
+        }
+        #singleMeta .date {
+            display: inline-block;
+            color: #666;
+            font-size: 15px;
+            font-family: 'Work Sans', sans-serif;
+            margin-right: 8px;
+        }
+        #singleMeta h1 {
+            font-size: 1.5em;
+            margin: 0.67em 0;
+        }
+        @media screen and (max-width: 1170px)
+        #container {
+            flex-direction: column;
+            align-items: center;
+        }
+        #container {
+            margin: 0 auto;
+            max-width: 1300px;
+            padding: 0 20px;
+            padding-bottom: 40px;
+            justify-content: space-between;
+        }
+    </style>
 {% endblock %}

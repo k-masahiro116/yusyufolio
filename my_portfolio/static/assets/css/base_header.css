@@ -1,0 +1,102 @@
+.siteTitle {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    transition-duration: .5s;
+    transition-property: transform;
+    
+    &:hover {
+        transform: translateY(-6px);
+        animation-name: hover;
+        animation-duration: 1.5s;
+        animation-delay: $defaultDuration;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+.header {
+    z-index:10000;
+    padding-left: 10px;
+    display: flex;
+    position: fixed;
+    width: 1500px;
+    background: rgb(239, 249, 255, 1);
+    opacity: .9;
+}
+.globalNavi{
+    position: relative;
+    margin-right: auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.globalNavi__list li{
+    margin-bottom: auto;
+    margin-top: auto;
+    display: inline-block;
+    width: auto;
+    line-height: 1;
+    transition-duration: .5s;
+    transition-property: transform;
+    &:hover {
+        transform: translateY(-6px);
+        animation-name: hover;
+        animation-duration: 1.5s;
+        animation-delay: $defaultDuration;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+@keyframes hover {
+    100% {
+        transform: translateY(-6px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+.globalNavi__list{
+    padding-left: 10px;
+    margin: 0px;
+}
+.globalNavi__list a{
+    font-size: 24px;
+    /* font-size: 1.8vw; */
+    font-family: "Nico Moji";
+    text-decoration: none;
+}
+.caption-wrap {
+    padding: 22px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.item-label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.container-main{
+    margin-left: 70px;
+}
+.container-header {
+    width: 100%;
+    max-width: 1500px;
+    max-height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0px;
+}
+.header.fixed{
+    background: rgb(239, 249, 255, 1);
+    transition: .9s ease-out;
+    transform: translateY(0%);
+    padding-top: 10px;
+    position: fixed;
+}
+.header.fixed.is-show{
+    transform: translateY(0%);
+}

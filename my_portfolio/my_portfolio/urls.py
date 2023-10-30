@@ -32,10 +32,12 @@ urlpatterns = [
     #graphのurls.pyを読み込み
     path("", include("graph.urls")),
     #realtime_graphのurls.pyを読み込み
-    path("", include("realtime_graph.urls")),
     path("chat/", include("chat.urls")),
     path("schedule/", include("schedule.urls")),
     path("tokenizer/", include("tokenizer.urls")),
     path("memorize/", include("memorize.urls")),
     path('blog/', include('blog.urls')),
+    path('liveCamera/', include('liveCamera.urls')),
+    path('dialog/', include('dialog.urls')),
+    path('summernote/', include('django_summernote.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

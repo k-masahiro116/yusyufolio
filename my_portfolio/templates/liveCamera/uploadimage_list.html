@@ -1,0 +1,35 @@
+{% extends 'liveCamera/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="get" class="request_from">
+        <input name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit" class="btn btn-primary">SEARCH</button>
+    </form></br>
+    <table class="table">
+    <thead>
+        <tr>
+        <th class="table_font">TITLE</th>
+        <th class="table_font">ID</th>
+        <th class="table_font">DATE</th>
+        <th></th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for upimage in uploadimage_list reversed%}
+            <tr>
+            <td><a href="{% url 'liveCamera:preview' upimage.id %}">{{upimage.image}}</a></td>
+            <td>{{ upimage.id }}</td>
+            <td>{{ upimage.date }}</td>
+            <td>
+                {% if user.is_superuser %}
+                <a href="{% url 'liveCamera:image_delete' upimage.id %}">Delete</a>
+                {% endif %}
+            </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

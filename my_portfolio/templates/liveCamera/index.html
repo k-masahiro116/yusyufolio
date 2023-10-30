@@ -11,7 +11,9 @@
     <nav class="crumbs">
         <ol>
             <li class="crumb"><a class="nav-item nav-link active" href="{% url 'liveCamera:uploadimage_list' %}">Top</a></li>
+            {% if user.is_superuser %}
             <li class="crumb"><a class="nav-item nav-link active" href="{% url 'liveCamera:image_upload' %}">Post</a></li>
+            {% endif %}
         </ol>
     </nav>
     <style>

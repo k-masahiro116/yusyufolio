@@ -32,7 +32,7 @@
     <body>
         <header class="header">
             <p class="siteTitle">
-                <a class="siteTitle__link" href="http://localhost:8080/">
+                <a class="siteTitle__link" href="{% url 'portfolio:index'%}">
                     <img src=" {% static 'assets/img/cat.png'%} " alt="YusyuFolio" style="border-radius: 50%; width: 50px; height: 50px; border: 3px solid skyblue;">
                 </a>
             </p>
@@ -357,16 +357,15 @@
     </style>
     <!--ヘッダーのアニメーション-->
     <script>
-        var _window = $(window),
-        _header = $('.header'),
+        var _window = $(window);
+        _header = $('.header');
         topBottom;
         _window.on('scroll',function(){     
             topBottom = $('.header').height();
             Bottom = $('.back1').height();
             if(_window.scrollTop() > topBottom+Bottom){
                 _header.addClass('fixed');   
-            }
-            else{
+            }else{
                 _header.removeClass('fixed');   
             }
         });
@@ -384,11 +383,11 @@
             appendText_cate(element_cate[0].innerHTML);
             function appendText (text) {
                 let element = document.getElementById("scrape_get");
-                element.insertAdjacentHTML("afterbegin", text ) ;
+                element.insertAdjacentHTML("afterbegin", text );
             };
             function appendText_cate (text) {
                 let element = document.getElementById("wp-tag-cloud");
-                element.insertAdjacentHTML("afterbegin", text ) ;
+                element.insertAdjacentHTML("afterbegin", text );
             };
         })
     </script>

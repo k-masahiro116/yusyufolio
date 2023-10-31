@@ -108,17 +108,6 @@
             </ul>
         </p>
     </div>
-    <script>
-    const speakBtn = document.querySelector('#speak-btn')
-
-        speakBtn.addEventListener('click', function() {
-            // 発言を作成
-            text = "こんにちは"
-            const uttr = new SpeechSynthesisUtterance(text)
-            // 発言を再生 (発言キューに発言を追加)
-            speechSynthesis.speak(uttr)
-        })
-    </script>
     <style>
         button {
             border: none;
@@ -189,9 +178,9 @@
             font-size: 1.3vw;
             padding: 0.5em 1em;
             color: #474747;
-            background: whitesmoke;/*背景色*/
-            border-left: double 7px #4ec4d3;/*左線*/
-            border-right: double 7px #4ec4d3;/*右線*/
+            background: whitesmoke;
+            border-left: double 7px #4ec4d3;
+            border-right: double 7px #4ec4d3;
         }
         .vertical-row-ul{
             margin-bottom: 30px;
@@ -265,11 +254,9 @@
             line-height: 1.5em;
         }
         .ul-favorite-books li:before {
-            /* 以下数字をつける */
             position: absolute;
             counter-increment: number;
             content: counter(number);
-            /*数字のデザイン変える*/
             display:inline-block;
             background: #2d8fdd;
             color: white;
@@ -282,23 +269,15 @@
             height: 25px;
             line-height: 25px;
             text-align: center;
-            /*以下 上下中央寄せのため*/
             top: 50%;
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
         }
         .ul-favorite-books li:last-of-type {
-            border-bottom: none; /*最後のliの線だけ消す*/
+            border-bottom: none;
         }
         .stg2 {
             font-family: 'Vollkorn', serif;
         }
     </style>
-{% endblock %}
-
-{% block right_aside_content%}
-
-<style>
-
-</style>
 {% endblock %}

@@ -9,7 +9,7 @@
         transform: translateY(-6px);
         animation-name: hover;
         animation-duration: 1.5s;
-        animation-delay: $defaultDuration;
+        animation-delay: defaultDuration;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;
@@ -42,7 +42,7 @@
         transform: translateY(-6px);
         animation-name: hover;
         animation-duration: 1.5s;
-        animation-delay: $defaultDuration;
+        animation-delay: defaultDuration;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;

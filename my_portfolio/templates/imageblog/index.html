@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary"><a href="{% url 'imageblog:uploadimage_list' %}">Image Blog</a></h1>
+    </div>
+{% endblock %}
+
+{% block image %}
+    <nav class="crumbs">
+        <ol>
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'imageblog:uploadimage_list' %}">Top</a></li>
+            {% if user.is_superuser %}
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'imageblog:image_upload' %}">Post</a></li>
+            {% endif %}
+        </ol>
+    </nav>
+    <style>
+        blog{
+            text-align: center;
+        }
+        .ul1 {
+            border: 2px skyblue dashed;
+        }
+        .stg2 {
+            font-family: 'Vollkorn', serif;
+        }
+        .blog_block{
+            margin: 20px 10px;
+        }
+        .table_font{
+            font-family: 'Vollkorn', serif;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: skyblue;
+            border-bottom: 5px solid #6495ed;
+            -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        }
+        .btn-primary:hover {
+            margin-top: 3px;
+            color: #fff;
+            background: skyblue;
+            border-bottom: 2px solid #6495ed;
+        }
+    </style>
+{% endblock %}
+
+

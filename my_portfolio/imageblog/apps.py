@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class LivecameraConfig(AppConfig):
+class ImageblogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'liveCamera'
+    name = 'imageblog'

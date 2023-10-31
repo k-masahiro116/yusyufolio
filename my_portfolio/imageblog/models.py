@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class UploadImage(models.Model):
     date = models.DateTimeField('日付', default=timezone.now)
+    category = models.CharField('カテゴリ', max_length=200, null = True)
     image = models.ImageField(upload_to='')
 
     def __str__(self): # Post モデルが直接呼び出された時に返す値を定義

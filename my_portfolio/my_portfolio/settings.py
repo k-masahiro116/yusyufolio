@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'tokenizer',
     'memorize',
     'blog.apps.BlogConfig',
-    'liveCamera.apps.LivecameraConfig',
+    'imageblog.apps.ImageblogConfig',
     'dialog.apps.DialogConfig',
 ]
 SUMMERNOTE_THEME = 'bs4'

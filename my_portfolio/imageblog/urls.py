@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'liveCamera'
+app_name = 'imageblog'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),

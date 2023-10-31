@@ -60,7 +60,7 @@
                     <li ><a  href="{% url 'portfolio:index' %}">portfolio</a></li>
                     <li ><a  href="{% url 'blog:redirect_index' %}">blog</a></li>
                     {% if user.is_superuser %}
-                    <li ><a  href="{% url 'liveCamera:uploadimage_list' %}">live camera</a></li>
+                    <li ><a  href="{% url 'imageblog:uploadimage_list' %}">image blog</a></li>
                     {% endif %}
                     <li ><a  href="{% url 'dialog:post_list' %}">dialog system</a></li>
                     <li ><a  href="{% url 'memorize:test' %}">memorize</a></li>
@@ -158,7 +158,7 @@
             background-size: 200% auto;
             transition: background-position 1s ease-in-out; 
         }
-        .back1:hover {
+        .back1 a:hover {
             text-decoration: none;
             background-position: -100% 0;
         } 

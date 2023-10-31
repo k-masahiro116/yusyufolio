@@ -1,4 +1,4 @@
-{% extends 'liveCamera/index.html' %}
+{% extends 'imageblog/index.html' %}
 {% load static %}
 
 {% block content %}
@@ -10,7 +10,7 @@
     <thead>
         <tr>
         <th class="table_font">TITLE</th>
-        <th class="table_font">ID</th>
+        <th class="table_font">CATEGORY</th>
         <th class="table_font">DATE</th>
         <th></th>
         <th></th>
@@ -19,12 +19,12 @@
     <tbody>
         {% for upimage in uploadimage_list reversed%}
             <tr>
-            <td><a href="{% url 'liveCamera:preview' upimage.id %}">{{upimage.image}}</a></td>
-            <td>{{ upimage.id }}</td>
+            <td><a href="{% url 'imageblog:preview' upimage.id %}">{{upimage.image}}</a></td>
+            <td><a href="{% url 'imageblog:uploadimage_list'%}?query={{ upimage.category }}" rel="category tag">{{ upimage.category }}</a></td>
             <td>{{ upimage.date }}</td>
             <td>
                 {% if user.is_superuser %}
-                <a href="{% url 'liveCamera:image_delete' upimage.id %}">Delete</a>
+                <a href="{% url 'imageblog:image_delete' upimage.id %}">Delete</a>
                 {% endif %}
             </td>
             </tr>

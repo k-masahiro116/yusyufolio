@@ -181,7 +181,7 @@
             transition-duration: 0.5s;
         }
         .intro_image img:hover {
-            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
             transform: translateY(-10px);
             transition-duration: 0.5s;
         }
@@ -196,21 +196,28 @@
         .vertical-row-ul{
             margin-bottom: 30px;
         }
-        .vertical-row-ul li{
+        .vertical-row-ul li {
             &:hover {
-                cursor: pointer;
-                background-color: #bee1de;
-                opacity: 0.8;
+                text-decoration: none;
+                position: relative;
+                bottom: 2px;
+                right: 2px;
             }
+        }
+        .vertical-row-ul a:hover {
+                text-decoration: none;
         }
         .vertical-row-ul-ul{
             margin-bottom: 30px;
         }
+        .vertical-row-ul-ul a:hover{
+            text-decoration: none;
+        }
         .vertical-row-ul-ul li{
             &:hover {
                 position: relative;
-                top: 2px;
-                left: 2px;
+                bottom: 2px;
+                right: 2px;
             }
         }
         .ul-products li {

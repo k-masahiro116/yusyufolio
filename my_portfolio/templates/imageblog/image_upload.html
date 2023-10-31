@@ -1,0 +1,37 @@
+{% extends 'imageblog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <div>
+        {% if id is not None %}
+        <h2>画像が登録されました</h2>
+        <p>画像のIDは {{id}} です</p>
+        {% endif %}
+    </div>
+    <form action="" method="POST" action="{% url 'imageblog:image_upload' %}" enctype="multipart/form-data">
+        <table class="table">
+            <tr>
+                <th class="table_font">画像</th>
+                <div class="form_format">
+                    <td class="form_image">{{ upload_form.image }}</td>
+                </div>
+            </tr>
+            <tr>
+                <th class="table_font">CATEGORY</th>
+                <div class="form_format">
+                    <td class="form_image">{{ upload_form.category }}</td>
+                </div>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">UPLOAD</button>
+        {% csrf_token %}
+    </form>
+    <script>
+        console.log({{ upload_form.as_p }})
+    </script>
+    <style>
+    </style>
+{% endblock %}
+
+

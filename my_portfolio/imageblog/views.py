@@ -7,7 +7,7 @@ from django.views import generic
 from django.http import HttpResponseRedirect
 
 class IndexView(generic.TemplateView):
-    template_name = 'liveCamera/index.html'
+    template_name = 'imageblog/index.html'
     
 def image_upload(request):
     params = {
@@ -25,8 +25,8 @@ def image_upload(request):
             print(form)
             print(form.errors.as_text())
 
-        return HttpResponseRedirect('/liveCamera/uploadimage_list')
-    return render(request, 'liveCamera/image_upload.html', params)
+        return HttpResponseRedirect('/imageblog/uploadimage_list')
+    return render(request, 'imageblog/image_upload.html', params)
 
 def preview(request, image_id=0):
     
@@ -35,10 +35,11 @@ def preview(request, image_id=0):
     params = {
         'title': upload_image,
         'id': upload_image.id,
+        'category': upload_image.category,
         'url': upload_image.image.url
     }
 
-    return render(request, 'liveCamera/preview.html', params)
+    return render(request, 'imageblog/preview.html', params)
 
     
 class ImageListView(generic.ListView): # generic の ListViewクラスを継承
@@ -48,12 +49,12 @@ class ImageListView(generic.ListView): # generic の ListViewクラスを継承
         q_word = self.request.GET.get('query')
         if q_word:
             object_list = UploadImage.objects.filter(
-                Q(title__icontains=q_word) | Q(id__icontains=q_word) | Q(date__icontains=q_word))
+                Q(category__icontains=q_word) | Q(id__icontains=q_word) | Q(date__icontains=q_word))
         else:
             object_list = UploadImage.objects.all()
         return object_list
     
 class ImageDeleteView(generic.DeleteView): # 追加
     model = UploadImage
-    success_url = reverse_lazy('liveCamera:uploadimage_list')
+    success_url = reverse_lazy('imageblog:uploadimage_list')
     

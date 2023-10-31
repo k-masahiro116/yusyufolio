@@ -37,7 +37,7 @@ urlpatterns = [
     path("tokenizer/", include("tokenizer.urls")),
     path("memorize/", include("memorize.urls")),
     path('blog/', include('blog.urls')),
-    path('liveCamera/', include('liveCamera.urls')),
+    path('imageblog/', include('imageblog.urls')),
     path('dialog/', include('dialog.urls')),
     path('summernote/', include('django_summernote.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

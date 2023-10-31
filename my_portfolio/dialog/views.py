@@ -29,7 +29,11 @@ class PostListView(generic.ListView): # generic の ListViewクラスを継承
         context["rain_probability_0612"] = "06-12: "+ forecast["rain_probability"]['06-12']
         context["rain_probability_1218"] = "12-18: "+ forecast["rain_probability"]['12-18']
         context["rain_probability_1824"] = "18-24: "+ forecast["rain_probability"]['18-24']
-        context["last_post"] = self.object_list[len(self.object_list)-1].text if len(self.object_list) > 0 else ""
+        def get_last_post():
+            last_post = str(self.object_list[len(self.object_list)-1].text if len(self.object_list) > 0 else "")
+            last_post = "'"+last_post+"'"
+            return last_post
+        context["last_post"] = get_last_post()
         return context
 
     def get_queryset(self):

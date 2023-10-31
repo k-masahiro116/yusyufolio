@@ -124,6 +124,10 @@
             border-radius: 50%;
             color: #888;
             border: 4px solid #888;
+            &:hover{
+                transform: translateY(-5px);
+                transition-duration: 0.5s;
+            }
         }
         .volume-viewer-volume {
             z-index: -1;
@@ -146,7 +150,6 @@
     </style>
     <script>
         _volume = $('.volume-viewer-volume');
-        var clickCount = 0;
         var manager = "";
         document.querySelector('.fa-microphone').addEventListener('click', function() {
             _volume.addClass('open-ring');  

@@ -82,11 +82,13 @@ class PostDetailView(generic.DetailView): # 追加
         if len(objects) > index+1:
             obj = list(objects)[index+1]
             context["next_pk"] = obj.pk
+            context["next_title"] = obj.title
         else:
             context["next_pk"] = object.pk
         if index-1 >= 0:
             obj = list(objects)[index-1]
             context["pre_pk"] = obj.pk
+            context["pre_title"] = obj.title
         else:
             context["pre_pk"] = object.pk
         context.update(get_common_data())

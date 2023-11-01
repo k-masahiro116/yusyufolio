@@ -20,7 +20,7 @@
     padding-left: 10px;
     display: flex;
     position: fixed;
-    width: 1500px;
+    width: 100%;
     background: rgb(239, 249, 255, 1);
     opacity: .9;
 }

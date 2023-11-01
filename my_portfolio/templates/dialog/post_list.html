@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <form id="post_form" action="{% url 'dialog:post_create' %}" method="POST">
+                    {% csrf_token %}
                     <th width="1%"><label for="speaker" class="table_font" style="width:5%; margin-bottom: 0px;">SPEAKER</label></th>
                     <th width="4%"><input name="speaker" id="speaker" class="textbox" value="ユーザ" /></th>
                     <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px; margin-bottom: 0px;">TEXT</label></th>
@@ -101,14 +102,13 @@
         function OnRedirectClick() {
             document.location.href = "/dialog/post_list";
         };
-        window.onload = function() {
-            var str = {{ last_post|safe}};
+        /*window.onload = function() {
+            var str = {{ last_post|safe }};
             const uttr = new SpeechSynthesisUtterance(str);
             // 発言を再生 (発言キューに発言を追加)
             speechSynthesis.speak(uttr);
-            console.log(speechSynthesis);
             console.log(uttr);
-        };
+        };*/
     </script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <script src="{% static 'assets/js/AudioManager.js-master/bin/audioManager.min.js' %}" type="text/javascript"></script>
@@ -144,7 +144,8 @@
             left: -10px;
             z-index: 2;
             opacity: 1;
-        }.fa-microphone {
+        }
+        .fa-microphone {
             cursor: pointer;
         }
     </style>
@@ -171,8 +172,6 @@
             recognition.interimResults = true; 
 
             recognition.onresult = (event) => {
-                console.log(event.results[0][0].transcript);
-                console.log(event.results[0].isFinal);
                 if (event.results[0].isFinal){
                     _volume.removeClass('open-ring'); 
                     post_text(event.results[0][0].transcript);
@@ -186,5 +185,54 @@
             input.value = text;
             form.submit();
         };
+    </script>
+    <!--非同期-->
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        $('#post_form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                'url': '{% url "dialog:post_create" %}',
+                'type': 'POST',
+                'data': {
+                    'speaker': $('#speaker').val(),
+                    'text': $('#text').val(),
+                },
+                'dataType': 'json'
+            })
+            .done(function(response){
+                $('#dialog_speaker').prepend(response.speaker);
+                $('#dialog_text').prepend(response.text);
+                $('#dialog_date').prepend(response.date);
+            });
+        });
+        //3秒ごとにgetを行い、
+        //setInterval("self.location.reload();",10000); 
     </script>
 {% endblock %}

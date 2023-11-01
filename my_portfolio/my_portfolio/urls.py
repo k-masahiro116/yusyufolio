@@ -29,10 +29,6 @@ urlpatterns = [
     path("", include("function.urls")),
     #portfolioのurls.pyを読み込み
     path("", include("portfolio.urls")),
-    #graphのurls.pyを読み込み
-    path("", include("graph.urls")),
-    #realtime_graphのurls.pyを読み込み
-    path("chat/", include("chat.urls")),
     path("schedule/", include("schedule.urls")),
     path("tokenizer/", include("tokenizer.urls")),
     path("memorize/", include("memorize.urls")),

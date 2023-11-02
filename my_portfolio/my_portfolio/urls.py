@@ -30,7 +30,6 @@ urlpatterns = [
     #portfolioのurls.pyを読み込み
     path("", include("portfolio.urls")),
     path("schedule/", include("schedule.urls")),
-    path("tokenizer/", include("tokenizer.urls")),
     path("memorize/", include("memorize.urls")),
     path('blog/', include('blog.urls')),
     path('imageblog/', include('imageblog.urls')),

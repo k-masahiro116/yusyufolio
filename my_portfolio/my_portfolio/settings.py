@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'function',
     'portfolio',
     'schedule',
-    'tokenizer',
     'memorize',
     'blog.apps.BlogConfig',
     'imageblog.apps.ImageblogConfig',

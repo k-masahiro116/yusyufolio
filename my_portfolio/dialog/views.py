@@ -53,43 +53,16 @@ class PostCreateView(generic.CreateView): # 追加
     form_class = PostCreateForm # 作成した form クラスを指定
     chitchat = ConcatChain(wanco=ChitChat(), detector=Detector(), strict=StrictTask())
     success_url = reverse_lazy('dialog:post_list')
-    def get_context_data(self,**kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-    
     def post(self, request, *args, **kwargs):
         valid = super().post(request, *args, **kwargs)
-        self.repost()
+        self.eldely_care_llms()
         return valid
-    
-    def repost(self):
-        form = self.get_form()
-        if form.is_valid():
-            form_kwargs = self.get_form_kwargs()
-            input_text = form_kwargs.get("data").get("text")
-            response = self.eldely_care_llms(input_text = input_text)
-            form_kwargs["data"] = QueryDict('speaker={}&text={}'.format("ワンコ", response))
-            object = self.model()
-            object.speaker = "AI"
-            form_kwargs["instance"] = object
-            form = self.get_form(form_kwargs=form_kwargs)
-            if form.is_valid():
-                self.form_valid(form)
-            else:
-                self.form_invalid(form)
                 
     def eldely_care_llms(self, input_text=""):
-        return self.chitchat.run({"text": input_text, "volume": 65})
+        objs = self.model.objects.all()
+        response = self.chitchat.run({"text": objs.last().text, "volume": 65})
+        self.model.objects.create(speaker="ワンコ", text=response)
         
-    def get_form(self, form_class=None, form_kwargs=None):
-        """Return an instance of the form to be used in this view."""
-        if form_kwargs is not None:
-            if form_class is None:
-                form_class = self.get_form_class()
-            return form_class(**form_kwargs)
-        return super().get_form(form_class=form_class)
-
-    
 
 class PostDetailView(generic.DetailView): # 追加
     model = Post  # pk(primary key)はurls.pyで指定しているのでここではmodelを呼び出すだけで済む

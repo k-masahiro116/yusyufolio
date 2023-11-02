@@ -50,29 +50,3 @@
     {{rain_probability_1824|linebreaks}}
 </div>
 {% endblock %}
-
-{% block right_aside_content %}
-<div class="div-hidden col-md-4 mt-4">
-    <h2 class="mb-n">カテゴリー</h2>
-    <ul class="list-unstyled mb-4 category_list" id="category_list">
-        {% for category_name in category_list %}
-            <li><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
-        {% endfor %}
-    </ul>
-    
-    <h2 class="mb-n">ブログ月別アーカイブ</h2>
-    <ul class="list-unstyled mb-0">
-        {% for post_month in post_month_list %}
-            <li><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">
-                {{ post_month|date:"Y年m月" }}
-            </a></li>
-        {% endfor %}
-    </ul>
-</div>
-<style>
-    .div-hidden {
-        visibility: hidden;
-    }
-</style>
-
-{% endblock %}

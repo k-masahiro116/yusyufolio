@@ -90,7 +90,16 @@
                             {% now "(D曜日)"%}
                         </div>
                         </p>
-                        {% block right_aside %}{% endblock %}
+                        <div class="weathers">
+                            {{weather|linebreaks}}
+                            {{temp_high}}
+                            {{temp_low|linebreaks}}
+                            {{rain_probability|linebreaks}}
+                            {{rain_probability_0006|linebreaks}}
+                            {{rain_probability_0612|linebreaks}}
+                            {{rain_probability_1218|linebreaks}}
+                            {{rain_probability_1824|linebreaks}}
+                        </div>
                     </aside>
                 </div>
                 {% block left_aside %}{% endblock %}
@@ -121,9 +130,23 @@
                         <li style="width: 225px;"><a href="https://twitter.com/yusyu_kujilove?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @yusyu_kujilove</a></li>
                     </ul>
                 </div>
-                <div id="scrape_get">
+                <div class="div-category col-md-4 mt-4">
+                    <h2 class="mb-n">カテゴリー</h2>
+                    <ul class="list-unstyled mb-4 category_list" id="category_list">
+                        {% for category_name in category_list %}
+                            <li><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <h2 class="mb-n">ブログ月別アーカイブ</h2>
+                    <ul class="list-unstyled mb-0">
+                        {% for post_month in post_month_list %}
+                            <li><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">
+                                {{ post_month|date:"Y年m月" }}
+                            </a></li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                {% block right_aside_content %}{% endblock %}
             </div>
         </article>
     
@@ -195,7 +218,7 @@
         .right_aside_author {
             padding: 10px;
         }  
-        #scrape_get {
+        .div-category {
             padding: 10px;
             animation-name:fadeInAnime;
             animation-duration:2s;
@@ -254,6 +277,9 @@
                     <div id="tagCloud">Tag Cloud</div>
                     <ul class="wp-tag-cloud" role="list" id="wp-tag-cloud">
                         <li><a href="{% url 'dialog:post_list' %}">対話システム</a></li>
+                        {% for category_name in category_list %}
+                        <li><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div id="copyright">©2023-2023 YusyuFolio All right reserved.</div>
@@ -326,8 +352,6 @@
             text-align: center;
         }
     </style>
-
-
     <!--base.htmlを継承したhtmlで使用-->
     <style>
         .stg {
@@ -393,25 +417,5 @@
             }
         });
         _window.trigger('scroll');
-    </script>
-    <!--サイドバーのスクレイピング-->
-    <script>
-        $.get("{% url 'blog:post_list' %}")
-        .done(function(data) {
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(data, "text/html");
-            let element = doc.getElementsByClassName("col-md-4");
-            let element_cate = doc.getElementsByClassName("category_list");
-            appendText(element[0].innerHTML);
-            appendText_cate(element_cate[0].innerHTML);
-            function appendText (text) {
-                let element = document.getElementById("scrape_get");
-                element.insertAdjacentHTML("afterbegin", text );
-            };
-            function appendText_cate (text) {
-                let element = document.getElementById("wp-tag-cloud");
-                element.insertAdjacentHTML("afterbegin", text );
-            };
-        })
     </script>
 </html>

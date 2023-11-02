@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.http import QueryDict
 from .forms import PostCreateForm
@@ -6,6 +7,8 @@ from .models import Post
 from django.db.models import Q
 from typing import Any, Dict, Union
 from .chains import ChitChat, StrictTask, Detector, ConcatChain
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 from django.views import generic
@@ -14,7 +17,7 @@ from django.views import generic
 class IndexView(generic.TemplateView):
     template_name = 'dialog/index.html'
     
-class PostListView(generic.ListView): # generic の ListViewクラスを継承
+class PostListView(LoginRequiredMixin, generic.ListView): # generic の ListViewクラスを継承
     model = Post # 一覧表示させたいモデルを呼び出し
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
@@ -30,10 +33,10 @@ class PostListView(generic.ListView): # generic の ListViewクラスを継承
         context["rain_probability_1218"] = "12-18: "+ forecast["rain_probability"]['12-18']
         context["rain_probability_1824"] = "18-24: "+ forecast["rain_probability"]['18-24']
         def get_last_post():
-            last_post = str(self.object_list[len(self.object_list)-1].text if len(self.object_list) > 0 else "")
-            last_post = "'"+last_post+"'"
-            return last_post
-        context["last_post"] = get_last_post()
+            obj = self.object_list[len(self.object_list)-1] if len(self.object_list) > 0 else Post()
+            return {"last_post": "'"+obj.text+"'", "last_text": obj.text, "last_speaker": obj.speaker, "last_date": obj.date}
+            
+        context.update(get_last_post())
         return context
 
     def get_queryset(self):
@@ -48,8 +51,8 @@ class PostListView(generic.ListView): # generic の ListViewクラスを継承
 class PostCreateView(generic.CreateView): # 追加
     model = Post # 作成したい model を指定
     form_class = PostCreateForm # 作成した form クラスを指定
-    success_url = reverse_lazy('dialog:post_list') # 記事作成に成功した時のリダイレクト先を指定
     chitchat = ConcatChain(wanco=ChitChat(), detector=Detector(), strict=StrictTask())
+    success_url = reverse_lazy('dialog:post_list')
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         return context
@@ -78,7 +81,6 @@ class PostCreateView(generic.CreateView): # 追加
     def eldely_care_llms(self, input_text=""):
         return self.chitchat.run({"text": input_text, "volume": 65})
         
-    
     def get_form(self, form_class=None, form_kwargs=None):
         """Return an instance of the form to be used in this view."""
         if form_kwargs is not None:

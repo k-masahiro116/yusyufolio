@@ -1,9 +1,18 @@
 from django.shortcuts import render
-from django.views.generic.base import TemplateView
+
+# ここから追加
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import(LoginView, LogoutView)
+from .forms import LoginForm
 
 
-# Create your views here.
-class LoginView(TemplateView):
-    template_name ="account/login.html"
-    
-login = LoginView.as_view()
+class Login(LoginView):
+    """ログインページ"""
+    form_class = LoginForm
+    template_name = 'account/login.html'
+
+
+class Logout(LoginRequiredMixin, LogoutView):
+    """ログアウトページ"""
+    template_name = 'account/login.html'
+# ここまで追加

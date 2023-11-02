@@ -76,6 +76,16 @@
             <div id="sidebar_left" class="sidebar nwa cf col" role="complementary" style="height: auto !important;">
                 <div class="aside_right_space" id="aside_right">
                     <aside class="aside_right">
+                        <p>ログインユーザー: {{ user.username }}</p>
+                        <div class="login-logout">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'account:logout' %}">ログアウト</a>
+                            {% else %}
+                            <a href="{% url 'account:login' %}">ログイン</a>
+                            {% endif %}
+                        </div>
+                    </aside>
+                    <aside class="aside_right">
                         <div style="text-align: center;">
                             {% now "Y/m/d"%}
                             {% now "(D曜日)"%}
@@ -94,10 +104,11 @@
                     {% block image %}{% endblock %}
                     {% block portfolio %}{% endblock %}
                     {% block content %}{% endblock %}
+                    {% block login %}{% endblock %}
                     {% autoescape off %}{% endautoescape %}
                 </section>
             </div>
-            <div id="sidebar_right" class="sidebar nwa cf col" role="complementary" style="height: auto !important;">
+            <div id="sidebar_right" class="sidebar nwa cf col" role="complementary">
                 <div class="right_aside_author">
                     <h2 class="mb-n">Author</h2>
                     <div class="center" style="text-align: center;">
@@ -180,6 +191,7 @@
         }
         .mb-n {
             font-family: "Nico Moji";
+            font-size: 1.4vw;
         }
         .right_aside_author {
             padding: 10px;
@@ -217,24 +229,24 @@
             font-size: 15px;
         }
         .aside_right {
+            margin-bottom: 5px;
             margin-top: 0px;
             border:1px solid #FFFFFF;
             background-color: #EFFFFE;
-            border: 2px skyblue dashed;
-            box-shadow: 0 0 6px 1px #faccbc, 0 0 6px 1px #faccbc inset;/*ふわりとした影*/
-            border-radius: 30px;
+            box-shadow: 0 0 6px 1px #DEEEED, 0 0 6px 1px #DEEEED inset;
+            border-radius: 15px;
         }
         .col {
             padding: 4px;
+            height: 100%;
+            {% comment %} height: auto !important; {% endcomment %}
         }
-    </style>
-    <style>
         .col-md-4 {
             max-width: 500px;
             font-size: 1vw;
         }
-        .mb-n {
-            font-size: 1.4vw;
+        .login-logout a {
+            text-decoration: none;
         }
     </style>
         <div id="footerWrap" class="clearfix">
@@ -352,6 +364,19 @@
             font-size: 80%;
             font-weight: bold;
             padding: 0 3px;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: skyblue;
+            border-bottom: 5px solid #6495ed;
+            -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        }
+        .btn-primary:hover {
+            margin-top: 3px;
+            color: #fff;
+            background: skyblue;
+            border-bottom: 2px solid #6495ed;
         }
     </style>
     <!--ヘッダーのアニメーション-->

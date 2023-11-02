@@ -31,19 +31,6 @@
         .table_font{
             font-family: 'Vollkorn', serif;
         }
-        .btn-primary {
-            color: #fff;
-            background-color: skyblue;
-            border-bottom: 5px solid #6495ed;
-            -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-        }
-        .btn-primary:hover {
-            margin-top: 3px;
-            color: #fff;
-            background: skyblue;
-            border-bottom: 2px solid #6495ed;
-        }
         .more_btn {
             float: right;
             margin-right: 20px;
@@ -73,7 +60,7 @@
         {% endfor %}
     </ul>
     
-    <h2 class="mb-n">月別アーカイブ</h2>
+    <h2 class="mb-n">ブログ月別アーカイブ</h2>
     <ul class="list-unstyled mb-0">
         {% for post_month in post_month_list %}
             <li><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">

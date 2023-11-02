@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ["localhost", "192.168.1.3", "192.168.1.15"]
 # Application definition
 
 INSTALLED_APPS = [
-    "channels",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -178,3 +177,24 @@ MEDIA_URL = '/media/'
 
 # アップロードファイルなどを読み込む際のフォルダの場所を記述
 MEDIA_ROOT = 'media/'
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'height': '1000',
+    },
+}
+ALLOWED_TAGS = [ 
+    'a', 'div', 'p', 'span', 'img', 'em', 'i', 'li', 'ol', 'ul', 'strong', 'br',
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'table', 'tbody', 'thead', 'tr', 'td',
+    'abbr', 'acronym', 'b', 'blockquote', 'code', 'strike', 'u', 'sup', 'sub','font'
+]
+ATTRIBUTES = { 
+    '*': ['style', 'align', 'title', 'style' ],
+    'a': ['href', ],
+    'img': ['src', ],
+}
+
+LOGIN_URL = '/account/login' 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL='/'

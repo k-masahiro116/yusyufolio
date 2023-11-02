@@ -1,6 +1,49 @@
-{% extends 'login.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block main %}
-<h1 class="text-primary">Hello world!</h1>
+    <div class="back1">
+        <h1 class="text-primary">Login</h1>
+    </div>
+{% endblock %}
+{% block login %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    </head>
+    <body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>システム利用認証</b>
+        </div>
+        </br>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+        <p class="login-box-msg"><i class="fa fa-sign-in" aria-hidden="true"></i><b> ログイン画面</b></p>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group has-feedback">
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="row">
+
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                <p>{{ error }}</p>
+                </div>
+            {% endfor %}
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">ログイン</button>
+            </div>
+            <!-- /.col -->
+            </div>
+        </form>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
 {% endblock %}

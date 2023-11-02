@@ -37,7 +37,6 @@ black==23.3.0
 bleach==5.0.1
 bottle==0.12.19
 bs4==0.0.1
-cabocha-python==0.69
 cachetools==5.3.0
 certifi==2021.10.8
 cffi==1.15.0
@@ -217,8 +216,6 @@ matplotlib==3.5.0
 matplotlib-inline==0.1.6
 mccabe==0.7.0
 mdurl==0.1.2
-mecab==0.996.3
-mediapipe==0.8.10.1
 mistune==2.0.4
 modulegraph==0.18
 more-itertools==8.14.0
@@ -243,8 +240,6 @@ numpy==1.24.1
 oauthlib==3.2.0
 openai==0.27.8
 openapi-schema-pydantic==1.2.4
-opencv-contrib-python==4.6.0.66
-opencv-python==4.6.0.66
 openpyxl==3.0.9
 opensmile==2.4.1
 opt-einsum==3.3.0
@@ -363,9 +358,6 @@ tenacity==8.1.0
 tensorboard==2.9.1
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow==2.9.1
-tensorflow-estimator==2.9.0
-tensorflow-io-gcs-filesystem==0.26.0
 termcolor==2.3.0
 terminado==0.15.0
 threadpoolctl==3.0.0
@@ -399,7 +391,6 @@ webencodings==0.5.1
 websocket-client==1.4.0
 websockets==8.1
 Werkzeug==2.0.2
-whisper @ git+https://github.com/openai/whisper.git@d18e9ea5dd2ca57c697e8e55f9e654f06ede25d0
 whitenoise==5.3.0
 wrapt==1.12.1
 yarl==1.8.2

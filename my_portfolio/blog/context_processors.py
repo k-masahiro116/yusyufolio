@@ -10,6 +10,11 @@ def common(request):
     category_list = list(filter(None, list(set(category_list))))
     return {'category_list': category_list, 'post_month_list': post_month_list}
 
+def common_list(request):
+    all = Post.objects.order_by("-id")
+    newest_5 = all[:5]
+    return {'newest_post_list': newest_5}
+
 def common_weather(request):
     context = {}
     url_forecast = 'https://tenki.jp/forecast/3/16/4410/13208/'

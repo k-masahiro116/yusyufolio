@@ -7,7 +7,7 @@
     position: fixed;
     margin-right: 10px;
 }
-.open {
+.menu-open {
     z-index: 10000000;
     top: 8px;
     right: 10px;
@@ -17,13 +17,13 @@
     background: #86c0de;
     transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-.open::before,
-.open::after {
+.menu-open::before,
+.menu-open::after {
     content: "";
 }
-.open span,
-.open::before,
-.open::after {
+.menu-open span,
+.menu-open::before,
+.menu-open::after {
     content: "";
     position: absolute;
     top: calc(50% - 1px);
@@ -32,32 +32,32 @@
     border-bottom: 2px solid white;
     transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-.open::before {
+.menu-open::before {
     transform: translateY(-8px);
 }
-.open::after {
+.menu-open::after {
     transform: translateY(8px);
 }
-.close {
+.menu-close {
     z-index: 1;
     inset: 0;
     pointer-events: none;
     transition: background .6s;
 }
-#drawer:checked + .open {
+#drawer:checked + .menu-open {
     background: #dc6688;
     transform: translateX(-280px);
 }
-#drawer:checked + .open span {
+#drawer:checked + .menu-open span {
     transform: scaleX(0);
 }
-#drawer:checked + .open::before {
+#drawer:checked + .menu-open::before {
     transform: rotate(135deg) scaleX(1.2);
 }
-#drawer:checked + .open::after {
+#drawer:checked + .menu-open::after {
     transform: rotate(-135deg) scaleX(1.2);
 }
-#drawer:checked ~ .close {
+#drawer:checked ~ .menu-close {
     pointer-events: auto;
     background: rgba(0,0,0,.3);
 }

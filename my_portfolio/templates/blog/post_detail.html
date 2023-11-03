@@ -6,7 +6,7 @@
         <div id="singleMeta">
             <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span class="date">{{ post.date|date:"Y/m/d"  }}</span>
             <i class="fa fa-refresh" aria-hidden="true"></i> <span class="date">{{ post.redate|date:"Y/m/d" }}</span>
-            <span class="cat"><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">  {{ post.category }}</a></span>
+            <span class="cat"><a class="cate" href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">  {{ post.category }}</a></span>
             <h1>{{ post.title }}</h1>
         </div>
         <div class="post-content">
@@ -84,6 +84,19 @@
             padding: 0 20px;
             padding-bottom: 40px;
             justify-content: space-between;
+        }
+        .cate {
+            background: gray;
+            color: white;
+            padding: 3px 5px;
+            border-radius: 0.25rem;
+            &:hover {
+                color: white;
+            }
+        }
+        .cat:hover {
+            position: relative;
+            bottom: 2px;
         }
     </style>
 {% endblock %}

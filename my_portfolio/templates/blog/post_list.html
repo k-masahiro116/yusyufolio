@@ -14,7 +14,9 @@
             <tr>
                 <th class="table_font" id="table-title">TITLE</th>
                 <th class="table_font">DATE</th>
+                {% if user.is_superuser %}
                 <th class="table_font">UPDATE</th>
+                {% endif %}
                 <th class="table_font">CATEGORY</th>
                 <th></th>
                 <th></th>
@@ -25,12 +27,12 @@
                 <tr>
                     <td class="post-title" id="table-title"><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></td>
                     <td>{{ post.date|date:"Y/m/d/D" }}</td>
+                    {% if user.is_superuser %}
                     <td>{{ post.redate|date:"Y/m/d/D" }}</td>
+                    {% endif %}
                     <td><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
                     <td class="super-td">
-                        <!-- superuserでログインしている時にのみ表示 -->
                         {% if user.is_superuser %}
-                        <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
                         <a href="{% url 'blog:post_update' post.pk %}">Edit</a>
                         {% endif %}
                     </td>

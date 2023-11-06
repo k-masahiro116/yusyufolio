@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-_z+1mttbpff(m6ci=72a=3mz*9tik6zzl3t3oj8tk3-u$zi_7_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.1.3", "192.168.1.15"]
+ALLOWED_HOSTS = ["localhost", "192.168.1.3", "192.168.1.15", "*"]
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_summernote',
+    'markdownx', 
     'account',
     'function',
     'portfolio',
@@ -81,6 +82,7 @@ TEMPLATES = [
                 'blog.context_processors.common', 
                 'blog.context_processors.common_list', 
                 'blog.context_processors.common_weather', 
+                'imageblog.context_processors.common', 
             ],
         },
     },
@@ -184,6 +186,17 @@ SUMMERNOTE_CONFIG = {
     'summernote': {
         'height': '1000',
     },
+    # 'summernote': {
+    #     'codemirror': {
+    #         # 'mode': 'htmlmixed',
+    #         # 'lineNumbers': 'true',
+    #         # You have to include theme file in 'css' or 'css_for_inplace' before using it.
+    #         # 'theme': 'monokai',
+    #     }
+    # },
+    'css': (
+        '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/theme/monokai.min.css',
+    ),
 }
 ALLOWED_TAGS = [ 
     'a', 'div', 'p', 'span', 'img', 'em', 'i', 'li', 'ol', 'ul', 'strong', 'br',

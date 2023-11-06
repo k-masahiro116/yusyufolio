@@ -24,6 +24,9 @@
     background: rgb(239, 249, 255, 1);
     opacity: .9;
 }
+@media screen and (max-width: 1000px) {
+    .globalNavi { display: none;}
+}
 .globalNavi{
     position: relative;
     margin-right: auto;

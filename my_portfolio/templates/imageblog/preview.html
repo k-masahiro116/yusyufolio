@@ -2,12 +2,27 @@
 {% load static %}
 
 {% block content %}
-    <h1>{{title}}</h1>
+    <h1>{{title|safe}}</h1>
     <div>
         <h2>ID:{{id}}の画像</h2>
         <img src="{{url}}" width="50%" height="50%" border="0">
     </div>
+    <ul class="super-tr">
+        <li class="super-td">
+            {% if user.is_superuser %}
+            <a href="{% url 'imageblog:image_delete' id %}">Delete</a>
+            {% endif %}
+        </li>
+    </ul>
     <style>
+        .super-tr{
+            float: bottom;
+            margin-top: 50px;
+            bottom: 10px;
+        }
+        .super-tr li {
+            list-style-type: none!important;
+        }
     </style>
 {% endblock %}
 

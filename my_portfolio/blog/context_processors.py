@@ -12,8 +12,7 @@ def common(request):
 
 def common_list(request):
     all = Post.objects.order_by("-id")
-    newest_5 = all[:5]
-    return {'newest_post_list': newest_5}
+    return {'newest_post_list': all}
 
 def common_weather(request):
     context = {}

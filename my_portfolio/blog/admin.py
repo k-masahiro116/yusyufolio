@@ -2,11 +2,13 @@ from django import forms
 from django.contrib import admin
 from .models import * # 追加
 from django_summernote.admin import SummernoteModelAdmin
+from markdownx.admin import MarkdownxModelAdmin
 
-class PostCreateForm(forms.ModelForm): # DjangoのModelFormでは強力なValidationを使える
+class PostCreateForm(forms.ModelForm): 
     summernote_fields = ('text')
     class Meta:
-        model = Post # Post モデルと接続し、Post モデルの内容に応じてformを作ってくれる
-        fields = ('title', 'text') # 入力するカラムを指定
+        model = Post 
+        fields = ('title', 'text') 
 admin.site.register(Post, SummernoteModelAdmin)
+# admin.site.register(Post, MarkdownxModelAdmin)
 

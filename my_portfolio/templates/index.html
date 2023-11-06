@@ -27,8 +27,7 @@
                             <h2>Yusyu</h2 width="100%" height="100%">
                         </div>
                         <div class="main-intro" style="background: #f3fbff;">
-                            </p>
-                            <ul class="vertical-row-ul" style="margin-bottom: 30px;">
+                            <ul class="vertical-row-ul" style="margin-top: 30px;margin-bottom: 30px;">
                                 <li>主な活動: 対話システムやWebサイトなどの開発</br>他、言語処理など</li>
                                 <li>好きな食べ物: ラーメン</li>
                                 <li>趣味: 読書, ゲーム, 音楽を聴くこと</li>
@@ -41,7 +40,7 @@
         </div>
         
         <!-- カテゴリー一覧 -->
-        <div class="stg1"><h2 class="text-primary" id="text-intro">〜Free Introduction〜<h2></div>
+        <div class="stg1"><h2 class="text-primary" id="text-intro">〜Introduction〜<h2></div>
         <div class="stg"><h2 class="text-heading">Products</h2></div>
             <ul class="vertical-row-ul ul-products" style="margin-bottom: 30px;">
                 <li><a href="{% url 'dialog:post_list' %}">Dialog System</a></li>
@@ -58,6 +57,7 @@
         <div class="stg"><h2 class="text-heading">Favorite books</h2></div>
             <ul class="vertical-row-ul-ul ul-favorite-books" style="margin-bottom: 30px;">
                 <li><a href="https://www.shoeisha.co.jp/book/detail/9784798156668">Pythonで動かして学ぶ自然言語処理入門</a></li>
+                <li>ジェノサイド</li>
                 <li>
                     <details>
                         <summary>
@@ -233,7 +233,7 @@
                 cursor: pointer;
                 font-size:1rem;
                 font-weight: normal;
-                padding: 1.5% .5% .5% 50px;
+                padding: 15px 5px 5px 50px;
                 transition: all .5s ease;
             }
             .accordion-title::before,

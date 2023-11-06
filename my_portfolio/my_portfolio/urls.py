@@ -23,11 +23,8 @@ from portfolio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #accountのurls.pyを読み込み
     path("account/", include("account.urls")),
-    #functionのurls.pyを読み込み
     path("", include("function.urls")),
-    #portfolioのurls.pyを読み込み
     path("", include("portfolio.urls")),
     path("schedule/", include("schedule.urls")),
     path("memorize/", include("memorize.urls")),
@@ -35,4 +32,5 @@ urlpatterns = [
     path('imageblog/', include('imageblog.urls')),
     path('dialog/', include('dialog.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('markdownx/', include('markdownx.urls')),  
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

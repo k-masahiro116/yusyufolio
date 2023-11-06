@@ -20,11 +20,8 @@ def contact_form(request):
             subject = form.cleaned_data['subject']
             sender = form.cleaned_data['sender']
             message = form.cleaned_data['message']+"\nfrom: "+sender
-            myself = form.cleaned_data['myself']
             recipients = [settings.EMAIL_HOST_USER]
 
-            if myself:
-                recipients.append(sender)
             try:
                 send_mail(subject, message, sender, recipients)
             except BadHeaderError:

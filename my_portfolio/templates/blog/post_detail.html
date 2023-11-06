@@ -9,9 +9,9 @@
             <span class="cat"><a class="cate" href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">  {{ post.category }}</a></span>
             <h1>{{ post.title }}</h1>
         </div>
-        <div class="post-content">
+        <div class="post-content" class="markdownx">
             {% autoescape off %}
-                <td>{{ post.text | linebreaksbr}}</td>
+                <td>{{ post.text}}</td>
             {% endautoescape %}
         </div>
         <ul class="super-tr">

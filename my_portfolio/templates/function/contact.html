@@ -11,18 +11,74 @@
 <section>
     <div class="inner">
         <h2 class="heading">お問い合わせはこちら</h2>
-        <p><span class="red">※</span>は必須項目です。</p>
-            <form action="{% url 'function:contact' %}" method="post">
-                {% csrf_token %}
-                <table>
-                    {{ form.as_table}}
-                </table>
-                <br>
-                <input type="submit" value="送信">
-            </form>
+
+        <form action="{% url 'function:contact' %}" method="post">
+            {% csrf_token %}
+            <table align="center">
+                <tbody>
+                    <tr>
+                        <th height="50px"><label class="hissu-label">必須</label>
+                            <label for="id_subject" class="contact-label">件名</label></th>
+                        <td>{{form.subject}}</td>
+                    </tr>
+                    <tr>
+                        <th height="50px"><label class="hissu-label">必須</label>
+                            <label for="id_sender" class="contact-label">Email</label></th>
+                        <td>{{form.sender}}</td>
+                    </tr>
+                    <tr>
+                        <th height="280px"><label class="hissu-label">必須</label>
+                            <label for="id_message" class="contact-label">メッセージ</label></th>
+                        <td>{{form.message}}</td>
+                    </tr>
+                    <input type="checkbox" name="myself" id="id_myself">
+                </tbody>
+            </table>
+            <br>
+            <div class="btn-align-div">
+                <input class="btn-primary btn btn-align" type="submit" value="送信">
+            </div>
+        </form>
     </div>
 </section>
 <style>
+    table {
+        max-width: 500px;
+        width: 100%;
+    }
+    .hissu-label {
+        align: left;
+        background: #4689FF;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 2rem;
+        font-size: 5px;
+    }
+    .contact-label {
+        color: #444444;
+    }
+    tr {
+        border-bottom: 2px solid gainsboro;
+        align: center;
+    }
+    #id_subject {
+        background: whitesmoke;
+        width: 100%;
+    }
+    #id_sender {
+        background: whitesmoke;
+        width: 100%;
+    }
+    #id_message {
+        background: whitesmoke;
+    }
+    .btn-align-div {
+        text-align:center;
+    }
+    .btn-align {
+        position: relative;
+        padding: 10px 30px;
+    }
     .heading{
         font-size: 2rem;
     }
@@ -30,13 +86,11 @@
         padding: 20px 5%;
     }
     form {
-        width: 100%; }
+        width: 100%; 
+    }
     .form-label {
         margin-top: 16px;
         display: block;
-        width: 100%; 
-    }
-    input {
         width: 100%; 
     }
     textarea {
@@ -45,9 +99,6 @@
     .red {
         font-size: 0.8rem;
         color: red; 
-    }
-    *{
-        box-sizing: border-box;
     }
 </style>
 {% endblock %}

@@ -18,12 +18,7 @@ SECRET_KEY = 'django-insecure-_z+1mttbpff(m6ci=72a=3mz*9tik6zzl3t3oj8tk3-u$zi_7_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ["localhost", "os3-371-18878.vs.sakura.ne.jp", "yusyufolio.com"]
-=======
-ALLOWED_HOSTS = ["localhost", "yusyufolio.com", "*"]
->>>>>>> 89331478bb2a923acc2259350ce01dee8504d747
-
+ALLOWED_HOSTS = ["localhost", "yusyufolio.com"]
 
 # Application definition
 
@@ -156,7 +151,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # collectstaticなどを行った際にファイルを設置するstaticフォルダの場所を記述（開発の際は必要ないのでコメントアウトしておく）
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # htmlファイルなどから読み込むstaticフォルダの場所を記述
 STATICFILES_DIRS = [

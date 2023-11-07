@@ -6,7 +6,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
         <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet"/>
         <link href="{% static 'assets/css/fullcalendar.css' %}" rel='stylesheet'/>
         <link href="{% static 'assets/css/menu_toggle.css' %}" rel='stylesheet'/>
@@ -16,23 +15,18 @@
         <link href="{% static 'assets/css/font-awesome-4.7.0/css/font-awesome.css' %}" rel='stylesheet'/>
         <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
         <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="icon" type="image/png" href="/media/{{image_list.0}}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/cube.js' %}" type="text/javascript"></script>
-        <script src="{% static 'assets/js/pointer.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/js_button.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/header_fix.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/fullcalendar.js' %}"></script>
+        <script src="{% static 'assets/js/pointer.js' %}" type="text/javascript"></script>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-        <!-- and it's easy to individually load additional languages -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
         {% block head %}{% endblock %}
         <title>YusyuFolio</title>
@@ -46,13 +40,13 @@
             </p>
             <nav class="globalNavi">
                 <ul class="globalNavi__list">
-                    <li class="menu-item">
+                    <li class="menu-item1">
                         <a href="{% url 'function:contact' %}"><div class="caption-wrap item-label">お問い合わせ</div></a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item2">
                         <a href="{% url 'dialog:post_list' %}"><div class="caption-wrap item-label">対話システム</div></a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item3">
                         <a href="{% url 'blog:redirect_index' %}"><div class="caption-wrap item-label">ブログ</div></a>
                     </li>
                 </ul>			
@@ -67,9 +61,7 @@
                 <ul>
                     <li ><a  href="{% url 'portfolio:index' %}">portfolio</a></li>
                     <li ><a  href="{% url 'blog:redirect_index' %}">blog</a></li>
-                    {% if user.is_superuser %}
                     <li ><a  href="{% url 'imageblog:uploadimage_list' %}">image blog</a></li>
-                    {% endif %}
                     <li ><a  href="{% url 'dialog:post_list' %}">dialog system</a></li>
                     <li ><a  href="{% url 'memorize:test' %}">memorize</a></li>
                     <li ><a  href="{% url 'schedule:index' %}">schedule</a></li>
@@ -80,8 +72,8 @@
         {% block main %}{% endblock %}
         <article class="main-article">
             <div id="sidebar_left" class="sidebar nwa cf col" role="complementary" style="height: auto !important;">
-                <div class="aside_right_space" id="aside_right">
-                    <aside class="aside_right">
+                <div class="aside_left_space" id="aside_left">
+                    <aside class="aside_left">
                         <p>ログインユーザー: {{ user.username }}</p>
                         <div class="login-logout">
                             {% if user.is_authenticated %}
@@ -91,7 +83,7 @@
                             {% endif %}
                         </div>
                     </aside>
-                    <aside class="aside_right">
+                    <aside class="aside_left">
                         <div style="text-align: center;">
                             {% now "Y/m/d"%}
                             {% now "(D曜日)"%}
@@ -205,7 +197,7 @@
         </script>
         <style>
             @media screen and (max-width: 1000px) {
-                .globalNavi { display: none;}
+                .menu-item2 a { display: none; };
             }
             .resize-image-blog {
                 width: 150px;

@@ -250,6 +250,9 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     display: inline-flex;
     vertical-align: middle;
   }
+@media screen and (max-width: 1000px) {
+    .fc-toolbar-chunk .fc-button-group { display: none; };
+}
 .fc .fc-button-group > .fc-button {
     position: relative;
     flex: 1 1 auto;

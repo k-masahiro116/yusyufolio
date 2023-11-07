@@ -2,7 +2,7 @@ import time
 import openai
 # チャットモデルのラッパーをインポート
 import langchain
-from langchain import OpenAI
+from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 # 会話をしたりメモリから文脈を読み込むチェーン
 from dialog.chains.memory import Memory

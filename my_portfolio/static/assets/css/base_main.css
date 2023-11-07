@@ -28,7 +28,8 @@ img {
 .container {
     border-radius: 15px;
     background: white;
-    padding-left: 0px;
+    padding: 10px 20px;
+    margin-left: 10px;
     margin-right: 10px;
     max-width: 980px;
 }
@@ -102,12 +103,16 @@ img {
     border: dashed 5px skyblue;
     box-sizing: border-box;
 }
-.aside_right_space {
+#sidebar_left {
+    margin-left: 5px;
+    padding-right: 0px;
+}
+.aside_left_space {
     width: 100%;
     max-width: 400px;
     font-size: 15px;
 }
-.aside_right {
+.aside_left {
     margin-bottom: 5px;
     margin-top: 0px;
     border:1px solid #FFFFFF;
@@ -206,7 +211,7 @@ img {
     margin: 20px 20px 20px 20px;
 }
 .section-margin {
-    margin: 20px 0px 20px 20px;
+    margin: 20px 0px 20px 0px;
 }
 .crumbs ol {
     list-style-type: none;

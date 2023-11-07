@@ -17,7 +17,7 @@ window.onload = function(){
 	// cube縺ｮ蛻晄悄繧ｹ繧ｿ繧､繝ｫ險ｭ螳�
 	var styleInit = {
 		position:'absolute',
-		'z-index' : 1,
+		'z-index' : 3,
 		display : 'inline-block',
 		border : 'solid 4px #a6e1ed',
 		height : 8,
@@ -28,8 +28,8 @@ window.onload = function(){
 	var cube = {
 		init : function(){
 			$('body')
-				.wrapInner('<div style="position:relative;z-index:2"></div>')
-				.append('<div style="position:fixed;top:0;left:0;z-index:1" id="cube-area"></div>');
+				.wrapInner('<div style="position:relative;z-index:3"></div>')
+				.append('<div style="position:fixed;top:0;left:0;z-index:0" id="cube-area"></div>');
 			
 			$('#cube-area').css({
 				height : settings.windowHeight,

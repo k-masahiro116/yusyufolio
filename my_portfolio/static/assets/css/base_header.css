@@ -25,7 +25,7 @@
     opacity: .9;
 }
 @media screen and (max-width: 1000px) {
-    .globalNavi { display: none;}
+    /* .globalNavi { display: none;} */
 }
 .globalNavi{
     position: relative;
@@ -70,7 +70,7 @@
     text-decoration: none;
 }
 .caption-wrap {
-    padding: 22px;
+    padding: 22px 10px;
     box-sizing: border-box;
     word-wrap: break-word;
     overflow-wrap: break-word;

@@ -8,7 +8,7 @@
     margin-right: 10px;
 }
 .menu-open {
-    z-index: 10000000;
+    z-index: 100000;
     top: 8px;
     right: 10px;
     width: 48px;
@@ -64,7 +64,7 @@
 
 /* :::::: drawer menu :::::: */
 .menu {
-    z-index: 1000000;
+    z-index: 100000;
     position: fixed;
     overflow: auto;
     top: 0;

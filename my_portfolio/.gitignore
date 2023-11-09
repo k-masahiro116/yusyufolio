@@ -1,7 +1,7 @@
 .DS_Store
 output.json
 .idea/
-
+./static/*
 # for python
 # Byte-compiled / optimized / DLL files
 __pycache__/

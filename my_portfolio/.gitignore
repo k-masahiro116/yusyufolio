@@ -1,6 +1,8 @@
 .DS_Store
 output.json
 .idea/
+./static/*
+./my_portfolio/settings.py
 
 # for python
 # Byte-compiled / optimized / DLL files

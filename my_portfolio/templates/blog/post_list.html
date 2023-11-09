@@ -13,8 +13,8 @@
         <thead>
             <tr>
                 <th class="table_font" id="table-title">TITLE</th>
-                <th class="table_font">CATEGORY</th>
-                <th class="table_font">DATE</th>
+                <th class="table_font" id="category-td">CATEGORY</th>
+                <th class="table_font" id="date-td">DATE</th>
                 {% if user.is_superuser %}
                 <th class="table_font super-td">UPDATE</th>
                 <th class="super-td"></th>
@@ -26,8 +26,8 @@
             {% for post in post_list reversed%}
                 <tr>
                     <td class="post-title" id="table-title"><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></td>
-                    <td><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
-                    <td>{{ post.date|date:"Y/m/d/D" }}</td>
+                    <td id="category-td"><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
+                    <td id="date-td">{{ post.date|date:"Y/m/d/D" }}</td>
                     {% if user.is_superuser %}
                     <td class="super-td">{{ post.redate|date:"Y/m/d/D" }}</td>
                     <td class="super-td"><a href="{% url 'blog:post_update' post.pk %}">Edit</a></td>
@@ -40,6 +40,12 @@
     <style>
         #table-title {
             width: 400px;
+        }
+        #category-td {
+            width: 130px;
+        }
+        #date-td {
+            width: auto;
         }
         .btn a {
             text-decoration: none;
@@ -57,6 +63,9 @@
             text-decoration: none;
         } 
         .table {
+            font-size: 20px;
+        }
+        .table tr {
             font-size: 20px;
         }
         .blog_tbody td{

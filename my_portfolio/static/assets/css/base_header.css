@@ -24,6 +24,9 @@
     background: rgb(239, 249, 255, 1);
     opacity: .9;
 }
+@media screen and (max-width: 630px) {
+    .header {display: none;}
+}
 @media screen and (max-width: 1000px) {
     /* .globalNavi { display: none;} */
 }
@@ -65,7 +68,6 @@
 }
 .globalNavi__list a{
     font-size: 24px;
-    /* font-size: 1.8vw; */
     font-family: "Nico Moji";
     text-decoration: none;
 }

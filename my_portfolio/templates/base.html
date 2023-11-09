@@ -49,6 +49,9 @@
                     <li class="menu-item3">
                         <a href="{% url 'blog:redirect_index' %}"><div class="caption-wrap item-label">ブログ</div></a>
                     </li>
+                    <li class="menu-item4">
+                        <a href="{% url 'imageblog:uploadimage_list' %}"><div class="caption-wrap item-label">イラスト</div></a>
+                    </li>
                 </ul>			
             </nav>
         </header>
@@ -165,6 +168,58 @@
                 </div>
             </div>
         </article>
+        <!--under window size 500 footer-->
+        <div id="smart-phone-footer" class="sidebar nwa cf col" role="complementary">
+            <div class="right_aside_author">
+                <h2 class="mb-f">Author</h2>
+                <div class="center" style="text-align: center;">
+                    <img src=" {% static 'assets/img/cat.png'%} " alt="Yusyuのブログ" style="width: 100px; height: 100px; border: 3px solid skyblue;">
+                </div>
+                <ul class="list-unstyled mb-4 ">
+                    <li></br></li>
+                    <li>名前: ゆしゅ</li>
+                    <li>対話システムやWebサイトなどの開発。他、言語処理など</li>
+                    <li></br></li>
+                </ul>
+                <div class="center" style="text-align: center; margin: auto;">
+                    <a href="https://twitter.com/yusyu_kujilove?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @yusyu_kujilove</a>
+                </div>
+            </div>
+            <div class="div-right-side col-md-4 mt-4">
+                <div class="div-right-side-in">
+                    <h2 class="mb-f">カテゴリー</h2>
+                    <ul class="list-unstyled mb-4 category_list" id="category_list">
+                        {% for category_name in category_list %}
+                            <li style="font-size: 20px;"><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <h2 class="mb-f">ブログ月別アーカイブ</h2>
+                    <ul class="list-unstyled mb-0">
+                        {% for post_month in post_month_list %}
+                            <li style="font-size: 20px;"><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">
+                                {{ post_month|date:"Y年m月" }}
+                            </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="div-right-side col-md-4 mt-4">
+                <div class="div-right-side-in">
+                    <h2 class="mb-f" style="margin-bottom: 10px;">Article</h2>
+                    <ul class="list-unstyled mb-0" id="category_list">
+                        {% for post in newest_post_list|slice:":5" %}
+                            <div class="resize-image-blog">
+                                <a href="{% url 'blog:post_detail' post.pk%}"><img src="/media/{{image_list|random}}" border="0" style="display: inline-block; width: 100%; height: 100%;"></a>
+                            </div>
+                            <li style="font-size: 20px;">{{post.date|date:"Y/m/d"}} ({{ post.category }})</br>
+                                <a href="{% url 'blog:post_detail' post.pk%}">{{ post.title }}</a> 
+                            </li></br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div id="footerWrap" class="clearfix">
             <div id="footer">
                 <div id="footerL">
@@ -196,9 +251,6 @@
             _window.trigger('scroll');
         </script>
         <style>
-            @media screen and (max-width: 1000px) {
-                .menu-item2 a { display: none; };
-            }
             .resize-image-blog {
                 width: 150px;
                 height: 150px;

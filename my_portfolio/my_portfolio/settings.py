@@ -17,7 +17,6 @@ SECRET_KEY = 'django-insecure-_z+1mttbpff(m6ci=72a=3mz*9tik6zzl3t3oj8tk3-u$zi_7_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 ALLOWED_HOSTS = ["localhost", "yusyufolio.com"]
 
 # Application definition
@@ -154,9 +153,9 @@ EMAIL_USE_TLS = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # htmlファイルなどから読み込むstaticフォルダの場所を記述
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static/')
-#]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static/')
+# ]
 
 
 # Default primary key field type

@@ -151,12 +151,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # collectstaticなどを行った際にファイルを設置するstaticフォルダの場所を記述（開発の際は必要ないのでコメントアウトしておく）
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # htmlファイルなどから読み込むstaticフォルダの場所を記述
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/')
-]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static/')
+#]
 
 
 # Default primary key field type

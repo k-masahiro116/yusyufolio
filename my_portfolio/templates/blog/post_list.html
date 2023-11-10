@@ -13,47 +13,39 @@
         <thead>
             <tr>
                 <th class="table_font" id="table-title">TITLE</th>
-                <th class="table_font">DATE</th>
+                <th class="table_font" id="category-td">CATEGORY</th>
+                <th class="table_font" id="date-td">DATE</th>
                 {% if user.is_superuser %}
-                <th class="table_font">UPDATE</th>
+                <th class="table_font super-td">UPDATE</th>
+                <th class="super-td"></th>
+                <th class="super-td"></th>
                 {% endif %}
-                <th class="table_font">CATEGORY</th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody class="blog_tbody">
             {% for post in post_list reversed%}
                 <tr>
                     <td class="post-title" id="table-title"><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></td>
-                    <td>{{ post.date|date:"Y/m/d/D" }}</td>
+                    <td id="category-td"><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
+                    <td id="date-td">{{ post.date|date:"Y/m/d/D" }}</td>
                     {% if user.is_superuser %}
-                    <td>{{ post.redate|date:"Y/m/d/D" }}</td>
+                    <td class="super-td">{{ post.redate|date:"Y/m/d/D" }}</td>
+                    <td class="super-td"><a href="{% url 'blog:post_update' post.pk %}">Edit</a></td>
+                    <td class="super-td"><a href="{% url 'blog:post_delete' post.pk %}">Delete</a></td>
                     {% endif %}
-                    <td><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
-                    <td class="super-td">
-                        {% if user.is_superuser %}
-                        <a href="{% url 'blog:post_update' post.pk %}">Edit</a>
-                        {% endif %}
-                    </td>
-                    <td class="super-td">
-                        {% if user.is_superuser %}
-                        <a href="{% url 'blog:post_delete' post.pk %}">Delete</a>
-                        {% endif %}
-                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <style>
-        thead, tbody {
-            display: block;
-        }
-        th, td {
-            width: 150px;
-        }
         #table-title {
             width: 400px;
+        }
+        #category-td {
+            width: 130px;
+        }
+        #date-td {
+            width: auto;
         }
         .btn a {
             text-decoration: none;
@@ -64,14 +56,17 @@
             overflow-y: scroll;
             height: 500px;
         }
-        .super-td{
-            text-align: right;
+        @media screen and (max-width: 1000px) {
+            .super-td { display: none; }
         }
         .post-title a {
             text-decoration: none;
         } 
         .table {
-            font-size: 1.1vw;
+            font-size: 20px;
+        }
+        .table tr {
+            font-size: 20px;
         }
         .blog_tbody td{
             padding: 8px;

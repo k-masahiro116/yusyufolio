@@ -24,8 +24,11 @@
     background: rgb(239, 249, 255, 1);
     opacity: .9;
 }
+@media screen and (max-width: 630px) {
+    .header {display: none;}
+}
 @media screen and (max-width: 1000px) {
-    .globalNavi { display: none;}
+    /* .globalNavi { display: none;} */
 }
 .globalNavi{
     position: relative;
@@ -65,12 +68,11 @@
 }
 .globalNavi__list a{
     font-size: 24px;
-    /* font-size: 1.8vw; */
     font-family: "Nico Moji";
     text-decoration: none;
 }
 .caption-wrap {
-    padding: 22px;
+    padding: 22px 10px;
     box-sizing: border-box;
     word-wrap: break-word;
     overflow-wrap: break-word;

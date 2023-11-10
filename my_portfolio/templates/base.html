@@ -6,7 +6,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
         <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet"/>
         <link href="{% static 'assets/css/fullcalendar.css' %}" rel='stylesheet'/>
         <link href="{% static 'assets/css/menu_toggle.css' %}" rel='stylesheet'/>
@@ -19,21 +18,16 @@
         <link rel="icon" type="image/png" href="/media/{{image_list.0}}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/cube.js' %}" type="text/javascript"></script>
-        <script src="{% static 'assets/js/pointer.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/js_button.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/header_fix.js' %}" type="text/javascript"></script>
         <script src="{% static 'assets/js/fullcalendar.js' %}"></script>
+        <script src="{% static 'assets/js/pointer.js' %}" type="text/javascript"></script>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-        <!-- and it's easy to individually load additional languages -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
         {% block head %}{% endblock %}
         <title>YusyuFolio</title>
@@ -47,14 +41,17 @@
             </p>
             <nav class="globalNavi">
                 <ul class="globalNavi__list">
-                    <li class="menu-item">
+                    <li class="menu-item1">
                         <a href="{% url 'function:contact' %}"><div class="caption-wrap item-label">お問い合わせ</div></a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item2">
                         <a href="{% url 'dialog:post_list' %}"><div class="caption-wrap item-label">対話システム</div></a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item3">
                         <a href="{% url 'blog:redirect_index' %}"><div class="caption-wrap item-label">ブログ</div></a>
+                    </li>
+                    <li class="menu-item4">
+                        <a href="{% url 'imageblog:uploadimage_list' %}"><div class="caption-wrap item-label">イラスト</div></a>
                     </li>
                 </ul>			
             </nav>
@@ -79,8 +76,8 @@
         {% block main %}{% endblock %}
         <article class="main-article">
             <div id="sidebar_left" class="sidebar nwa cf col" role="complementary" style="height: auto !important;">
-                <div class="aside_right_space" id="aside_right">
-                    <aside class="aside_right">
+                <div class="aside_left_space" id="aside_left">
+                    <aside class="aside_left">
                         <p>ログインユーザー: {{ user.username }}</p>
                         <div class="login-logout">
                             {% if user.is_authenticated %}
@@ -90,7 +87,7 @@
                             {% endif %}
                         </div>
                     </aside>
-                    <aside class="aside_right">
+                    <aside class="aside_left">
                         <div style="text-align: center;">
                             {% now "Y/m/d"%}
                             {% now "(D曜日)"%}
@@ -172,6 +169,58 @@
                 </div>
             </div>
         </article>
+        <!--under window size 500 footer-->
+        <div id="smart-phone-footer" class="sidebar nwa cf col" role="complementary">
+            <div class="right_aside_author">
+                <h2 class="mb-f">Author</h2>
+                <div class="center" style="text-align: center;">
+                    <img src=" {% static 'assets/img/cat.png'%} " alt="Yusyuのブログ" style="width: 100px; height: 100px; border: 3px solid skyblue;">
+                </div>
+                <ul class="list-unstyled mb-4 ">
+                    <li></br></li>
+                    <li>名前: ゆしゅ</li>
+                    <li>対話システムやWebサイトなどの開発。他、言語処理など</li>
+                    <li></br></li>
+                </ul>
+                <div class="center" style="text-align: center; margin: auto;">
+                    <a href="https://twitter.com/yusyu_kujilove?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @yusyu_kujilove</a>
+                </div>
+            </div>
+            <div class="div-right-side col-md-4 mt-4">
+                <div class="div-right-side-in">
+                    <h2 class="mb-f">カテゴリー</h2>
+                    <ul class="list-unstyled mb-4 category_list" id="category_list">
+                        {% for category_name in category_list|slice:":10" %}
+                            <li style="font-size: 20px;"><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <h2 class="mb-f">ブログ月別アーカイブ</h2>
+                    <ul class="list-unstyled mb-0">
+                        {% for post_month in post_month_list %}
+                            <li style="font-size: 20px;"><a href="{% url 'blog:post_list'%}?query={{ post_month|date:"Y-m" }}">
+                                {{ post_month|date:"Y年m月" }}
+                            </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="div-right-side col-md-4 mt-4">
+                <div class="div-right-side-in">
+                    <h2 class="mb-f" style="margin-bottom: 10px;">Article</h2>
+                    <ul class="list-unstyled mb-0" id="category_list">
+                        {% for post in newest_post_list|slice:":5" %}
+                            <div class="resize-image-blog">
+                                <a href="{% url 'blog:post_detail' post.pk%}"><img src="/media/{{image_list|random}}" border="0" style="display: inline-block; width: 100%; height: 100%;"></a>
+                            </div>
+                            <li style="font-size: 20px;">{{post.date|date:"Y/m/d"}} ({{ post.category }})</br>
+                                <a href="{% url 'blog:post_detail' post.pk%}">{{ post.title }}</a> 
+                            </li></br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div id="footerWrap" class="clearfix">
             <div id="footer">
                 <div id="footerL">
@@ -203,9 +252,6 @@
             _window.trigger('scroll');
         </script>
         <style>
-            @media screen and (max-width: 1000px) {
-                .globalNavi { display: none;}
-            }
             .resize-image-blog {
                 width: 150px;
                 height: 150px;

@@ -79,22 +79,36 @@
     {
         "type": "ai",
         "data": {
-        "content": "火曜日ですね。ありがとうございます。では次に、今から私が言う三つの言葉を覚えてください。また、同じ言葉を私に言ってください。桜、猫、電車。",
+        "content": "火曜日ですね。ありがとうございます。では次に、現在の居場所を教えてください。",
         "additional_kwargs": {}
         }
     },
     {
         "type": "human",
         "data": {
-        "content": "桜猫電車",
-        "additional_kwargs": {}
+            "content": "研究室",
+            "additional_kwargs": {}
         }
     },
     {
         "type": "ai",
         "data": {
-        "content": "ありがとうございます。次に100引く7の計算をしてください。",
-        "additional_kwargs": {}
+            "content": "研究室ですね。ありがとうございます。では次に、今から私が言う三つの言葉を覚えてください。また、同じ言葉を私に言ってください。桜、猫、電車。",
+            "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "桜猫電車",
+            "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "ありがとうございます。次に100引く7の計算をしてください。",
+            "additional_kwargs": {}
         }
     },
     {
@@ -247,8 +261,22 @@
     {
         "type": "ai",
         "data": {
-        "content": "ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "content": "金曜日ですね。ありがとうございます。では次に、現在の居場所を教えてください。",
         "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "自分のお家",
+            "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "自分のお家ですね。ありがとうございます。では次に、今から私が言う三つの言葉を覚えてください。また、同じ言葉を私に言ってください。桜、猫、電車。",
+            "additional_kwargs": {}
         }
     },
     {
@@ -471,7 +499,21 @@
     {
         "type": "ai",
         "data": {
-        "content": "26日火曜日ですね。ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "content": "26日火曜日ですね。ありがとうございます。では次に、現在の居場所を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "施設",
+            "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "施設ですね。ありがとうございます。では次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
         "additional_kwargs": {}
         }
     },
@@ -653,7 +695,21 @@
     {
         "type": "ai",
         "data": {
-        "content": "ありがとうございます。次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
+        "content": "9月25日月曜日ですね。ありがとうございます。では次に、現在の居場所を教えてください。",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+            "content": "施設",
+            "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "施設ですね。ありがとうございます。では次に、私が言った三つの言葉を覚えているか教えてください。桜、猫、電車です。",
         "additional_kwargs": {}
         }
     },

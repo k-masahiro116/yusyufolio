@@ -189,7 +189,7 @@
                 <div class="div-right-side-in">
                     <h2 class="mb-f">カテゴリー</h2>
                     <ul class="list-unstyled mb-4 category_list" id="category_list">
-                        {% for category_name in category_list %}
+                        {% for category_name in category_list|slice:":10" %}
                             <li style="font-size: 20px;"><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
                         {% endfor %}
                     </ul>

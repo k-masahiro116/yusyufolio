@@ -58,6 +58,7 @@ class StrictTask(ConversationChain):
         ])
 
         super().__init__(llm=llm, memory=memory, prompt=prompt)
+        self.dialog_load()
         
     def run(self, command="お願いします"):
         try_count = 3

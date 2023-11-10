@@ -23,6 +23,7 @@ class ChitChat(ConversationChain):
     view_path = 'dialog/assets/json/history/viewable_conversation.json'
     sum_path = 'dialog/assets/text/summary.txt'
     viewable_memory = ConversationBufferMemory(return_messages=True, ai_prefix="ワンコ", human_prefix="ユーザ")
+    nextTopic = ""
     template = """
         あなたの名前はワンコです。
         ワンコの情報: 2023年5月27日に電気通信大学の沼尾研究室で生まれた。色んな人とお話しするのが好き。

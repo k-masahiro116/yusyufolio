@@ -15,10 +15,10 @@
             <tr>
                 <form id="post_form" action="{% url 'dialog:post_create' %}" method="POST">
                     {% csrf_token %}
-                    <th width="1%"><label for="speaker" class="table_font" style="width:5%; margin-bottom: 0px;">SPEAKER</label></th>
-                    <th width="4%"><input name="speaker" id="speaker" class="textbox" value="ユーザ" /></th>
-                    <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px; margin-bottom: 0px;">TEXT</label></th>
-                    <th width="30%"><input name="text" id="text" class="textbox2" value="" /></th>
+                    <th width="1%"><label for="speaker" id="speaker_form" class="table_font" style="width:5%; margin-bottom: 0px;">SPEAKER</label></th>
+                    <th width="4%"><input name="speaker" id="speaker_form" class="textbox" value="ユーザ" /></th>
+                    <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px; margin-bottom: 0px; margin-top: 20px;">TEXT</label></th>
+                    <th width="30%"><input name="text" id="text" class="textbox2" value="" style="margin-top: 20px;"/></th>
                     <th width="5%"><button type="submit" class="btn btn-primary btn--cubic" style="margin-left: 10px;" onclick="OnRedirectClick();">POST</button></th>
                 </form>
             </tr>
@@ -64,11 +64,26 @@
         #dialog_text {
             width: 600px;
         }
+        #speaker_form {
+            display: none;
+        }
         #dialog_speaker {
             width: 100px;
         }
         #dialog_date {
             width: 200px;
+        }
+        @media screen and (max-width: 600px) {
+            #dialog_date { display: none; }
+            .super_command { display: none; }
+            #dialog_speaker {
+                font-size: 14px;
+                padding: 5px;
+            }
+            #dialog_text {
+                font-size: 14px;
+                padding: 5px;
+            }
         }
         .super_command {
             width: 50px;
@@ -122,6 +137,7 @@
             border-radius: 50%;
             color: #888;
             border: 4px solid #888;
+            transition-duration: 0.5s;
             &:hover{
                 transform: translateY(-5px);
                 transition-duration: 0.5s;

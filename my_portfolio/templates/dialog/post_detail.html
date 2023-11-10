@@ -17,4 +17,23 @@
         <td>{{ post.date }}</td>
         </tr>
     </table>
+    <ul class="super-tr">
+        <li class="super-td">
+            <!-- superuserでログインしている時にのみ表示 -->
+            {% if user.is_superuser %}
+            <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
+            <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
+            {% endif %}
+        </li>
+        <li class="super-td">
+            {% if user.is_superuser %}
+            <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
+            {% endif %}
+        </li>
+    </ul>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+    </style>
 {% endblock %}

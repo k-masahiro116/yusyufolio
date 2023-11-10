@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
         <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="/media/{{image_list.0}}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
@@ -191,7 +192,7 @@
                 <div class="div-right-side-in">
                     <h2 class="mb-f">カテゴリー</h2>
                     <ul class="list-unstyled mb-4 category_list" id="category_list">
-                        {% for category_name in category_list %}
+                        {% for category_name in category_list|slice:":10" %}
                             <li style="font-size: 20px;"><a href="{% url 'blog:post_list' %}?query={{ category_name }}">{{ category_name }}</a></li>
                         {% endfor %}
                     </ul>

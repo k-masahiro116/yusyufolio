@@ -20,7 +20,10 @@ class ConcatChain(Chain):
         text_input = inputs.get("text", "")
         self.detector.add_user_message(text_input)
         self.topic = self.detector.run(self.topic, text_input)
-        if "HDS-R" in self.topic and "中断" not in self.topic and "終了" not in self.topic:
+        if "中断" in self.topic or "終了" in self.topic:
+            self.strict.__init__()
+            output = "診断を終了しますワン。"
+        elif "HDS-R" in self.topic:
             output = self.strict.run(text_input)
         else:
             output = self.wanco.run(inputs, nextTopic=self.topic)

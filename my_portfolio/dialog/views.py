@@ -30,7 +30,7 @@ class PostListView(LoginRequiredMixin, generic.ListView): # generic の ListView
         context["rain_probability_1824"] = "18-24: "+ forecast["rain_probability"]['18-24']
         def get_last_post():
             obj = self.object_list[len(self.object_list)-1] if len(self.object_list) > 0 else Post()
-            return {"last_post": "'"+obj.text+"'", "last_text": obj.text, "last_speaker": obj.speaker, "last_date": obj.date}
+            return {"last_post": "'"+obj.text.replace("\n", "")+"'", "last_text": obj.text, "last_speaker": obj.speaker, "last_date": obj.date}
             
         context.update(get_last_post())
         return context

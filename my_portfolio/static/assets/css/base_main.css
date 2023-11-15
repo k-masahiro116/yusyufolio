@@ -44,7 +44,7 @@ img {
     background-size: 200% auto;
     transition: background-position 1s ease-in-out; 
 }
-.back1 a:hover {
+.back1:hover {
     text-decoration: none;
     background-position: -100% 0;
 } 

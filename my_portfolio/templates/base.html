@@ -212,7 +212,7 @@
                     <ul class="list-unstyled mb-0" id="category_list">
                         {% for post in newest_post_list|slice:":5" %}
                             <div class="resize-image-blog">
-                                <a href="{% url 'blog:post_detail' post.pk%}"><img src="/media/{{image_list|random}}" border="0" style="display: inline-block; width: 100%; height: 100%;"></a>
+                                <a href="{% url 'blog:post_detail' post.pk%}"><img class="img_side" src="/media/{{image_list|random}}" border="0" style="display: inline-block; width: 100%; height: 100%;"></a>
                             </div>
                             <li style="font-size: 20px;">{{post.date|date:"Y/m/d"}} ({{ post.category }})</br>
                                 <a href="{% url 'blog:post_detail' post.pk%}">{{ post.title }}</a> 

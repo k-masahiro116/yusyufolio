@@ -8,49 +8,162 @@
 {% endblock %}
 
 {% block content %}
-    <body>
-        <div class="menu_toggle">
-            <input type="checkbox" id="drawer">
-            <label for="drawer" class="open"><span></span></label>
-            <label for="drawer" class="close"></label>
-            <nav class="menu">
-                <h2>menu</h2>
-                <ul>
-                    <li><a href="#css-animation">動くCSSのためのメモ。</a></li>
-                    <li><a href="#about-svg">SVGでやることのまとめ。</a></li>
-                    <li><a href="#css-layout2">段組みのCSS。</a></li>
-                    <li><a href="#scroll-parapara">スクロールパラパラ。</a></li>
-                    <li><a href="#ruby-elements">ふりがなを振る。</a></li>
-                </ul>
-            </nav>
-        </div>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </body>
+<section class="ly_section">
+    <div class="ly_section_inner">
+      <h2 class="el_lv2Heading">３カラムの記事一覧</h2>
+        <ul class="card_items">
+            <li>
+                <a class="card_item" href="#">
+                    <article style="display: block;">
+                        <figure class="card_item_imgWrapper" style="margin-bottom: 0;">
+                            <img src="/media/{{image_list|random}}" alt="">
+                        </figure>
+                        <div class="card_item_body">
+                            <time datetime="2021-04-30" class="card_item_time">
+                                2021-04-30
+                            </time>
+                            <h3 class="card_item_ttl" style="font-size: 20px;">
+                                Webサイトの制作実績です
+                            </h3>
+                            <p class="card_item_txt">
+                                本文の抜粋文です。本文の抜粋文です。本文の抜粋文です。本文の抜粋文です。
+                            </p>
+                        </div>
+                    </article>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<style>
+    {% comment %}コンテンツ幅やセクション見出しのスタイリング {% endcomment %}
+    .ly_section {
+        padding: 100px 0;
+    }
+
+    .ly_section_inner {
+        max-width: 1030px;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+
+    .el_lv2Heading {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 70px;
+    }
+
+{% comment %} //ここから3カラム記事エリアのスタイリング {% endcomment %}
+    .card_items {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .card_items > li {
+        width: 31%;
+        margin-right: 3.5%;
+        margin-bottom: 35px;
+        list-style-type: none!important;
+    }
+
+    .card_items > li:nth-of-type(3n) {
+        margin-right: 0;
+    }
+
+    .card_item {
+        position: relative;
+        display: block;
+        -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    }
+
+{% comment %} //画像エリアのスタイリング {% endcomment %}
+    .card_item:hover .card_item_imgWrapper::before {
+        opacity: 1;
+    }
+
+    .card_item:hover .card_item_imgWrapper::after {
+        content: "Read More";
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        opacity: 1;
+    }
+
+    .card_item_imgWrapper {
+        position: relative;
+        padding-top: 56.25%;
+        overflow: hidden;
+    }
+
+    .card_item_imgWrapper::before, .card_item_imgWrapper::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fafafa;
+        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 2rem;
+        -webkit-transition: opacity .5s;
+        transition: opacity .5s;
+        opacity: 0;
+    }
+
+    .card_item_imgWrapper > img {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .card_item_body {
+        height: 160px;
+        padding: 15px;
+    }
+
+    .card_item_body > .card_item_time {
+        font-size: 16px;
+        margin-bottom: 3px;
+        display: block;
+    }
+
+    .card_item_body > .card_item_ttl {
+        color: #333;
+        {% comment %} font-size: 2rem; {% endcomment %}
+        font-weight: bold;
+        {% comment %} line-height: 1.5; {% endcomment %}
+        margin-bottom: 5px;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .card_item_body > .card_item_txt {
+        color: #777;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+</style>
 {% endblock %}
 
 

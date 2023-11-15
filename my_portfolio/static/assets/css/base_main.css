@@ -16,7 +16,7 @@ button, input {
     -moz-appearance: none;
     appearance: none;
 }
-img {
+.img_side {
     width:auto;
     height:auto;
     max-width:100%;

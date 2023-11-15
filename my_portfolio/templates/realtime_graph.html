@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">graph</h1>
+    </div>
+{% endblock %}
+
+{% block head %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="c5">
+        <h1>Realtime_Graph</h1>
+        <h5>下にAdvanced Graphを表示している</h5>
+        <h5>縦軸に乱数、横軸に0~100</h5>
+        <h5>更新するたびに値が変化するようになっている</h5>
+    </div>
+    <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2578_RC02/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/m/05zrn","geo":"JP","time":"now 1-d"},{"keyword":"/m/060kv","geo":"JP","time":"now 1-d"},{"keyword":"/m/05z1_","geo":"JP","time":"now 1-d"},{"keyword":"/m/02p97","geo":"JP","time":"now 1-d"},{"keyword":"/m/06ff5","geo":"JP","time":"now 1-d"}],"category":0,"property":""}, {"exploreQuery":"date=now%201-d&geo=JP&q=%2Fm%2F05zrn,%2Fm%2F060kv,%2Fm%2F05z1_,%2Fm%2F02p97,%2Fm%2F06ff5#TIMESERIES","guestPath":"https://trends.google.co.jp:443/trends/embed/"}); </script>
+    <style>
+        .c5 {
+            margin: 40px 40px 40px 40px; 
+        }
+    </style>
+{% endblock %}
+
+{% block sub_content%}
+    <div class="title"><h1>Realtime_graph</h1></div>
+    {% autoescape off %}
+    <div class="graph">{{plot|safe}}</div>
+    {% endautoescape %}
+{% endblock %}

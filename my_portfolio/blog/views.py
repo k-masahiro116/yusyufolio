@@ -45,7 +45,6 @@ class PostCreateView(generic.CreateView): # 追加
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         form = self.get_form()
-        print(form.fields["text"].help_text)
         return context
 
 class PostDetailView(generic.DetailView): # 追加

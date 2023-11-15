@@ -9,34 +9,171 @@
         <button class="btn btn-primary"><a href="{% url 'blog:post_create' %}">POST</a></button>
         {% endif %}
     </form></br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="table_font" id="table-title">TITLE</th>
-                <th class="table_font" id="category-td">CATEGORY</th>
-                <th class="table_font" id="date-td">DATE</th>
-                {% if user.is_superuser %}
-                <th class="table_font super-td">UPDATE</th>
-                <th class="super-td"></th>
-                <th class="super-td"></th>
-                {% endif %}
-            </tr>
-        </thead>
-        <tbody class="blog_tbody">
-            {% for post in post_list reversed%}
-                <tr>
-                    <td class="post-title" id="table-title"><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></td>
-                    <td id="category-td"><a href="{% url 'blog:post_list'%}?query={{ post.category }}" rel="category tag">{{post.category}}</a></td>
-                    <td id="date-td">{{ post.date|date:"Y/m/d/D" }}</td>
-                    {% if user.is_superuser %}
-                    <td class="super-td">{{ post.redate|date:"Y/m/d/D" }}</td>
-                    <td class="super-td"><a href="{% url 'blog:post_update' post.pk %}">Edit</a></td>
-                    <td class="super-td"><a href="{% url 'blog:post_delete' post.pk %}">Delete</a></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <section class="ly_section">
+        <div class="ly_section_inner">
+            <ul class="card_items">
+                {% for post in post_list reversed%}
+                    <li>
+                        <a class="card_item" href="{% url 'blog:post_detail' post.pk %}">
+                            <article style="display: block;">
+                                <figure class="card_item_imgWrapper" style="margin-bottom: 0;">
+                                    <img src="/media/{{image_list|random}}" alt="">
+                                </figure>
+                                <div class="card_item_body">
+                                    <time class="card_item_time">
+                                        {{ post.date|date:"Y-m-d" }} {{post.category}}
+                                    </time>
+                                    <h3 class="card_item_ttl" style="font-size: 18px;">{{post.title}}</h3>
+                                    <p class="card_item_txt">
+                                        {{post.text|striptags}}
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <style>
+        {% comment %}コンテンツ幅やセクション見出しのスタイリング {% endcomment %}
+        .ly_section {
+            padding: 10px 0;
+        }
+    
+        .ly_section_inner {
+            max-width: 1030px;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+    
+        .el_lv2Heading {
+            font-family: 'Vollkorn', serif;
+            font-size: 5vh;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+    
+    {% comment %} //ここから3カラム記事エリアのスタイリング {% endcomment %}
+        .card_items {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding-left: 0px;
+        }
+        
+        .card_items > li {
+            width: 31%;
+            margin-right: 3.5%;
+            margin-bottom: 35px;
+            list-style-type: none!important;
+        }
+        @media screen and (max-width: 1200px) {
+            .card_items > li {
+                width: 46%;
+            }
+        }
+        @media screen and (max-width: 550px) {
+            .card_items > li {
+                width: 100%;
+            }
+        }
+    
+        .card_items > li:nth-of-type(3n) {
+            margin-right: 0;
+        }
+    
+        .card_item {
+            position: relative;
+            display: block;
+            -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+    
+    {% comment %} //画像エリアのスタイリング {% endcomment %}
+        .card_item:hover .card_item_imgWrapper::before {
+            opacity: 1;
+        }
+    
+        .card_item:hover .card_item_imgWrapper::after {
+            content: "Read More";
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            opacity: 1;
+        }
+    
+        .card_item_imgWrapper {
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+    
+        .card_item_imgWrapper::before, .card_item_imgWrapper::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #fafafa;
+            background-color: rgba(0, 0, 0, 0.4);
+            font-size: 2rem;
+            -webkit-transition: opacity .5s;
+            transition: opacity .5s;
+            opacity: 0;
+        }
+    
+        .card_item_imgWrapper > img {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    
+        .card_item_body {
+            height: 160px;
+            padding: 15px;
+        }
+    
+        .card_item_body > .card_item_time {
+            font-size: 16px;
+            margin-bottom: 3px;
+            display: block;
+        }
+    
+        .card_item_body > .card_item_ttl {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+            overflow-x: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    
+        .card_item_body > .card_item_txt {
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+    </style>
     <style>
         #table-title {
             width: 400px;

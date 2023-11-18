@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name=”twitter:card” content="summary" />
+        {% block head %}{% endblock %}
         <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet"/>
         <link href="{% static 'assets/css/fullcalendar.css' %}" rel='stylesheet'/>
         <link href="{% static 'assets/css/menu_toggle.css' %}" rel='stylesheet'/>
@@ -30,7 +31,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5204119461423678" crossorigin="anonymous"></script>
-        {% block head %}{% endblock %}
         <title>YusyuFolio</title>
     </head>
     <body>

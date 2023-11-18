@@ -1,6 +1,12 @@
 {% extends 'blog/index.html' %}
 {% load static %}
 
+{% block head %}
+    <meta name="twitter:title" content="{{ post.title }}" />
+    <meta name="twitter:description" content="{{ post.text }}" />
+    <meta name="twitter:image" content="/media/{{image_list|random}}" />
+{% endblock %}
+
 {% block content %}
     <div id="container" style="height: auto !inportant;">
         <div id="singleMeta">
@@ -28,21 +34,26 @@
                 {% endif %}
             </li>
         </ul>
-        <a href="/blog/post_list" style="color: white;">
-            <div class="more_btn btn btn-primary btn--cubic" style="float:left;">
-                Topへ
-            </div>
-        </a>
-        <a href="/blog/post_detail/{{ next_pk }}" style="color: white;">
-            <div class="more_btn btn btn-primary btn--cubic" id="next_btn">
-                次のブログ
-            </div>
-        </a>
-        <a href="/blog/post_detail/{{ pre_pk }}" style="color: white;">
-            <div class="more_btn btn btn-primary btn--cubic" id="pre_btn">
-                前のブログ
-            </div>
-        </a>
+        <a href="https://twitter.com/share?url=https://yusyufolio.com{% url 'blog:post_detail' post.pk %}&amp;text=" rel="nofollow" target="_blank" class="my-share-twitter-button">Xでシェア</a>
+        </br>
+        </br>
+        <div style="">
+            <a href="/blog/post_list" style="color: white;">
+                <div class="more_btn btn btn-primary btn--cubic" style="float:left;">
+                    Topへ
+                </div>
+            </a>
+            <a href="/blog/post_detail/{{ next_pk }}" style="color: white;">
+                <div class="more_btn btn btn-primary btn--cubic" id="next_btn">
+                    次のブログ
+                </div>
+            </a>
+            <a href="/blog/post_detail/{{ pre_pk }}" style="color: white;">
+                <div class="more_btn btn btn-primary btn--cubic" id="pre_btn">
+                    前のブログ
+                </div>
+            </a>
+        </div>
     </div>
     
     <script>
@@ -102,6 +113,24 @@
         .cat:hover {
             position: relative;
             bottom: 2px;
+        }
+        a.my-share-twitter-button {
+            display: inline-block;
+            color: black;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid;
+            padding: 6px 8px;
+            line-height: 1em;
+            border-radius: 3px;
+            float: left;
+            transition: all 0.3s;
+        }
+        
+        a.my-share-twitter-button:hover {
+            background: black;
+            color: white;
+            border-radius: 10px;
         }
     </style>
 {% endblock %}

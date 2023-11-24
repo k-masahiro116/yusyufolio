@@ -16,7 +16,7 @@ from langchain.prompts.chat import (
 
 from ..sensors import Forecasts
 
-WINDOW_SIZE = 5
+WINDOW_SIZE = 4
 class ChitChat(ConversationChain):
     posixpath.join("/media")
     conv_path = 'dialog/assets/json/history/conversation.json'
@@ -49,21 +49,13 @@ class ChitChat(ConversationChain):
         ])
         super().__init__(llm=llm, memory=memory, prompt=prompt)
         
-    def run(self, command, nextTopic="挨拶",json_cc=True):
+    def run(self, input_text, nextTopic="挨拶"):
         self.nextTopic = nextTopic
-        if json_cc == True:
-            input_text = command.get("text", "")
-            utter_json = self.__preprocess(command)
-        else:
-            input_text = command
         trycount = 3
         response = "スヤスヤ"
         for _ in range(trycount):
             try:
-                if json_cc == True:
-                    response = self.predict(input=json.dumps(utter_json))
-                else:
-                    response = self.predict(input=input_text)
+                response = self.predict(input=input_text)
                 break
             except openai.InvalidRequestError:
                 self.memory.chat_memory.messages.pop(0)
@@ -72,16 +64,6 @@ class ChitChat(ConversationChain):
                 break
         self.__memory_edit(input=input_text, response=response)
         return response
-    
-    def __preprocess(self, command):
-        text = command.get("text", "")
-        volume = command.get("volume", 65)
-        if text == "":
-            if 50 > volume:
-                self.nextTopic = "ユーザの声が小さくて聞き取れない"
-            else:
-                self.nextTopic = "ユーザの声が聞き取れない"
-        return {"utterance": text, "option": {"weather": Forecasts().weather}}
         
     def __memory_edit(self, input, response):
         self.viewable_memory.chat_memory.add_user_message(input) 

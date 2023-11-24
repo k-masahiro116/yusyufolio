@@ -60,7 +60,7 @@ class StrictTask(ConversationChain):
         super().__init__(llm=llm, memory=memory, prompt=prompt)
         self.dialog_load()
         
-    def run(self, command="お願いします"):
+    def run(self, command="お願いします", topic = None):
         try_count = 3
         response = ""
         for try_time in range(try_count):

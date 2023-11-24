@@ -162,6 +162,7 @@
         _volume = $('.volume-viewer-volume');
         var manager = "";
         document.querySelector('.fa-microphone').addEventListener('click', function() {
+            speechSynthesis.cancel()
             _volume.addClass('open-ring');  
             manager = new AudioManager({
                 useMicrophone: true,

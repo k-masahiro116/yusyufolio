@@ -105,6 +105,9 @@ class Eval():
         ymdd = ymdd_now()
         if input_data == ymdd:
             return 1
+        for data in input_data:
+            if data == ymdd:
+                return 1
         return 0
     
     def calc_year(self, data_list, correct=[]):

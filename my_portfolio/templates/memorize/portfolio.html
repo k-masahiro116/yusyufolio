@@ -1,0 +1,41 @@
+{% extends 'memorize.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Memorize: Corona</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="c2">
+            <div class="c3-2">
+                <h2 class="stg">Corona Data Analytics</h2></p>
+                <ul class="vertical-row-ul">
+                    <li>
+                        <h3 class="stg">Amount of Dead with vaccine(by 8/10)</h3>
+                                Woman: 454人, Man: 477人
+                            <ul class="vertical-row-ul">
+                                <li>with Old</li>
+                                <img src=" {% static 'assets/img/amount_of_dead_with_vaccine_0810.png'%} " width="50%" height="50%" border="0" style="margin:20px 20px 20px 20px">
+                                <li>with Basal disease</li>
+                                <img src=" {% static 'assets/img/corona4.png'%} " width="90%" height="90%" border="0" style="margin:20px 20px 20px 20px">
+                            </ul>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <style>
+        .ul1 {
+            border: 2px skyblue dashed;
+        }
+        .vertical-row-ul {
+            margin-bottom: 30px;
+        }
+    </style>
+{% endblock %}
+
+

@@ -25,10 +25,6 @@ class PostSidebarView(generic.ListView): # generic の ListViewクラスを継�
     
 class PostListView(generic.ListView): # generic の ListViewクラスを継承
     model = Post # 一覧表示させたいモデルを呼び出し
-    def get_context_data(self,**kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
     def get_queryset(self):
         q_word = self.request.GET.get('query')
         if q_word:

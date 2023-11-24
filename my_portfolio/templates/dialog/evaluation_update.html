@@ -1,0 +1,118 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="get" class="request_from">
+        <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
+    </form></br>
+
+    <h4>HDS-R 結果</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table_font" id="dialog_item">項目</th>
+                <th class="table_font" id="dialog_text">内容</th>
+                <th class="table_font" id="dialog_score">点数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="" method="POST">
+            {% for hdsr in hdsr_list %}
+            <tr>
+                <td id="dialog_item">{{ hdsr.name }}</td>
+                <td id="dialog_text">{{ hdsr.value }}</td>
+                <td id="dialog_score">{{ hdsr.score }}</td>
+            </tr>
+            {% endfor %}
+        </form>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row" id="dialog_item">合計</th>
+                <td id="dialog_text"></td>
+                <td id="dialog_score">{{score}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <h4 style="margin-top: 200px;">実際の対話内容: (ID: {{post.index}})</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table_font" id="dialog_speaker">SPEAKER</th>
+                <th class="table_font" id="dialog_text">TEXT</th>
+                <th class="table_font" id="dialog_date">DATE</th>
+            </tr>
+        </thead>
+        <tbody class="tbody-history">
+            {% for post_ in post_list%}
+                <tr>
+                    <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
+                    <td id="dialog_speaker">{{ post_.speaker }}</td>
+                    <td id="dialog_text">{{ post_.text }}</td>
+                    <td id="dialog_date">{{ post_.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <style>
+        thead, tbody, tfoot {
+            display: block;
+        }
+        thead, tfoot {
+            background: lightgray;
+        }
+        #dialog_item {
+            width: 170px;
+        }
+        #dialog_text {
+            width: 650px;
+        }
+        #dialog_score {
+            width: 100px;
+        }
+        #speaker_form {
+            display: none;
+        }
+        #dialog_date {
+            width: 200px;
+        }
+        @media screen and (max-width: 600px) {
+            #dialog_date { display: none; }
+            .super_command { display: none; }
+            #dialog_speaker {
+                font-size: 14px;
+                padding: 5px;
+            }
+            #dialog_text {
+                font-size: 14px;
+                padding: 5px;
+            }
+        }
+        .super_command {
+            width: 50px;
+        }
+        .search_box {
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox2 {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .tbody-history {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 500px;
+        }
+    </style>
+{% endblock %}

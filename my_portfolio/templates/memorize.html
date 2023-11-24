@@ -5,9 +5,9 @@
     <nav class="crumbs">
         <ol>
             <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:test' %}">Knowledge</a></li>
-            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:news' %}">News</a></li>
             <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:corona' %}">Corona</a></li>
-            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:youtube' %}">Youtube</a></li>
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:dialog' %}">dialog</a></li>
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:portfolio' %}">portfolio</a></li>
             {% if user.is_superuser %}
             <li class="crumb"><a class="nav-item nav-link active" href="{% url 'memorize:practice' %}">Practice</a></li>
             {% endif %}

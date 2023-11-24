@@ -1,59 +1,36 @@
 {% extends 'dialog/index.html' %}
 {% load static %}
+{% load common %}
 
 {% block content %}
     <form action="" method="get" class="request_from">
         <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
     </form></br>
-    <div class="volume-viewer">
-        <i class="fa fa-microphone" aria-hidden="true"></i>
-        <div class="volume-viewer-volume"></div>
-    </div>
-    <table style="width:100%; margin-bottom: 20px;">
-        <thead>
-            <tr>
-                <form id="post_form" action="{% url 'dialog:post_create' %}" method="POST">
-                    {% csrf_token %}
-                    <th width="1%"><label for="speaker" id="speaker_form" class="table_font" style="width:5%; margin-bottom: 0px;">SPEAKER</label></th>
-                    <th width="4%"><input name="speaker" id="speaker_form" class="textbox" value="ユーザ" /></th>
-                    <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px; margin-bottom: 0px; margin-top: 20px;">TEXT</label></th>
-                    <th width="30%"><input name="text" id="text" class="textbox2" value="" style="margin-top: 20px;"/></th>
-                    <th width="5%"><button type="submit" class="btn btn-primary btn--cubic" style="margin-left: 10px;" onclick="OnRedirectClick();">POST</button></th>
-                </form>
-            </tr>
-        </thead>
-    </table>
+    <p>採点したい項目を選択してください。</p>
     <table class="table">
         <thead>
             <tr>
-            <th class="table_font" id="dialog_speaker">SPEAKER</th>
-            <th class="table_font" id="dialog_text">TEXT</th>
-            <th class="table_font" id="dialog_date">DATE</th>
-            <th class="super_command"></th>
-            <th class="super_command"></th>
+                <th class="table_font" id="dialog_speaker">SPEAKER</th>
+                <th class="table_font" id="dialog_text">TEXT</th>
+                <th class="table_font" id="dialog_date">DATE</th>
             </tr>
         </thead>
         <tbody>
-            {% for post in post_list reversed%}
-                <tr>
-                <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
-                <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
-                <td id="dialog_text">{{ post.text }}</td>
-                <td id="dialog_date">{{ post.date }}</td>
-                <td class="super_command">
-                    <!-- superuserでログインしている時にのみ表示 -->
-                    {% if user.is_superuser %}
-                    <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
-                    <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
+            {% for index in index_list%}
+                {% set loop_bool = "True"%}
+                {% for post in post_list%}
+                    {% if post.index == index %}
+                        {% if loop_bool == "True" %}
+                            <tr>
+                                <td id="dialog_speaker"><a href="{% url 'dialog:evaluation_detail' post.pk %}" style="color:#212529;">{{ post.speaker }}</a></td>
+                                <td id="dialog_text"><a href="{% url 'dialog:evaluation_detail' post.pk %}" style="color:#212529;">{{ post.text }}</a></td>
+                                <td id="dialog_date"><a href="{% url 'dialog:evaluation_detail' post.pk %}" style="color:#212529;">{{ post.date }}</a></td>
+                            </tr>
+                        {% endif %}
+                        {% set loop_bool = "False"%}
                     {% endif %}
-                </td>
-                <td class="super_command">
-                    {% if user.is_superuser %}
-                    <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
-                    {% endif %}
-                </td>
-                </tr>
+                {% endfor %}
             {% endfor %}
         </tbody>
     </table>
@@ -72,6 +49,9 @@
         }
         #dialog_date {
             width: 200px;
+        }
+        #dialog_index {
+            width: 50px;
         }
         @media screen and (max-width: 600px) {
             #dialog_date { display: none; }
@@ -104,10 +84,19 @@
             border-radius: 5px;
             border: 2px solid #ccc;
         }
-        tbody {
-            overflow-x: hidden;
-            overflow-y: scroll;
-            height: 500px;
+        .table td {
+            padding: 0px;
         }
+        table td a{
+            padding: 0.75rem;
+            text-decoration: none;
+            color:#fff;  
+            display: block;
+            width: 100%;
+            height: 100%;
+        } 
+        tbody tr:hover{
+            background:#aaa;  
+        } 
     </style>
 {% endblock %}

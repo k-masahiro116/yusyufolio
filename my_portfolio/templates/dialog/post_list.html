@@ -37,22 +37,19 @@
         <tbody>
             {% for post in post_list reversed%}
                 <tr>
-                <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
-                <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
-                <td id="dialog_text">{{ post.text }}</td>
-                <td id="dialog_date">{{ post.date }}</td>
-                <td class="super_command">
-                    <!-- superuserでログインしている時にのみ表示 -->
-                    {% if user.is_superuser %}
-                    <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
-                    <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
-                    {% endif %}
-                </td>
-                <td class="super_command">
-                    {% if user.is_superuser %}
-                    <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
-                    {% endif %}
-                </td>
+                    <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
+                    <td id="dialog_text">{{ post.text }}</td>
+                    <td id="dialog_date">{{ post.date }}</td>
+                    <td class="super_command">
+                        {% if user.is_superuser %}
+                        <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
+                        {% endif %}
+                    </td>
+                    <td class="super_command">
+                        {% if user.is_superuser %}
+                        <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -1,0 +1,37 @@
+{% extends 'memorize.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="back1">
+        <h1 class="text-primary">Memorize: Corona</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <div class="c2">
+            <div class="c3-2">
+                <h2 class="stg"><a href="{% url 'dialog:post_list' %}"> Dialog System</a></h2></p>
+                <ul class="vertical-row-ul">
+                    <li>
+                        <h3 class="stg">対話システムの構成</h3>
+                        <p>本サイトの対話システムは雑談と診断の両方を搭載したシステムとなっており、対話内容は全てChatGPTによって生成されています。</p>
+                        <p>「診断して」と言うと以下のHDS-R(長谷川式認知機能評価スケール改訂版)の項目に沿って質問を行います。</p>
+                        <p>また、採点を押すとHDS-Rを行ったターンの一覧が表示され、採点をしたいターンを押すと採点ができるようになっています。</p>
+                        <iframe src="{% static 'assets/pdf/hasegawashiki.pdf'%}" width="800" height="700" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border:none;"></iframe>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <style>
+        .ul1 {
+            border: 2px skyblue dashed;
+        }
+        .vertical-row-ul {
+            margin-bottom: 30px;
+        }
+    </style>
+{% endblock %}
+
+

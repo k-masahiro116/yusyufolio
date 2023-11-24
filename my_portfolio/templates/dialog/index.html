@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block dialog %}
+    <nav class="crumbs">
+        <ol>
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'dialog:post_list' %}">dialog system</a></li>
+            <li class="crumb"><a class="nav-item nav-link active" href="{% url 'dialog:evaluation' %}">採点</a></li>
+        </ol>
+    </nav>
     <style>
         dialog{
             text-align: center;

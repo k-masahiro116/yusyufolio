@@ -14,7 +14,8 @@ dir = "memorize/"
 filenames = {
     "test": "test.html",
     "news": "news.html",
-    "diary": "diary.html",
+    "dialog": "dialog.html",
+    "portfolio": "portfolio.html",
     "corona": "corona.html",
     "youtube": "youtube.html",
     "practice": "practice.html",
@@ -112,8 +113,11 @@ def forecast(request):
     return render(request, dir+filenames["news"], news_site)
 
 
-def diary(request):
-    return render(request, dir+filenames["diary"])
+def dialog(request):
+    return render(request, dir+filenames["dialog"])
+
+def portfolio(request):
+    return render(request, dir+filenames["portfolio"])
 
 def corona(request):
     return render(request, dir+filenames["corona"])

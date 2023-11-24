@@ -1,10 +1,11 @@
 from django.urls import reverse_lazy
 from .forms import PostCreateForm
-from .models import Post 
+from .models import Post, HDSR_Model
 from django.db.models import Q
-from .chains import ChitChat, StrictTask, Detector, ConcatChain
+from .chains import ChitChat, StrictTask, Detector, ConcatChain, Parse
+from .hdsr import HDSR
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+import json
 
 # Create your views here.
 from django.views import generic
@@ -13,21 +14,69 @@ from django.views import generic
 class IndexView(generic.TemplateView):
     template_name = 'dialog/index.html'
     
-class PostListView(LoginRequiredMixin, generic.ListView): # generic の ListViewクラスを継承
-    model = Post # 一覧表示させたいモデルを呼び出し
+class EvaluationView(LoginRequiredMixin, generic.ListView):
+    template_name = 'dialog/evaluation.html'
+    model = HDSR_Model
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
-        url_forecast = 'https://tenki.jp/forecast/3/16/4410/13208/'
-        fdict = main(url_forecast)
-        forecast = fdict["today"]["forecasts"][0]
-        context["weather"] = "天気: "+forecast["weather"]
-        context["temp_high"] = "最高気温: "+forecast["high_temp"]
-        context["temp_low"] = "最低気温: "+forecast["low_temp"]
-        context["rain_probability"] = "降水確率: "
-        context["rain_probability_0006"] = "00-06: "+forecast["rain_probability"]['00-06'] 
-        context["rain_probability_0612"] = "06-12: "+ forecast["rain_probability"]['06-12']
-        context["rain_probability_1218"] = "12-18: "+ forecast["rain_probability"]['12-18']
-        context["rain_probability_1824"] = "18-24: "+ forecast["rain_probability"]['18-24']
+        def get_index_list():
+            index_list = []
+            post_list = []
+            for object in Post.objects.all():
+                index_list.append(object.index)
+                post_list.append(object)
+            index_list = list(filter(None, list(set(index_list))))
+            return {'index_list': index_list, 'post_list': post_list}
+            
+        context.update(get_index_list())
+        return context
+    
+class EvaluationDetailView(generic.DetailView):
+    template_name = 'dialog/evaluation_detail.html'
+    model = Post
+    chain = Parse()
+    calc_model = HDSR()
+    def get_context_data(self,**kwargs):
+        post_list = []
+        hdsr_text = ""
+        hdsr_obj = None
+        for post in Post.objects.all():
+            if self.object.index == post.index:
+                post_list.append(post)
+                hdsr_text = hdsr_text+"\n{0}:{1}".format(post.speaker, post.text)
+        if not HDSR_Model.objects.filter(Q(index__icontains=self.object.index)):
+            self.input_HDSR_Model(hdsr_text)
+        for obj in HDSR_Model.objects.all():
+            if self.object.index == obj.index:
+                hdsr_obj = obj
+                break
+        context = super().get_context_data(**kwargs)
+        context.update({"post_list": post_list, "hdsr_list": json.loads(hdsr_obj.json),  "score": hdsr_obj.score})
+        return context
+    
+    def input_HDSR_Model(self, hdsr_text):
+        def parse(hdsr_text):
+            text = self.chain.run(hdsr_text)
+            l = text.split("\n")
+            hdsr_dict = {}
+            for i in l:
+                hdsr_text = i.replace(" ", "")
+                key, value = hdsr_text.split(":")
+                hdsr_dict[key] = value
+            return hdsr_dict
+        hdsr_dict = parse(hdsr_text)
+        slot_score = self.calc_model(hdsr_dict)
+        score = sum(slot_score.values())
+        hdsr_list = []
+        for name, value in hdsr_dict.items():
+            hdsr_list.append({"name": name, "value": value, "score": slot_score[name] })
+        HDSR_Model.objects.create(json=json.dumps(hdsr_list), index=self.object.index, date=self.object.date, score=score)
+    
+    
+class PostListView(LoginRequiredMixin, generic.ListView):
+    model = Post
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
         def get_last_post():
             obj = self.object_list[len(self.object_list)-1] if len(self.object_list) > 0 else Post()
             return {"last_post": "'"+obj.text.replace("\n", "")+"'", "last_text": obj.text, "last_speaker": obj.speaker, "last_date": obj.date}
@@ -47,17 +96,32 @@ class PostListView(LoginRequiredMixin, generic.ListView): # generic の ListView
 class PostCreateView(generic.CreateView): # 追加
     model = Post # 作成したい model を指定
     form_class = PostCreateForm # 作成した form クラスを指定
-    chitchat = ConcatChain(wanco=ChitChat(), detector=Detector(), strict=StrictTask())
+    chain = ConcatChain(chitchat=ChitChat(), detector=Detector(), strict=StrictTask())
     success_url = reverse_lazy('dialog:post_list')
+    model_name = ""
+    last_index = 0
     def post(self, request, *args, **kwargs):
+        self.last_index = self.model.objects.all().last().index
         valid = super().post(request, *args, **kwargs)
         self.eldely_care_llms()
         return valid
                 
-    def eldely_care_llms(self, input_text=""):
-        objs = self.model.objects.all()
-        response = self.chitchat.run({"text": objs.last().text, "volume": 65})
-        self.model.objects.create(speaker="ワンコ", text=response)
+    def eldely_care_llms(self):
+        form = self.get_form()
+        index = 0
+        response = self.chain.run(form.instance.text)
+        if self.chain.pre_model == self.chain.model and self.chain.model == "strict":
+            index = self.next_index()
+            form.instance.index = index
+            self.form_valid(form)
+        self.model.objects.create(speaker="ワンコ", text=response, index=index)
+        
+    def next_index(self):
+        object_list = self.model.objects.all()
+        if self.last_index > 0:
+            return self.last_index
+        index_list = list(filter(None, [ obj.index for obj in object_list ]))+[0]
+        return max(index_list) + 1
         
 
 class PostDetailView(generic.DetailView): # 追加

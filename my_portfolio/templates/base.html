@@ -80,7 +80,7 @@
             <div id="sidebar_left" class="sidebar nwa cf col" role="complementary" style="height: auto !important;">
                 <div class="aside_left_space" id="aside_left">
                     <aside class="aside_left">
-                        <p>ログインユーザー: {{ user.username }}</p>
+                        <p>ログインユーザー: </br>{{ user.username }}</p>
                         <div class="login-logout">
                             {% if user.is_authenticated %}
                             <a href="{% url 'account:logout' %}">ログアウト</a>

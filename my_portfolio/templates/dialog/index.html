@@ -15,8 +15,11 @@
         </ol>
     </nav>
     <style>
-        #sidebar_right {
+        {% comment %} #sidebar_right {
             opacity: 0;
+        } {% endcomment %}
+        .base_right_sidebar {
+            display: none;
         }
         dialog{
             text-align: center;
@@ -49,5 +52,24 @@
     </style>
 {% endblock %}
 
+{% block right_aside %}
+    <div class="right_aside_block">
+        <ul class="list-unstyled mb-4 small-intro">
+            <li><h6>対話システム概要</h6></li>
+            <li></br></li>
+            <li>名前: ワンコ</li>
+            <li></br></li>
+            <li>マイクボタンを押して話しかけると、応えてくれます。</li>
+            <li></br></li>
+            <li>身の回りの出来事に興味があるので、いろいろ教えてあげてね。</li>
+            <li></br></li>
+        </ul>
+    </div>
+    <style>
+        .right_aside_block {
+            margin: 10px;
+        }
+    </style>
+{% endblock %}
 
 

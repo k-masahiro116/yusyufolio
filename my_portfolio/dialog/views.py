@@ -6,13 +6,18 @@ from .chains import ChitChat, StrictTask, Detector, ConcatChain, Parse
 from .hdsr import HDSR
 from django.contrib.auth.mixins import LoginRequiredMixin
 import json
-
+from django.shortcuts import render
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 # Create your views here.
 from django.views import generic
 
 
 class IndexView(generic.TemplateView):
     template_name = 'dialog/index.html'
+
+@xframe_options_sameorigin
+def ok_to_load_in_a_frame(request):
+    return render(request, 'dialog/animation.html', {})
     
 class EvaluationView(LoginRequiredMixin, generic.ListView):
     template_name = 'dialog/evaluation.html'
@@ -74,6 +79,7 @@ class EvaluationDetailView(generic.DetailView):
     
     
 class PostListView(LoginRequiredMixin, generic.ListView):
+    template_name = 'dialog/post_list_anime.html'
     model = Post
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)

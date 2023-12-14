@@ -5,6 +5,7 @@ app_name = 'dialog'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    # path('animation', views.ok_to_load_in_a_frame, name='animation'),
     path('evaluation', views.EvaluationView.as_view(), name='evaluation'), 
     path('evaluation_detail/<int:pk>/', views.EvaluationDetailView.as_view(), name='evaluation_detail'), 
     path('post_list', views.PostListView.as_view(), name='post_list'),

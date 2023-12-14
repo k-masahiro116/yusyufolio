@@ -5,10 +5,15 @@
     <form action="" method="get" class="request_from">
         <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
-    </form></br>
-    <div class="volume-viewer">
-        <i class="fa fa-microphone" aria-hidden="true"></i>
-        <div class="volume-viewer-volume"></div>
+    </form>
+    <div class="side-by-side">
+        <div class="volume-viewer">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+            <div class="volume-viewer-volume"></div>
+        </div>
+        {% block anime %}
+        {% endblock%}
+        {% comment %} <iframe class="iframe-anime" src="{% url 'dialog:animation' %}" width="150" height="225" id="wanco"></iframe> {% endcomment %}
     </div>
     <table style="width:100%; margin-bottom: 20px;">
         <thead>
@@ -111,21 +116,56 @@
             cursor: pointer;
         }
     </style>
+    <script src="{% static 'assets/js/vivus.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/pathformer.js' %}" type="text/javascript"></script>
     <script>
+        const synth = window.speechSynthesis;
         window.onload = function() {
-            var str = {{ last_post|safe }};
-            const uttr = new SpeechSynthesisUtterance(str);
             if (Math.abs(Number("{% now 'His'%}")-Number("{{ last_date|date:'His' }}"))<3){
-                speechSynthesis.speak(uttr);
+                var str = {{ last_post|safe }};
+                const uttr = new SpeechSynthesisUtterance(str);
+                synth.speak(uttr);
             };
-            console.log(uttr);
         };
+        var mouse_move = false
+        var mouse = document.getElementById("mouse")
+        var right_eye = document.getElementById("right-eye")
+        var left_eye = document.getElementById("left-eye")
+        window.setInterval(function(){
+            if(synth.speaking){
+                if (mouse_move == false){
+                    mouse.beginElement();
+                    mouse_move = true
+                }
+            } else {
+                mouse.endElement();
+                mouse_move = false
+            }
+        },  1000); 
+
+        window.setInterval(function(){
+            right_eye.beginElement();
+            left_eye.beginElement();
+        },  4000); 
+
     </script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <script src="{% static 'assets/js/AudioManager.js-master/bin/audioManager.min.js' %}" type="text/javascript"></script>
     <style>
-        .volume-viewer {
+        .iframe-anime {
+            float:right;
+            border: none;
+        }
+        .side-by-side {
+            display: flex;
             margin: 0px auto 0;
+            text-align: center;
+            position: relative;
+            justify-content: space-evenly;
+            align-items: flex-end;
+        }
+        .volume-viewer {
+            {% comment %} margin: 0px auto 0; {% endcomment %}
             width: 128px;
             height: 128px;
             position: relative;

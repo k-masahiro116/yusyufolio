@@ -29,7 +29,7 @@ def ymdd_now():
     today[0] = str(int(today[0]))+"年"
     today[1] = str(int(today[1]))+"月"
     today[2] = str(int(today[2]))+"日"
-    return "".join(today)
+    return today
 
 
 class Eval():
@@ -54,10 +54,10 @@ class Eval():
                 for i in input_data:
                     if type(i) is str:
                         self.person += i
-                        return 1
+                        return 0
         elif input_data != "":
             self.person = input_data
-            return 1
+            return 0
         return 0
 
     def calc_age(self, data_list, correct=[75]):
@@ -79,6 +79,16 @@ class Eval():
                     score = score + 1
         return score
 
+    def calc_memory2(self, data_list, correct=["さくら", "ねこ", "でんしゃ", "桜", "猫", "電車"]):
+        score = 0
+        for data in data_list:
+            if target_in_list(data, correct):
+                score = score + 2
+            for i in wakati.parse(data).split():
+                if target_in_list(i, correct):
+                    score = score + 2
+        return score
+    
     def calc_location(self, data_list, correct=["家", "お家", "病院", "施設", "老人ホーム", "教習所", "自宅"]):
         score = 0
         for data in data_list:
@@ -103,12 +113,15 @@ class Eval():
 
     def calc_now(self, input_data, correct=[]):
         ymdd = ymdd_now()
-        if input_data == ymdd:
-            return 1
-        for data in input_data:
-            if data == ymdd:
-                return 1
-        return 0
+        score = 0
+        for k in ymdd:
+            if k in input_data:
+                score = score + 1
+            if type(input_data) == list:
+                for data in input_data:
+                    if k in data:
+                        score = score + 1
+        return score
     
     def calc_year(self, data_list, correct=[]):
         ymdd = ymdd_now()

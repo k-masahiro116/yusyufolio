@@ -1,4 +1,5 @@
 from ..hdsr.eval import Eval
+# from eval import Eval #test用
 
 class HDSR(Eval):
     slot_correct = {
@@ -22,7 +23,7 @@ class HDSR(Eval):
             "名前": super().calc_person,
             "年齢": super().calc_age,
             "三つの言葉の復唱": super().calc_memory,
-            "三つの言葉の暗唱": super().calc_memory,
+            "三つの言葉の暗唱": super().calc_memory2,
             "居場所": super().calc_location,
             "100引く7": super().calc_subtraction,
             "93引く7": super().calc_subtraction,
@@ -39,7 +40,15 @@ class HDSR(Eval):
             ans = []
             if slot in slots.keys():
                 ans.append(slots.get(slot, ""))
-            slot_score[slot] = calc(ans, self.slot_correct.get(slot, []))
+                slot_score[slot] = calc(ans, self.slot_correct.get(slot, []))
         getd["score"] = str(sum(slot_score.values()))
         
         return slot_score
+
+if __name__=="__main__":
+    hdsr = HDSR()
+    slots = {
+        "年月日曜日": "2023年12月16日土曜"
+    }
+    score = hdsr(slots)
+    print(score)

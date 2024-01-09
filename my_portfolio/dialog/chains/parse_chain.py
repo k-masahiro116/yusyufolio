@@ -11,7 +11,7 @@ langchain.llm_cache = InMemoryCache()
 
 class Parse(Memory):
     def __init__(self):
-        llm = OpenAI(model="text-davinci-003", temperature=0)
+        llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0)
         template = """
             一度深呼吸をしてください。
             以下の手順をstep-by-stepで進めていきます。
@@ -21,7 +21,7 @@ class Parse(Memory):
             
             前提条件
             割り当てられるものがない場合は、項目は空白でも構わない。
-            
+
             項目
             名前:
             年齢:

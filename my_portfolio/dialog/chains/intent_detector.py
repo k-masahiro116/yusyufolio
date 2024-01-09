@@ -12,7 +12,7 @@ set_llm_cache(InMemoryCache())
 
 class Detector(Memory):
     def __init__(self):
-        llm = OpenAI(model="text-davinci-003", temperature=0)
+        llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0)
         template = """
             一度深呼吸をしてください。
             AIは、直前の話題と対話履歴の対を元にして次の話題を推定します。

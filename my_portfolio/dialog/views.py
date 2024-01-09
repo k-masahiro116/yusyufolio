@@ -174,7 +174,6 @@ class PostCreateView(generic.CreateView): # 追加
             user = get_user_model().objects.get(username="anonymous")
         else:
             user = self.request.user
-            print("xxxx")
         form.instance.user = user
         index = None
         response = self.chain.run(form.instance.text)

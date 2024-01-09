@@ -21,14 +21,18 @@ class ConcatChain(Chain):
     def _call(self, inputs):
         text_input = inputs.get("text", "")
         self.detector.add_user_message(text_input)
+        pretopic = self.topic
         self.topic = self.detector.run(self.topic, text_input)
         self.pre_model = self.model
         if "HDS-R" in self.topic:
             self.model = "strict"
             output = self.strict.run(text_input)
-            if "中断" in self.topic or "終了" in self.topic or "終了" in output:
-                self.strict.__init__()
-                self.topic = "挨拶"
+        elif "HDS-R" in pretopic and ("中断" in self.topic or "終了" in self.topic):
+            self.model = "strict"
+            output = self.strict.run(text_input)
+            self.strict.dialog_load()
+            self.chitchat.dialog_load(reset=True)
+            self.topic = "挨拶"
         else:
             self.model = "chitchat"
             output = self.chitchat.run(text_input)

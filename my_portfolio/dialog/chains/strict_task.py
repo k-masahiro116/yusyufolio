@@ -2,7 +2,7 @@ import json, time
 
 import openai
 # チャットモデルのラッパーをインポート
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 # チャット履歴のラッパーをインポート
 from langchain.memory import ConversationBufferMemory
 # 会話をしたりメモリから文脈を読み込むチェーン
@@ -49,7 +49,7 @@ class StrictTask(ConversationChain):
     results_path = 'dialog/assets/json/results/hdsr.json'
     topics = ["HDS-R"]
     def __init__(self, topic=topic):
-        llm = ChatOpenAI(temperature=0)
+        llm = ChatOpenAI(model_name="gpt-3.5-turbo" ,temperature=0)
         memory = ConversationBufferMemory(return_messages=True, ai_prefix="ワンコ", human_prefix="ユーザ")
         prompt = ChatPromptTemplate.from_messages([
             SystemMessagePromptTemplate.from_template(template=template),
@@ -76,6 +76,8 @@ class StrictTask(ConversationChain):
                 
         if "正解です" in response:
             response = response.replace("正解です。", "")
+        if "AI: " in response:
+            response = response.replace("AI: ", "")
         return response
         
     def dialog_load(self, path=hdsr_path):

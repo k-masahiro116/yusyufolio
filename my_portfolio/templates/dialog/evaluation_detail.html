@@ -17,24 +17,86 @@
             </tr>
         </thead>
         <tbody>
-            {% for hdsr in hdsr_list %}
             <tr>
-                <td id="dialog_item">{{ hdsr.name }}</td>
-                <td id="dialog_text">{{ hdsr.value }}</td>
-                <td id="dialog_score">{{ hdsr.score }}</td>
+                <td id="dialog_item">名前</td>
+                <td id="dialog_text">{{ hdsr_model.name }}</td>
+                <td id="dialog_score"></td>
             </tr>
-            {% endfor %}
+            <tr>
+                <td id="dialog_item">年齢</td>
+                <td id="dialog_text">{{ hdsr_model.age }}</td>
+                <td id="dialog_score">{{ hdsr_model.age_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">年月日曜日</td>
+                <td id="dialog_text">{{ hdsr_model.today }}</td>
+                <td id="dialog_score">{{ hdsr_model.today_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">居場所</td>
+                <td id="dialog_text">{{ hdsr_model.place }}</td>
+                <td id="dialog_score">{{ hdsr_model.place_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">三つの言葉の復唱</td>
+                <td id="dialog_text">{{ hdsr_model.repeat }}</td>
+                <td id="dialog_score">{{ hdsr_model.repeat_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">100引く7</td>
+                <td id="dialog_text">{{ hdsr_model.math1 }}</td>
+                <td id="dialog_score">{{ hdsr_model.math1_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">93引く7</td>
+                <td id="dialog_text">{{ hdsr_model.math2 }}</td>
+                <td id="dialog_score">{{ hdsr_model.math2_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">6、8、2の逆唱</td>
+                <td id="dialog_text">{{ hdsr_model.backwards1 }}</td>
+                <td id="dialog_score">{{ hdsr_model.backwards1_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">3、5、2、9の逆唱</td>
+                <td id="dialog_text">{{ hdsr_model.backwards2 }}</td>
+                <td id="dialog_score">{{ hdsr_model.backwards2_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">三つの言葉の暗唱</td>
+                <td id="dialog_text">{{ hdsr_model.recite }}</td>
+                <td id="dialog_score">{{ hdsr_model.recite_score }}</td>
+            </tr>
+            <tr>
+                <td id="dialog_item">知っている野菜</td>
+                <td id="dialog_text">{{ hdsr_model.vege }}</td>
+                <td id="dialog_score">{{ hdsr_model.vege_score }}</td>
+            </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th scope="row" id="dialog_item">合計</th>
                 <td id="dialog_text"></td>
-                <td id="dialog_score">{{score}}/25</td>
+                <td id="dialog_score">{{hdsr_model.score}}/25</td>
             </tr>
         </tfoot>
     </table>
+    <ul class="super-tr">
+        <li class="super-td">
+            <!-- superuserでログインしている時にのみ表示 -->
+            {% if user.is_superuser %}
+            <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
+            <a href="{% url 'dialog:evaluation_update' hdsr_model.pk %}">Edit</a>
+            {% endif %}
+        </li>
+        <li class="super-td">
+            {% if user.is_superuser %}
+            <a href="{% url 'dialog:evaluation_delete' hdsr_model.pk %}">Delete</a>
+            {% endif %}
+        </li>
+    </ul>
     
-    <h4 style="margin-top: 200px;">実際の対話内容: (ID: {{hdsr_model.index}})</h4>
+    <h4 style="margin-top: 200px;">実際の対話内容: (ID: {{hdsr_model.id}})</h4>
     <table class="table">
         <thead>
             <tr>
@@ -111,6 +173,9 @@
             overflow-x: hidden;
             overflow-y: scroll;
             height: 500px;
+        }
+        .super-tr li {
+            list-style-type: none!important;
         }
     </style>
 {% endblock %}

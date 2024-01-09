@@ -1,0 +1,73 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+        <th class="table_font">NAME</th>
+        <td>{{ userdata.name }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">AGE</th>
+        <td>{{ userdata.age }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">BIRTH</th>
+        <!-- linebreaksbk を入れると改行タグでちゃんと改行して表示されるようになる -->
+        <td>{{ userdata.birth | linebreaksbr}}</td>
+        </tr>
+        <tr>
+        <th class="table_font">SEX</th>
+        <td>{{ userdata.sex }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">PLACE</th>
+        <td>{{ userdata.place }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">MAX SCORE</th>
+        <td>{{ userdata.max_score }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">MIN SCORE</th>
+        <td>{{ userdata.min_score }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">HDS-R</th>
+        <td>
+        {% for hdsr in userdata.hdsr.all %} 
+        <a href="{% url 'dialog:evaluation_detail' hdsr.pk %}" style="">{{ hdsr }}</a></br>
+        {% endfor %}
+        </td>
+        {% comment %} <td>{{ userdata.hdsr }}</td> {% endcomment %}
+        </tr>
+    </table>
+    <ul class="super-tr">
+        <li class="super-td">
+            <!-- superuserでログインしている時にのみ表示 -->
+            {% if user.is_superuser %}
+            <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
+            <a href="{% url 'dialog:user_update' userdata.pk %}">Edit</a>
+            {% endif %}
+        </li>
+        <li class="super-td">
+            {% if user.is_superuser %}
+            <a href="{% url 'dialog:user_delete' userdata.pk %}">Delete</a>
+            {% endif %}
+        </li>
+    </ul>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+        .table td {
+            width: 80%;
+        }
+        .table tr {
+            width: 20%;
+        }
+    </style>
+    <script>
+        console.log("{{userdata.hdsr.all|safe}}")
+    </script>
+{% endblock %}

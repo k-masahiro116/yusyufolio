@@ -1,0 +1,42 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+<p><b>ユーザデータを追加</b></p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+        <th class="table_font">NAME</th>
+        <td class="form_title">{{ form.name }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">BIRTH</th>
+        <td>{{ form.birth }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">SEX</th>
+        <td>{{ form.sex }}</td>
+        </tr>
+        <tr>
+        <th class="table_font">PLACE</th>
+        <td>{{ form.place}}</td>
+        </tr>
+        <tr>
+        <th class="table_font">HDS-R</th>
+        <td>{{ form.hdsr }}</td>
+        </tr> 
+    </table>
+    <button type="submit" class="btn btn-primary">SEND</button>
+</form>
+<style>
+    textarea {
+        width: 800px;
+        height: 25em;
+    }
+    #id_name, #id_sex, #id_birth, #id_place {
+        border-radius: 5px;
+        border: 2px solid #ccc;
+    }
+</style>
+{% endblock %}

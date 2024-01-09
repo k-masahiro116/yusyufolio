@@ -1,0 +1,46 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="POST">
+        <table class="table">
+            <tr>
+            <th class="table_font">NAME</th>
+            <td>{{ userdata.name }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">SEX</th>
+            <td>{{ userdata.sex }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">BIRTH</th>
+            <td>{{ userdata.birth }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">PLACE</th>
+            <td>{{ userdata.place }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">HDS-R</th>
+            <td>
+            {% for hdsr in userdata.hdsr.all %} 
+                {{ hdsr }}</br>
+            {% endfor %}
+            </td>
+        </table>
+        <p>こちらのデータを削除します。</p>
+        <button class="btn btn-primary" type="submit">SEND</button>
+        {% csrf_token %}
+    </form>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+        .table td {
+            width: 80%;
+        }
+        .table tr {
+            width: 20%;
+        }
+    </style>
+{% endblock %}

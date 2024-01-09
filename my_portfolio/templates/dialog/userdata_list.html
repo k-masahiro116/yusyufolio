@@ -7,33 +7,38 @@
         <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
     </form></br>
-    <p>採点したい項目を選択してください。</p>
+    <button class="btn btn-primary"><a href="{% url 'dialog:user_create' %}" style="color:white">ADD USER</a></button>
+    </br>
+    </br>
+    <p>ユーザ一覧</p>
     <table class="table">
         <thead>
             <tr>
-                <th class="table_font" id="dialog_speaker">ID</th>
-                <th class="table_font" id="dialog_text">DATE</th>
-                <th class="table_font" id="dialog_date">SCORE</th>
-                <th class="super_command"></th>
-                <th class="super_command"></th>
+                <th class="table_font" id="dialog_name">NAME</th>
+                <th class="table_font" id="dialog_sex">SEX</th>
+                <th class="table_font" id="dialog_birth">BIRTH</th>
+                <th class="table_font" id="dialog_score">SCORE</th>
+                {% if user.is_superuser %}
+                <th class="super_command"><th/>
+                <th class="super_command"><th/>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
-            {% for hdsr_model in hdsr_model_list%}
+            {% for user_data in userdata_list%}
                 <tr>
-                    <td id="dialog_speaker"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.pk }} </a></td>
-                    <td id="dialog_text"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.date }}</a></td>
-                    <td id="dialog_date"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.score }}/25</a></td>
+                    <td id="dialog_name"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.name }}</a></td>
+                    <td id="dialog_sex"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.sex }}</a></td>
+                    <td id="dialog_birth"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.birth }}</a></td>
+                    <td id="dialog_score"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.max_score }}</a></td>
+                    {% if user.is_superuser %}
                     <td class="super_command">
-                        {% if user.is_superuser %}
-                        <a href="{% url 'dialog:evaluation_update' hdsr_model.pk %}">Edit</a>
-                        {% endif %}
+                        <a href="{% url 'dialog:user_update' user_data.pk %}">Edit</a>
                     </td>
                     <td class="super_command">
-                        {% if user.is_superuser %}
-                        <a href="{% url 'dialog:evaluation_delete' hdsr_model.pk %}">Delete</a>
-                        {% endif %}
+                        <a href="{% url 'dialog:user_delete' user_data.pk %}">Delete</a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
@@ -42,35 +47,32 @@
         thead, tbody {
             display: block;
         }
-        #dialog_text {
-            width: 600px;
+        #dialog_sex {
+            width: 250px;
         }
-        #speaker_form {
-            display: none;
+        #dialog_name {
+            width: 250px;
         }
-        #dialog_speaker {
-            width: 100px;
+        #dialog_birth {
+            width: 250px;
         }
-        #dialog_date {
+        #dialog_score {
             width: 200px;
-        }
-        #dialog_index {
+        } 
+        .super_command {
             width: 50px;
         }
         @media screen and (max-width: 600px) {
-            #dialog_date { display: none; }
+            #dialog_birth { display: none; }
             .super_command { display: none; }
-            #dialog_speaker {
+            #dialog_name {
                 font-size: 14px;
                 padding: 5px;
             }
-            #dialog_text {
+            #dialog_old {
                 font-size: 14px;
                 padding: 5px;
             }
-        }
-        .super_command {
-            width: 50px;
         }
         .search_box {
             border-radius: 5px;

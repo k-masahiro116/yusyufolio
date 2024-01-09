@@ -1,0 +1,44 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <h4 style="margin-top: 20px;">ID: {{hdsr_model.id}}</h4>
+    <form action="" method="POST">
+        <table class="table">
+            <tr>
+            <th class="table_font">名前</th>
+            <td>{{ hdsr_model.name }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">年齢</th>
+            <td>{{ hdsr_model.age }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">年月日曜日</th>
+            <td>{{ hdsr_model.today }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">居場所</th>
+            <td>{{ hdsr_model.place }}</td>
+            </tr>
+            <tr>
+            <th class="table_font">スコア</th>
+            <td>{{ hdsr_model.score }}</br>
+            </td>
+        </table>
+        <p>こちらのデータを削除します。</p>
+        <button class="btn btn-primary" type="submit">SEND</button>
+        {% csrf_token %}
+    </form>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+        .table td {
+            width: 80%;
+        }
+        .table tr {
+            width: 20%;
+        }
+    </style>
+{% endblock %}

@@ -4,7 +4,7 @@
 {% block content %}
 <p><b>{{ post.title }}</b></p>
 <form action="" method="POST">
-    {% csrf_token %}
+    {% comment %} {% csrf_token %} {% endcomment %}
     <table class="table">
         <tr>
         <th class="table_font">SPEAKER</th>

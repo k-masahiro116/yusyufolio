@@ -1,22 +1,24 @@
 import time
 import openai
 # チャットモデルのラッパーをインポート
-import langchain
-from langchain.llms import OpenAI
+from langchain.llms.openai import OpenAI
 from langchain.prompts import PromptTemplate
 # 会話をしたりメモリから文脈を読み込むチェーン
 from dialog.chains.memory import Memory
-from langchain.cache import SQLiteCache
-langchain.llm_cache = SQLiteCache(database_path="langchain_cache.db")
+from langchain.globals import set_llm_cache
+from langchain.cache import InMemoryCache
+# set_llm_cache(InMemoryCache(database_path="langchain.db"))
+set_llm_cache(InMemoryCache())
 
 class Detector(Memory):
     def __init__(self):
-        llm = OpenAI(temperature=0)
+        llm = OpenAI(model="text-davinci-003", temperature=0)
         template = """
             一度深呼吸をしてください。
-            AIは以下のような直前の話題と対話履歴の対を元に次の話題を推定します。
-            また、直前の話題がHDS-Rのときは、中断をしたいと言われるまで常にHDS-Rを次の話題とします。
+            AIは、直前の話題と対話履歴の対を元にして次の話題を推定します。
+            また、直前の話題がHDS-Rのときは、中断または終了したいと言われるまで常にHDS-Rを次の話題とします。
             
+            入出力例
             挨拶:今日の夕飯美味しかった =>食事
             天気:最近あまり元気が出ない =>体調
             趣味:音楽聴いてると楽しい =>趣味
@@ -38,9 +40,10 @@ class Detector(Memory):
     def run(self, topic="挨拶", text="こんにちは"):
         response = "無し"
         try_count = 3
-        for try_time in range(try_count):
+        for _ in range(try_count):
             try:
                 response = self.predict(pre_topic=topic, history=text)
+                break
             except (openai.InvalidRequestError, openai.OpenAIError):
-                    time.sleep(1)
+                time.sleep(1)
         return response.strip()

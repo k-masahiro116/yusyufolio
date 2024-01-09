@@ -1,6 +1,6 @@
 import json, re, posixpath
 import openai, openai.error
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.memory import ConversationBufferWindowMemory, ConversationSummaryMemory
@@ -62,6 +62,8 @@ class ChitChat(ConversationChain):
                 self.memory.chat_memory.messages.pop(0)
             except (openai.error.RateLimitError,openai.OpenAIError, openai.error.ServiceUnavailableError):
                 break
+        if "ワンコ: " in response:
+            response = response.replace("ワンコ: ", "")
         self.__memory_edit(input=input_text, response=response)
         return response
         

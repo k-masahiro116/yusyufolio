@@ -1,0 +1,168 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="get" class="request_from">
+        <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
+    </form></br>
+
+    <h4>HDS-R 結果</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table_font" id="dialog_item">項目</th>
+                    <th class="table_font" id="dialog_text">内容</th>
+                    <th class="table_font" id="dialog_score">点数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="dialog_item">名前</td>
+                    <td id="dialog_text">{{ form.name }}</td>
+                    <td id="dialog_score"></td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">年齢</td>
+                    <td id="dialog_text">{{ form.age }}</td>
+                    <td id="dialog_score">{{ form.age_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">年月日曜日</td>
+                    <td id="dialog_text">{{ form.today }}</td>
+                    <td id="dialog_score">{{ form.today_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">居場所</td>
+                    <td id="dialog_text">{{ form.place }}</td>
+                    <td id="dialog_score">{{ form.place_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">三つの言葉の復唱</td>
+                    <td id="dialog_text">{{ form.repeat }}</td>
+                    <td id="dialog_score">{{ form.repeat_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">100引く7</td>
+                    <td id="dialog_text">{{ form.math1 }}</td>
+                    <td id="dialog_score">{{ form.math1_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">93引く7</td>
+                    <td id="dialog_text">{{ form.math2 }}</td>
+                    <td id="dialog_score">{{ form.math2_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">6、8、2の逆唱</td>
+                    <td id="dialog_text">{{ form.backwards1 }}</td>
+                    <td id="dialog_score">{{ form.backwards1_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">3、5、2、9の逆唱</td>
+                    <td id="dialog_text">{{ form.backwards2 }}</td>
+                    <td id="dialog_score">{{ form.backwards2_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">三つの言葉の暗唱</td>
+                    <td id="dialog_text">{{ form.recite }}</td>
+                    <td id="dialog_score">{{ form.recite_score }}</td>
+                </tr>
+                <tr>
+                    <td id="dialog_item">知っている野菜</td>
+                    <td id="dialog_text">{{ form.vege }}</td>
+                    <td id="dialog_score">{{ form.vege_score }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row" id="dialog_item">合計</th>
+                    <td id="dialog_text"></td>
+                    <td id="dialog_score">{{form.score}}/25</td>
+                </tr>
+            </tfoot>
+        </table>
+        <button type="submit" class="btn btn-primary">SEND</button>
+    </form>
+    
+    <h4 style="margin-top: 200px;">実際の対話内容: (ID: {{hdsr_model.id}})</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table_font" id="dialog_speaker">SPEAKER</th>
+                <th class="table_font" id="dialog_text">TEXT</th>
+                <th class="table_font" id="dialog_date">DATE</th>
+            </tr>
+        </thead>
+        <tbody class="tbody-history">
+            {% for post_ in post_list%}
+                <tr>
+                    <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
+                    <td id="dialog_speaker">{{ post_.speaker }}</td>
+                    <td id="dialog_text">{{ post_.text }}</td>
+                    <td id="dialog_date">{{ post_.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <style>
+        thead, tbody, tfoot {
+            display: block;
+        }
+        thead, tfoot {
+            background: lightgray;
+        }
+        #dialog_item {
+            width: 170px;
+        }
+        #dialog_text {
+            width: 650px;
+        }
+        #dialog_score {
+            width: 120px;
+        }
+        #speaker_form {
+            display: none;
+        }
+        #dialog_date {
+            width: 200px;
+        }
+        @media screen and (max-width: 600px) {
+            #dialog_date { display: none; }
+            .super_command { display: none; }
+            #dialog_speaker {
+                font-size: 14px;
+                padding: 5px;
+            }
+            #dialog_text {
+                font-size: 14px;
+                padding: 5px;
+            }
+        }
+        .super_command {
+            width: 50px;
+        }
+        .search_box {
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .textbox2 {
+            width: 100%;
+            padding: 3px 2px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        .tbody-history {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 500px;
+        }
+    </style>
+{% endblock %}

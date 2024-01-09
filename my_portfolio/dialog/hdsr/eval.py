@@ -15,7 +15,7 @@ def convf(name):
     return hira
 
 def target_in_list(t, l):
-    if convf(t) in l or t in l:
+    if t != None and convf(t) in l or t in l:
         return True
     return False
 
@@ -54,10 +54,8 @@ class Eval():
                 for i in input_data:
                     if type(i) is str:
                         self.person += i
-                        return 0
         elif input_data != "":
             self.person = input_data
-            return 0
         return 0
 
     def calc_age(self, data_list, correct=[75]):
@@ -74,9 +72,10 @@ class Eval():
         for data in data_list:
             if target_in_list(data, correct):
                 score = score + 1
-            for i in wakati.parse(data).split():
-                if target_in_list(i, correct):
-                    score = score + 1
+            if data != None:
+                for i in wakati.parse(data).split():
+                    if target_in_list(i, correct):
+                        score = score + 1
         return score
 
     def calc_memory2(self, data_list, correct=["さくら", "ねこ", "でんしゃ", "桜", "猫", "電車"]):
@@ -84,9 +83,10 @@ class Eval():
         for data in data_list:
             if target_in_list(data, correct):
                 score = score + 2
-            for i in wakati.parse(data).split():
-                if target_in_list(i, correct):
-                    score = score + 2
+            if data != None:
+                for i in wakati.parse(data).split():
+                    if target_in_list(i, correct):
+                        score = score + 2
         return score
     
     def calc_location(self, data_list, correct=["家", "お家", "病院", "施設", "老人ホーム", "教習所", "自宅"]):

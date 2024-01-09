@@ -13,7 +13,6 @@
         </div>
         {% block anime %}
         {% endblock%}
-        {% comment %} <iframe class="iframe-anime" src="{% url 'dialog:animation' %}" width="150" height="225" id="wanco"></iframe> {% endcomment %}
     </div>
     <table style="width:100%; margin-bottom: 20px;">
         <thead>
@@ -23,8 +22,8 @@
                     <th width="1%"><label for="speaker" id="speaker_form" class="table_font" style="width:5%; margin-bottom: 0px;">SPEAKER</label></th>
                     <th width="4%"><input name="speaker" id="speaker_form" class="textbox" value="ユーザ" /></th>
                     <th width="1%"><label for="text" class="table_font" style="padding: 0px 10px; margin-bottom: 0px; margin-top: 20px;">TEXT</label></th>
-                    <th width="30%"><input name="text" id="text" class="textbox2" value="" style="margin-top: 20px;"/></th>
-                    <th width="5%"><button type="submit" class="btn btn-primary btn--cubic" style="margin-left: 10px;" onclick="OnRedirectClick();">POST</button></th>
+                    <th width="30%"><input name="text" id="text" class="textbox2" value="" style="margin-top: 20px;" required/></th>
+                    <th width="5%"><button type="submit" class="btn btn-primary btn--cubic" style="margin-left: 10px;">POST</button></th>
                 </form>
             </tr>
         </thead>
@@ -41,6 +40,7 @@
         </thead>
         <tbody>
             {% for post in post_list reversed%}
+                {% if post.user == user %}
                 <tr>
                     <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
                     <td id="dialog_text">{{ post.text }}</td>
@@ -56,6 +56,7 @@
                         {% endif %}
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
@@ -165,7 +166,6 @@
             align-items: flex-end;
         }
         .volume-viewer {
-            {% comment %} margin: 0px auto 0; {% endcomment %}
             width: 128px;
             height: 128px;
             position: relative;

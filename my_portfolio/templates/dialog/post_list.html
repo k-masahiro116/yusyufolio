@@ -28,7 +28,7 @@
             </tr>
         </thead>
     </table>
-    <table class="table">
+    <table class="table" id="post_table">
         <thead>
             <tr>
             <th class="table_font" id="dialog_speaker">SPEAKER</th>
@@ -43,7 +43,7 @@
                 {% if post.user == user %}
                 <tr>
                     <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
-                    <td id="dialog_text">{{ post.text }}</td>
+                    <td id="dialog_text" class="post_text">{{ post.text }}</td>
                     <td id="dialog_date">{{ post.date }}</td>
                     <td class="super_command">
                         {% if user.is_superuser %}

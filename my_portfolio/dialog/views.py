@@ -180,9 +180,8 @@ class PostCreateView(generic.CreateView): # 追加
         if self.chain.pre_model == self.chain.model and self.chain.model == "strict":
             index = self.next_index()
             form.instance.index = index
-        valid = self.form_valid(form)
+        self.form_valid(form)
         Post.objects.create(speaker="ワンコ", text=response, index=index, user=user)
-        return valid
         
     def next_index(self):
         if self.last_index == None:

@@ -4,6 +4,7 @@ from django.utils import timezone # django で日付を管理するためのモ�
 # Create your models here.
 
 class HDSR_Model(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, blank=True)
     asigned = models.BooleanField(default=False, help_text='割り当てられていればTrue')
     name = models.CharField('名前', max_length=200, blank=True, null=True)
     age = models.CharField('年齢', max_length=200, blank=True, null=True)
@@ -100,6 +101,7 @@ GENDER_CHOICES = [
 ]
 
 class Userdata(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, blank=True)
     name = models.CharField('名前', max_length=200)
     age = models.IntegerField('年齢', default=0)
     sex = models.CharField('性別', max_length=2, choices=GENDER_CHOICES)

@@ -15,7 +15,7 @@ def convf(name):
     return hira
 
 def target_in_list(t, l):
-    if t != None and convf(t) in l or t in l:
+    if t != None and (convf(t) in l  or  t in l ):
         return True
     return False
 

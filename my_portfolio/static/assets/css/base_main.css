@@ -32,6 +32,7 @@ button, input {
     margin-left: 10px;
     margin-right: 10px;
     max-width: 980px;
+    width: 65%;
 }
 .back1 {
     text-align: center;
@@ -60,7 +61,7 @@ button, input {
     border-radius: 15px;
     background-color: #f0f8ff;
     margin-right: 10px;
-    width: 240px;
+    width: 20%;
 }
 #smart-phone-footer {
     display: none;
@@ -75,6 +76,7 @@ button, input {
 @media screen and (max-width: 1000px) {
     #sidebar_right { display: none; }
     #sidebar_left { display: none; }
+    .container { width: 100%; }
 }
 .mb-n {
     font-family: "Nico Moji";
@@ -117,6 +119,7 @@ button, input {
     box-sizing: border-box;
 }
 #sidebar_left {
+    width: 15%;
     margin-left: 5px;
     padding-right: 0px;
 }

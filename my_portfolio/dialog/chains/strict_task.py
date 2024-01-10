@@ -2,7 +2,7 @@ import json, time
 
 import openai
 # チャットモデルのラッパーをインポート
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 # チャット履歴のラッパーをインポート
 from langchain.memory import ConversationBufferMemory
 # 会話をしたりメモリから文脈を読み込むチェーン

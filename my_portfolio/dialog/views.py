@@ -37,6 +37,7 @@ class UserdataCreateView(generic.CreateView): # 追加
             scores = [hdsr.score for hdsr in self.form.instance.hdsr.all()]
             self.form.instance.max_score = max(scores)
             self.form.instance.min_score = min(scores)
+        self.form.instance.user = self.request.user
         self.form_valid(self.form)
         return valid
     
@@ -178,14 +179,15 @@ class PostCreateView(generic.CreateView): # 追加
         index = None
         response = self.chain.run(form.instance.text)
         if self.chain.pre_model == self.chain.model and self.chain.model == "strict":
-            index = self.next_index()
+            index = self.next_index(user)
             form.instance.index = index
         self.form_valid(form)
         Post.objects.create(speaker="ワンコ", text=response, index=index, user=user)
         
-    def next_index(self):
+    def next_index(self, user):
         if self.last_index == None:
             obj = HDSR_Model.objects.create()
+            obj.user = user
             return obj
         else:
             return self.last_index

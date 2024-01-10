@@ -6,19 +6,18 @@ from langchain.prompts import PromptTemplate
 # 会話をしたりメモリから文脈を読み込むチェーン
 from dialog.chains.memory import Memory
 from langchain.globals import set_llm_cache
-from langchain.cache import InMemoryCache
-# set_llm_cache(InMemoryCache(database_path="langchain.db"))
-set_llm_cache(InMemoryCache())
+from langchain.cache import SQLiteCache
+set_llm_cache(SQLiteCache(database_path="langchain.db"))
 
 class Detector(Memory):
     def __init__(self):
-        llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0)
+        llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0)
         template = """
             一度深呼吸をしてください。
-            AIは、直前の話題と対話履歴の対を元にして次の話題を推定します。
-            また、直前の話題がHDS-Rのときは、中断または終了したいと言われるまで常にHDS-Rを次の話題とします。
+            AIは以下のような直前の話題と対話履歴の対を元に、次の話題を推定します。
+            また、直前の話題がHDS-Rのときは、中断をしたいと言われるまで常にHDS-Rを次の話題とします。
             
-            入出力例
+            推定の例
             挨拶:今日の夕飯美味しかった =>食事
             天気:最近あまり元気が出ない =>体調
             趣味:音楽聴いてると楽しい =>趣味
@@ -30,9 +29,12 @@ class Detector(Memory):
             HDS-R:もうないです =>終了
             HDS-R:終わりにして =>終了
             HDS-R:自宅です =>HDS-R
-            {pre_topic}:{history} =>"""
+            
+            上記の推定の例に従って、以下の直前の話題と対話履歴の対から次の話題を推定してください。
+            {pre_topic}:{history} =>
+            """
         prompt = PromptTemplate(
-            input_variables=["pre_topic", "history"],
+            input_variables=["pre_topic", "text"],
             template=template
         )
         super().__init__(llm=llm, prompt=prompt)
@@ -42,8 +44,11 @@ class Detector(Memory):
         try_count = 3
         for _ in range(try_count):
             try:
-                response = self.predict(pre_topic=topic, history=text)
+                # response = self.invoke({"pre_topic": topic, "text": text})
+                response = self.predict(pre_topic=topic, text=text)
                 break
-            except (openai.InvalidRequestError, openai.OpenAIError):
+            except (openai.BadRequestError, openai.OpenAIError) as e:
+                print(e)
                 time.sleep(1)
-        return response.strip()
+        print(response)
+        return response

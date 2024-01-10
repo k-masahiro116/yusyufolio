@@ -11,7 +11,7 @@ langchain.llm_cache = InMemoryCache()
 
 class Parse(Memory):
     def __init__(self):
-        llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0)
+        llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0)
         template = """
             一度深呼吸をしてください。
             以下の手順をstep-by-stepで進めていきます。
@@ -20,7 +20,7 @@ class Parse(Memory):
             3. 割り当てた項目を全て出力する
             
             前提条件
-            割り当てられるものがない場合は、項目は空白でも構わない。
+            割り当てられるものがない場合は、項目はNoneでも構わない。
 
             項目
             名前:
@@ -37,7 +37,7 @@ class Parse(Memory):
 
             対話履歴
             {history} 
-
+            
             =>"""
         prompt = PromptTemplate(
             input_variables=["history"],

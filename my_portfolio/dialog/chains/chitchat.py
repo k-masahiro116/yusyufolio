@@ -1,6 +1,6 @@
 import json, re, posixpath
-import openai, openai.error
-from langchain_community.chat_models import ChatOpenAI
+import openai
+from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.memory import ConversationBufferWindowMemory, ConversationSummaryMemory
@@ -34,14 +34,10 @@ class ChitChat(ConversationChain):
         ワンコの主なトークテーマ: 天気、食事、予定、睡眠の質、体調、趣味、名前
         ワンコは、質問の答えを知らない場合、正直に「知らない」と答えます。
         option情報については、ユーザは認知していないので注意してください。
-        
-        以下はユーザのデータ
-        {}"""
-    def __init__(self, template=template, knowledge=True, ai_prefix="ワンコ", human_prefix="ユーザ"):
-        llm = ChatOpenAI(temperature=0.4)
+        """
+    def __init__(self, template=template, ai_prefix="ワンコ", human_prefix="ユーザ"):
+        llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
         memory = ConversationBufferWindowMemory(k=WINDOW_SIZE, return_messages=True, ai_prefix=ai_prefix, human_prefix=human_prefix)
-        if knowledge == True:
-            template = template.format(self.summary_load())
         prompt = ChatPromptTemplate.from_messages([
             SystemMessagePromptTemplate.from_template(template),
             MessagesPlaceholder(variable_name="history"),

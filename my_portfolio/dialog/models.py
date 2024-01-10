@@ -109,7 +109,7 @@ class Userdata(models.Model):
     place = models.CharField('場所', max_length=200)
     max_score = models.IntegerField('最高スコア', default=0)
     min_score = models.IntegerField('最低スコア', default=0)
-    hdsr = models.ManyToManyField(HDSR_Model, verbose_name="HDS-R", null=True, blank=True)
+    hdsr = models.ManyToManyField(HDSR_Model, verbose_name="HDS-R", blank=True)
     
     def __str__(self): # Post モデルが直接呼び出された時に返す値を定義
         return self.name # 記事タイトルを返す

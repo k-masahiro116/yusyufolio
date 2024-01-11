@@ -81,7 +81,7 @@ class HDSR_Model(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, blank=True)
     speaker = models.CharField('話者', max_length=200)
-    text = models.TextField('本文', blank=False, null=False)
+    text = models.TextField('本文', blank=True, null=False)
     date = models.DateTimeField('日付', default=timezone.now)
     index = models.ForeignKey(
         HDSR_Model, 

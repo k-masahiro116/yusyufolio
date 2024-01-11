@@ -45,7 +45,7 @@
             {% for post in post_list reversed%}
                 {% if post.user == user or user.is_superuser%}
                 <tr>
-                    <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
+                    <td id="dialog_speaker" class="post_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
                     <td id="dialog_text" class="post_text">{{ post.text }}</td>
                     <td id="dialog_date">{{ post.date }}</td>
                     {% if user.is_superuser %}

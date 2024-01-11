@@ -1,0 +1,35 @@
+{% extends 'dialog/index.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="POST">
+        <table class="table">
+            <tr>
+                <th class="table_font">SPEAKER</th>
+                <td>{{ post.speaker }}</td>
+            </tr>
+            <tr>
+                <th class="table_font">TEXT</th>
+                <td>{{ post.text }}</td>
+            </tr>
+            <tr>
+                <th class="table_font">DATE</th>
+                <td>{{ post.date }}</td>
+            </tr>
+        </table>
+        <p>こちらのデータを削除します。</p>
+        <button class="btn btn-primary" type="submit">SEND</button>
+        {% csrf_token %}
+    </form>
+    <style>
+        .super-tr li {
+            list-style-type: none!important;
+        }
+        .table td {
+            width: 80%;
+        }
+        .table tr {
+            width: 20%;
+        }
+    </style>
+{% endblock %}

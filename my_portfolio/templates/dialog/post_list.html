@@ -34,9 +34,11 @@
             <th class="table_font" id="dialog_speaker">SPEAKER</th>
             <th class="table_font" id="dialog_text">TEXT</th>
             <th class="table_font" id="dialog_date">DATE</th>
-            <th class="super_command"></th>
-            <th class="super_command"></th>
-            <th class="super_command"></th>
+            {% if user.is_superuser %}
+                <th class="super_command"></th>
+                <th class="super_command"></th>
+                <th class="super_command"></th>
+            {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -46,21 +48,17 @@
                     <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
                     <td id="dialog_text" class="post_text">{{ post.text }}</td>
                     <td id="dialog_date">{{ post.date }}</td>
+                    {% if user.is_superuser %}
                     <td class="super_command">
-                        {% if user.is_superuser %}
                         <a href="{% url 'dialog:post_update' post.pk %}">Edit</a>
-                        {% endif %}
                     </td>
                     <td class="super_command">
-                        {% if user.is_superuser %}
                         <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
-                        {% endif %}
                     </td>
                     <td class="super_command">
-                        {% if user.is_superuser %}
-                            {{post.user}}
-                        {% endif %}
+                        {{post.user}}
                     </td>
+                    {% endif %}
                 </tr>
                 {% endif %}
             {% endfor %}
@@ -70,14 +68,14 @@
         thead, tbody {
             display: block;
         }
-        #dialog_text {
-            width: 600px;
-        }
         #speaker_form {
             display: none;
         }
+        #dialog_text {
+            width: 600px;
+        }
         #dialog_speaker {
-            width: 100px;
+            width: 110px;
         }
         #dialog_date {
             width: 200px;
@@ -95,7 +93,7 @@
             }
         }
         .super_command {
-            width: 50px;
+            width: 90px;
         }
         .search_box {
             border-radius: 5px;

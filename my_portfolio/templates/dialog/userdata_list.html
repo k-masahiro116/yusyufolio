@@ -21,12 +21,13 @@
                 {% if user.is_superuser %}
                 <th class="super_command"><th/>
                 <th class="super_command"><th/>
+                <th class="super_command"><th/>
                 {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for user_data in userdata_list%}
-                {% if user_data.user == user %}
+                {% if user_data.user == user or user.is_superuser%}
                 <tr>
                     <td id="dialog_name"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.name }}</a></td>
                     <td id="dialog_sex"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.sex }}</a></td>
@@ -38,6 +39,9 @@
                     </td>
                     <td class="super_command">
                         <a href="{% url 'dialog:user_delete' user_data.pk %}">Delete</a>
+                    </td>
+                    <td class="super_command">
+                        <a href="{% url 'dialog:user_detail' user_data.pk %}">{{user_data.user}}</a>
                     </td>
                     {% endif %}
                 </tr>

@@ -36,11 +36,12 @@
             <th class="table_font" id="dialog_date">DATE</th>
             <th class="super_command"></th>
             <th class="super_command"></th>
+            <th class="super_command"></th>
             </tr>
         </thead>
         <tbody>
             {% for post in post_list reversed%}
-                {% if post.user == user %}
+                {% if post.user == user or user.is_superuser%}
                 <tr>
                     <td id="dialog_speaker"><a href="{% url 'dialog:post_detail' post.pk %}">{{ post.speaker }}</a></td>
                     <td id="dialog_text" class="post_text">{{ post.text }}</td>
@@ -53,6 +54,11 @@
                     <td class="super_command">
                         {% if user.is_superuser %}
                         <a href="{% url 'dialog:post_delete' post.pk %}">Delete</a>
+                        {% endif %}
+                    </td>
+                    <td class="super_command">
+                        {% if user.is_superuser %}
+                            {{post.user}}
                         {% endif %}
                     </td>
                 </tr>

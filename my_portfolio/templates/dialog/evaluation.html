@@ -11,20 +11,21 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="table_font" id="dialog_speaker">ID</th>
-                <th class="table_font" id="dialog_text">DATE</th>
-                <th class="table_font" id="dialog_date">SCORE</th>
-                <th class="super_command"></th>
-                <th class="super_command"></th>
+                <th class="table_font" id="dialog_id"><div>ID</div></th>
+                <th class="table_font" id="dialog_date"><div>DATE</div></th>
+                <th class="table_font" id="dialog_score"><div>SCORE</div></th>
+                <th class="super_command"><div></div></th>
+                <th class="super_command"><div></div></th>
+                <th class="super_command"><div></div></th>
             </tr>
         </thead>
         <tbody>
             {% for hdsr_model in hdsr_model_list%}
-                {% comment %} {% if hdsr_model.user == user %} {% endcomment %}
+                {% if hdsr_model.user == user or user.is_superuser %}
                 <tr>
-                    <td id="dialog_speaker"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.pk }} </a></td>
-                    <td id="dialog_text"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.date }}</a></td>
-                    <td id="dialog_date"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.score }}/25</a></td>
+                    <td id="dialog_id"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.pk }} </a></td>
+                    <td id="dialog_date"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.date }}</a></td>
+                    <td id="dialog_score"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.score }}/25</a></td>
                     <td class="super_command">
                         {% if user.is_superuser %}
                         <a href="{% url 'dialog:evaluation_update' hdsr_model.pk %}">Edit</a>
@@ -35,8 +36,13 @@
                         <a href="{% url 'dialog:evaluation_delete' hdsr_model.pk %}">Delete</a>
                         {% endif %}
                     </td>
+                    <td class="super_command">
+                        {% if user.is_superuser %}
+                        <a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{hdsr_model.user}}</a>
+                        {% endif %}
+                    </td>
                 </tr>
-                {% comment %} {% endif %} {% endcomment %}
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
@@ -44,20 +50,23 @@
         thead, tbody {
             display: block;
         }
-        #dialog_text {
-            width: 600px;
+        .table th {
+            padding: 0;
         }
         #speaker_form {
             display: none;
         }
-        #dialog_speaker {
+        #dialog_id {
             width: 100px;
         }
         #dialog_date {
-            width: 200px;
+            width: 400px;
         }
-        #dialog_index {
-            width: 50px;
+        #dialog_score {
+            width: 120px;
+        }
+        #dialog_score div{
+            padding-left: 0px;
         }
         @media screen and (max-width: 600px) {
             #dialog_date { display: none; }
@@ -72,7 +81,7 @@
             }
         }
         .super_command {
-            width: 50px;
+            width: 120px;
         }
         .search_box {
             border-radius: 5px;
@@ -96,6 +105,12 @@
         table td a{
             padding: 0.75rem;
             text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        } 
+        .table th div{
+            padding: 0.75rem;
             display: block;
             width: 100%;
             height: 100%;

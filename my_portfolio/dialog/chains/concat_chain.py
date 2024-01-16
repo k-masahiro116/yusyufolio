@@ -6,7 +6,7 @@ class ConcatChain(Chain):
     detector: LLMChain
     chitchat: LLMChain
     strict: LLMChain
-    topic = "挨拶"
+    intent = "挨拶"
     model = ""
     pre_model = ""
 
@@ -21,24 +21,22 @@ class ConcatChain(Chain):
     def _call(self, inputs):
         text = inputs.get("text", "")
         text = self.text_check(text)
-        self.detector.add_user_message(text)
-        pretopic = self.topic
-        self.topic = self.detector.run(self.topic, text)
+        preintent = self.intent
+        self.intent = self.detector.run(self.intent, text)
         self.pre_model = self.model
-        if "HDS-R" in self.topic:
+        if "HDS-R" in self.intent:
             self.model = "strict"
             output = self.strict.run(text)
-        elif "HDS-R" in pretopic and ("中断" in self.topic or "終了" in self.topic):
+        elif "HDS-R" in preintent and ("中断" in self.intent or "終了" in self.intent):
             self.model = "strict"
             output = self.strict.run("診断を終了して")
             self.strict.dialog_load()
             self.chitchat.dialog_load(reset=True)
-            self.topic = "挨拶"
+            self.intent = "挨拶"
         else:
             self.model = "chitchat"
             output = self.chitchat.run(text)
         
-        self.detector.add_ai_message(output)
         return {"output": output}
     
     def text_check(self, text):

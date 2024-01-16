@@ -31,22 +31,23 @@ class Detector(Memory):
             HDS-R:自宅です =>HDS-R
             
             上記の推定の例に従って、以下の直前の話題と対話履歴の対から次の話題を推定してください。
-            {pre_topic}:{text} =>
+            {pre_intent}:{text} =>
             """
         prompt = PromptTemplate(
-            input_variables=["pre_topic", "text"],
+            input_variables=["pre_intent", "text"],
             template=template
         )
         super().__init__(llm=llm, prompt=prompt)
         
-    def run(self, topic="挨拶", text="こんにちは"):
+    def run(self, intent="挨拶", text="こんにちは"):
         response = "無し"
         try_count = 3
         for _ in range(try_count):
             try:
-                response = self.predict(pre_topic=topic, text=text)
+                response = self.predict(pre_intent=intent, text=text)
                 break
             except (openai.BadRequestError, openai.OpenAIError) as e:
                 print("OpenAI Error: {}".format(e))
                 time.sleep(1)
+        print(response)
         return response

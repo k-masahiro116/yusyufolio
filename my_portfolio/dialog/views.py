@@ -35,8 +35,9 @@ class UserdataCreateView(generic.CreateView): # 追加
         if self.form.instance.hdsr.all() is not None:
             self.calc_score()
             scores = [hdsr.score for hdsr in self.form.instance.hdsr.all()]
-            self.form.instance.max_score = max(scores)
-            self.form.instance.min_score = min(scores)
+            if scores != []:
+                self.form.instance.max_score = max(scores)
+                self.form.instance.min_score = min(scores)
         self.form.instance.user = self.request.user
         self.form_valid(self.form)
         return valid

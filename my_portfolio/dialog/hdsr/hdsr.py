@@ -3,7 +3,6 @@ from ..hdsr.eval import Eval
 
 class HDSR(Eval):
     slot_correct = {
-        "名前": [],
         "年齢": [],
         "三つの言葉の復唱": ["桜", "猫", "電車"],
         "三つの言葉の暗唱": ["桜", "猫", "電車"],
@@ -19,7 +18,6 @@ class HDSR(Eval):
     def __init__(self):
         super().__init__()
         self.slot_calc = {
-            "名前": super().calc_person,
             "年齢": super().calc_age,
             "居場所": super().calc_location,
             "年月日曜日": super().calc_now,
@@ -34,15 +32,12 @@ class HDSR(Eval):
 
     def __call__(self, slots={}):
         slot_score = {}
-        getd = {}
         for slot, calc in self.slot_calc.items():
-            ans = []
             if slot in slots.keys():
                 if slots.get(slot, "") == None:
                     continue
-                ans.append(slots.get(slot, ""))
+                ans = slots.get(slot, "")
                 slot_score[slot] = calc(ans, self.slot_correct.get(slot, []))
-        getd["score"] = str(sum(slot_score.values()))
         
         return slot_score
     

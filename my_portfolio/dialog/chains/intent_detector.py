@@ -50,5 +50,5 @@ class Detector(Memory):
             except (openai.BadRequestError, openai.OpenAIError) as e:
                 print("OpenAI Error: {}".format(e))
                 time.sleep(1)
-        print(response)
-        return response
+        print(response.strip())
+        return response.strip()

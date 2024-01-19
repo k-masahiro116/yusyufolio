@@ -38,15 +38,17 @@ class HDSR(Eval):
         for slot, calc in self.slot_calc.items():
             ans = []
             if slot in slots.keys():
+                if slots.get(slot, "") == None:
+                    continue
                 ans.append(slots.get(slot, ""))
                 slot_score[slot] = calc(ans, self.slot_correct.get(slot, []))
         getd["score"] = str(sum(slot_score.values()))
         
         return slot_score
     
-    def set_user_data(self, user_data):
+    def set_refer_data(self, user_data):
         self.slot_correct["居場所"] = user_data["居場所"]
-        self.slot_correct["年月日曜日"] = user_data["生年月日"]
+        self.slot_correct["年月日曜日"] = user_data["年月日曜日"]
         self.slot_correct["年齢"] = user_data["年齢"]
 
 if __name__=="__main__":

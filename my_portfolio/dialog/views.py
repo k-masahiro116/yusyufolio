@@ -44,10 +44,10 @@ class UserdataCreateView(generic.CreateView): # 追加
     
     def calc_score(self):
         for hdsr in self.form.instance.hdsr.all():
-            self.calc_model.set_user_data({
+            self.calc_model.set_refer_data({
                 "居場所": [self.form.instance.place], 
                 "年齢": [self.form.instance.age], 
-                "生年月日": [self.form.instance.birth]})
+                "年月日曜日": [hdsr.date]})
             hdsr_dict = hdsr.return_self()
             slot_score = self.calc_model(hdsr_dict)
             hdsr.set_score_from_dict(slot_score)
@@ -78,10 +78,10 @@ class UserdataUpdateView(generic.UpdateView): # 追加
     
     def calc_score(self):
         for hdsr in self.form.instance.hdsr.all():
-            self.calc_model.set_user_data({
+            self.calc_model.set_refer_data({
                 "居場所": [self.form.instance.place], 
                 "年齢": [self.form.instance.age], 
-                "生年月日": [self.form.instance.birth]})
+                "年月日曜日": [hdsr.date]})
             hdsr_dict = hdsr.return_self()
             slot_score = self.calc_model(hdsr_dict)
             hdsr.set_score_from_dict(slot_score)
@@ -130,7 +130,10 @@ class EvaluationDetailView(generic.DetailView):
                 key, value = hdsr_text.split(":")
                 hdsr_dict[key] = value
             return hdsr_dict
-        hdsr_dict = parse(hdsr_text)
+        try:
+            hdsr_dict = parse(hdsr_text)
+        except:
+            hdsr_dict = {}
         self.object.set_from_dict(hdsr_dict)
         
 class EvaluationDeleteView(generic.DeleteView): 
@@ -146,7 +149,12 @@ class EvaluationUpdateView(generic.UpdateView):
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
-        form.instance.score = form.instance.get_score()
+        score = 0
+        for key in form.data:
+            if "score" in key:
+                score += int(form.data.get(key))
+        form.instance.score = score
+        form.save()
         if form.is_valid():
             return self.form_valid(form)
         else:

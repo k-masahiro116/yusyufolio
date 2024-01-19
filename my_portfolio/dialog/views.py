@@ -1,5 +1,5 @@
 import locale
-locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
+locale.setlocale(locale.LC_ALL, '')
 from django.urls import reverse_lazy
 from .forms import *
 from .models import *

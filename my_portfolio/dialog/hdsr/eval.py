@@ -58,7 +58,6 @@ class Eval():
     def calc_now(self, input_data, correct=[]):
         ymdd = correct
         score = 0
-        print(input_data, correct)
         for k in ymdd:
             if k in input_data:
                 score = score + 1

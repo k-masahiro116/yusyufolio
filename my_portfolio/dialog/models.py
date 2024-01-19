@@ -67,7 +67,6 @@ class HDSR_Model(models.Model):
         self.age_score = slot_score.get("年齢", 0)
         self.place_score = slot_score.get("居場所", 0)
         self.today_score = slot_score.get("年月日曜日", 0)
-        print(slot_score)
         if self.repeat_score == 0:
             self.repeat_score = slot_score.get("三つの言葉の復唱", 0)
         if self.recite_score == 0:
@@ -82,8 +81,10 @@ class HDSR_Model(models.Model):
             self.backwards2_score = slot_score.get("3、5、2、9の逆唱", 0)
         if self.vege_score == 0:
             self.vege_score = slot_score.get("知っている野菜", 0)
-        self.score = sum(slot_score.values())
+        self.sum_score()
         self.save()
+    def sum_score(self):
+        self.score = self.age_score+self.place_score+self.today_score+self.repeat_score+self.recite_score+self.math1_score+self.math2_score+self.backwards1_score+self.backwards2_score+self.vege_score
     
 class Post(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, blank=True)

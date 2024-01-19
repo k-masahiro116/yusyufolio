@@ -17,17 +17,16 @@ class HDSR_Model(models.Model):
     vege = models.CharField('知っている野菜', max_length=200, blank=True, null=True)
     math1 = models.CharField('100引く7', max_length=200, blank=True, null=True)
     math2 = models.CharField('93引く7', max_length=200, blank=True, null=True)
-    age_score = models.IntegerField(blank=True, null=True)
-    today_score = models.IntegerField(blank=True, null=True)
-    place_score = models.IntegerField(blank=True, null=True)
-    repeat_score = models.IntegerField(blank=True, null=True)
-    recite_score = models.IntegerField(blank=True, null=True)
-    backwards1_score = models.IntegerField(blank=True, null=True)
-    backwards2_score = models.IntegerField(blank=True, null=True)
-    vege_score = models.IntegerField(blank=True, null=True)
-    math1_score = models.IntegerField(blank=True, null=True)
-    math2_score = models.IntegerField(blank=True, null=True)
-    json = models.JSONField('発話', blank=True, null=True, editable=True)
+    age_score = models.IntegerField(default=0, blank=True, null=True)
+    today_score = models.IntegerField(default=0, blank=True, null=True)
+    place_score = models.IntegerField(default=0, blank=True, null=True)
+    repeat_score = models.IntegerField(default=0, blank=True, null=True)
+    recite_score = models.IntegerField(default=0, blank=True, null=True)
+    backwards1_score = models.IntegerField(default=0, blank=True, null=True)
+    backwards2_score = models.IntegerField(default=0, blank=True, null=True)
+    vege_score = models.IntegerField(default=0, blank=True, null=True)
+    math1_score = models.IntegerField(default=0, blank=True, null=True)
+    math2_score = models.IntegerField(default=0, blank=True, null=True)
     date = models.DateTimeField('日付', default=timezone.now)
     score = models.IntegerField('スコア総和', default=-1)
 
@@ -77,6 +76,11 @@ class HDSR_Model(models.Model):
         self.vege_score = slot_score.get("知っている野菜", "")
         self.score = sum(slot_score.values())
         self.save()
+    
+    def get_score(self):
+        self.score = self.age_score+self.today_score+self.place_score+self.repeat_score+self.recite_score+self.math1_score+self.math2_score+self.backwards1_score+self.backwards2_score+self.vege_score
+        self.save()
+        return self.score
     
 class Post(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, blank=True)

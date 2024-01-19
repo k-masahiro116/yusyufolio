@@ -70,8 +70,9 @@ class UserdataUpdateView(generic.UpdateView): # 追加
         if self.form.instance.hdsr.all() is not None:
             self.calc_score()
             scores = [hdsr.score for hdsr in self.form.instance.hdsr.all()]
-            self.form.instance.max_score = max(scores)
-            self.form.instance.min_score = min(scores)
+            if scores != []:
+                self.form.instance.max_score = max(scores)
+                self.form.instance.min_score = min(scores)
         self.form_valid(self.form)
         return valid
     
@@ -142,6 +143,14 @@ class EvaluationUpdateView(generic.UpdateView):
     model = HDSR_Model
     form_class = EvalCreateForm
     success_url = reverse_lazy('dialog:evaluation')
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        form.instance.score = form.instance.get_score()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         post_list = []

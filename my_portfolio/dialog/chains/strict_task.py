@@ -28,7 +28,8 @@ template = """
         6. 分からないと言われた場合、ヒントを教えるか、次の問題に移る。
         
         前提条件
-        6と8のユーザスロットは、それぞれ5と7のユーザスロットが正解だったときのみ埋める必要がある。
+        6のユーザスロットは、5のユーザスロットが正解だったときのみ埋める。
+        8のユーザスロットは、7のユーザスロットが正解だったときのみ埋める。
         
         ユーザスロット
         1. 年齢
@@ -66,16 +67,18 @@ class StrictTask(ConversationChain):
         for try_time in range(try_count):
             try:
                 response = self.predict(input=command)
+                self.memory.chat_memory.messages.pop(0)
                 break
             except openai.InvalidRequestError:
                 #生成する文が長文だったため制限が来た。履歴をpopして回避
                 self.memory.chat_memory.messages.pop(0)
-                self.memory.chat_memory.messages.pop(0)
             except (openai.OpenAIError, ConnectionError):
                 time.sleep(2)
                 
-        if "正解です" in response:
+        if "正解" in response:
             response = response.replace("正解です。", "")
+            response = response.replace("正解です。", "")
+            response = response.replace("正解は93です。", "")
         if "AI: " in response:
             response = response.replace("AI: ", "")
         return response

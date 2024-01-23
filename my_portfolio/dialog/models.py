@@ -64,9 +64,12 @@ class HDSR_Model(models.Model):
         }
     
     def set_score_from_dict(self, slot_score):
-        self.age_score = slot_score.get("年齢", 0)
-        self.place_score = slot_score.get("居場所", 0)
-        self.today_score = slot_score.get("年月日曜日", 0)
+        if self.age_score == 0:
+            self.age_score = slot_score.get("年齢", 0)
+        if self.place_score == 0:
+            self.place_score = slot_score.get("居場所", 0)
+        if self.today_score == 0:
+            self.today_score = slot_score.get("年月日曜日", 0)
         if self.repeat_score == 0:
             self.repeat_score = slot_score.get("三つの言葉の復唱", 0)
         if self.recite_score == 0:

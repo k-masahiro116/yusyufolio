@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             {% for user_data in userdata_list%}
-                {% if user_data.user == user or user.is_superuser%}
+                {% comment %} {% if user_data.user == user or user.is_superuser%} {% endcomment %}
                 <tr>
                     <td id="dialog_name"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.name }}</a></td>
                     <td id="dialog_sex"><a href="{% url 'dialog:user_detail' user_data.pk %}" style="color:#212529;">{{ user_data.sex }}</a></td>
@@ -45,7 +45,7 @@
                     </td>
                     {% endif %}
                 </tr>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
             {% endfor %}
         </tbody>
     </table>

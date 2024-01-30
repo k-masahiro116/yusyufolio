@@ -7,7 +7,7 @@
         <input class="search_box" name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit" class="btn btn-primary" style="margin-left: 10px;">SEARCH</button>
     </form></br>
-    <p>確認したいHDS-R結果の項目を選択してください。</p>
+    <p>確認したい診断結果の項目を選択してください。</p>
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             {% for hdsr_model in hdsr_model_list%}
-                {% if hdsr_model.user == user or user.is_superuser %}
+                {% comment %} {% if hdsr_model.user == user or user.is_superuser %} {% endcomment %}
                 <tr>
                     <td id="dialog_id"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.pk }} </a></td>
                     <td id="dialog_date"><a href="{% url 'dialog:evaluation_detail' hdsr_model.pk %}" style="color:#212529;">{{ hdsr_model.date }}</a></td>
@@ -42,7 +42,7 @@
                         {% endif %}
                     </td>
                 </tr>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
             {% endfor %}
         </tbody>
     </table>

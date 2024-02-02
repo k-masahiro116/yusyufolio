@@ -46,7 +46,7 @@ scenarios = {
         10. 知っている野菜をできるだけ多く答えてもらう
     """},
     "QUIZ": {
-        "path": "dialog/assets/json/history/nazo_history.json",
+        "path": "dialog/assets/json/history/quiz_history.json",
         "template" : """
         AIはユーザに対して以下のクイズを出します。
         ユーザの回答がクイズの答えと合致しない場合は不正解とします。

@@ -21,6 +21,8 @@ def target_in_list(t, l):
 
 class Eval():
     def calc_age(self, input_data, correct=[75]):
+        if input_data == None or input_data == "":
+            return 0
         age = input_data
         age = int(re.match(".*\\d", age).group())
         if any([age in correct, age+1 in correct, age+2 in correct, age-1 in correct, age-2 in correct]):
@@ -57,7 +59,6 @@ class Eval():
 
     def calc_now(self, input_data, correct=[]):
         score = 0
-        print(input_data, correct)
         for k in correct:
             if k in input_data:
                 score = score + 1

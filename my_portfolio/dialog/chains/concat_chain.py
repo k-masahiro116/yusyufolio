@@ -24,13 +24,14 @@ class ConcatChain(Chain):
         preintent = self.intent
         self.intent = self.detector.run(self.intent, text)
         self.pre_model = self.model
-        if "HDS-R" in self.intent:
+        if self.intent in self.strict.topics:
+            if preintent != self.intent:
+                self.strict.__init__(self.intent)
             self.model = "strict"
-            output = self.strict.run(text)
-        elif "HDS-R" in preintent and ("中断" in self.intent or "終了" in self.intent):
+            output = self.strict.run(text, self.intent)
+        elif preintent in self.strict.topics and ("中断" in self.intent or "終了" in self.intent):
             self.model = "strict"
-            output = self.strict.run("診断を終了して")
-            self.strict.dialog_load()
+            output = self.strict.run("終了して", self.intent)
             self.chitchat.dialog_load(reset=True)
             self.intent = "挨拶"
         else:

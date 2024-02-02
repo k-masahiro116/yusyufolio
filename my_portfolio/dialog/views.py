@@ -202,7 +202,7 @@ class PostCreateView(generic.CreateView): # 追加
     
     def eldely_care_llms(self):
         form = self.get_form()
-        if self.request.user == AnonymousUser():
+        if self.request.user == AnonymousUser() or self.request.user == None:
             user = get_user_model().objects.get(username="anonymous")
         else:
             user = self.request.user

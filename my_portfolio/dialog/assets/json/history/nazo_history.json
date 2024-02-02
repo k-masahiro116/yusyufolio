@@ -1,0 +1,326 @@
+[
+  {
+    "type": "human",
+    "data": {
+      "content": "クイズしてほしい",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "もちろんです！では、クイズを出題するよ。1994年に第1回が行われた、毎年2月〜3月にポルトガルで開催される、ナショナルチームによる女子サッカーの国際大会は何でしょう？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "バルセロナオリンピック",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念、バルセロナオリンピックは正解ではないよ。ヒントを聞きたいですか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ヒント欲しい",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "オッケー！ヒントは、この大会は、ポルトガルで開催される女子サッカーの国際大会だよ。",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "わからない",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "それでは、もう少しヒントをお伝えるね。この大会は、毎年2月から3月にかけて開催されるよ。",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "答えを教えて",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "正解は「アルガルベカップ」または「アルガルヴェ・カップ」だよ。この大会は、ポルトガルで開催される女子サッカーの国際大会で、毎年2月から3月にかけて開催されるよ。次のクイズに進みますか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "次のクイズして",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "もちろんです！では、クイズを出題しますね。咽頭炎などの際にのどに塗布する、ヨウ素とヨウ化カリウムを水に溶かした液体を、初めて用いたフランスの医師の名前から何というでしょうか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ヒントを教えて",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "では、ヒントを教えるね。この医師の名前は「L」で始まり、「液」という言葉が含まれているよ。",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ルゴール液",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "正解だよ！ルゴール液と呼ばれているよ。次のクイズに進みますか?",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "クイズして",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "もちろんです！では、クイズです。イソップ童話『アリの恩返し』で、川でおぼれていたアリに葉っぱを落として助けた鳥は何でしょう？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "文鳥",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念ながら、正解ではありません。ヒントを聞きたいですか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ホトトギス",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念ながら、ホトトギスも正解ではありません。ヒントをお伝えしますね。この鳥は、一般的には都市部や農村地域で見かけることができます。",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "カラス",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念ながら、カラスも正解ではありません。",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "鳩",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "正解です！「アリの恩返し」で川でおぼれていたアリに葉っぱを落として助けた鳥は、鳩です。次のクイズに進みますか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "次のクイズして",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "もちろんです！では、次のクイズです。競技かるたで、最初に並べた札の位置を覚えるために与えられる時間は何分でしょう？\n\n選択肢:\na) 5分\nb) 10分\nc) 15分\nd) 20分",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "10分",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念ですが、正解ではありません。ヒントを聞きたいですか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "5分",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "残念ですが、それも正解ではありません。正解は「15分」です。次のクイズに進みますか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "次の問題をやって",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "もちろんです！では、次のクイズです。スイス生まれの眼科医で、視力検査に用いるCに似た環を考案したことで知られる人物は誰でしょう？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "ランドルト",
+      "additional_kwargs": {},
+      "type": "human",
+      "example": false
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "正解です！その人物はエドムンド・ランドルト（Edmund Landolt）です。次のクイズに進みますか？",
+      "additional_kwargs": {},
+      "type": "ai",
+      "example": false
+    }
+  }
+]

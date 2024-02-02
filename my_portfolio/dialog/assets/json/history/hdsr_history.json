@@ -9,7 +9,7 @@
     {
         "type": "ai",
         "data": {
-        "content": "はい。では、まずあなたの名前について教えてもらえますか?",
+        "content": "はい。では、診断を始めます。まずあなたの名前について教えてもらえますか?",
         "additional_kwargs": {}
         }
     },
@@ -206,6 +206,20 @@
         "type": "ai",
         "data": {
         "content": "はい、診断を始めます。まずはあなたの名前を教えてもらえますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "もう一回言って",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "では、もう一度言いますね。あなたの名前を教えてもらえますか？",
         "additional_kwargs": {}
         }
     },

@@ -45,7 +45,7 @@ scenarios = {
         9. 復唱した三つの言葉を覚えているか
         10. 知っている野菜をできるだけ多く答えてもらう
     """},
-    "QUIZ": {
+    "クイズ": {
         "path": "dialog/assets/json/history/quiz_history.json",
         "template" : """
         AIはユーザに対して以下のクイズを出します。
@@ -64,7 +64,7 @@ class StrictTask(ConversationChain):
     TEMPLATE = "template"
     PATH = "path"
     topic = "HDS-R"
-    topics = ["HDS-R", "QUIZ"]
+    topics = ["HDS-R", "クイズ"]
     quiz_path = "dialog/assets/json/quiz/aio_04_dev_v1.0.jsonl"
     scenario = {}
     def __init__(self, topic=topic):
@@ -98,7 +98,7 @@ class StrictTask(ConversationChain):
         return response
         
     def temp_load(self, topic=topic):
-        if topic == "QUIZ":
+        if topic == "クイズ":
             temp = self.quiz_load()
         else:
             scenario = scenarios.get(topic)
@@ -115,15 +115,15 @@ class StrictTask(ConversationChain):
         return response
     
     def quiz_process(self, command, topic):
-        if topic == "QUIZ":
+        if topic == "クイズ":
             if "次のクイズ" in command or "はい" in command or "次の問題" in command:
-                self.__init__(topic="QUIZ")
+                self.__init__(topic="クイズ")
                 return "クイズしてほしい"
         return command
         
 
     def quiz_load(self, path=quiz_path):
-        scenario = scenarios.get("QUIZ")
+        scenario = scenarios.get("クイズ")
         template = scenario.get("template")
         with open(path) as f:
             jsonl_data = [json.loads(l) for l in f.readlines()]

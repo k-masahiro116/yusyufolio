@@ -142,7 +142,21 @@
     {
         "type": "human",
         "data": {
-        "content": "桜",
+        "content": "桜と猫",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "あと乗り物の名前がありましたね。覚えていらっしゃいますか？",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "電車",
         "additional_kwargs": {}
         }
     },
@@ -584,6 +598,20 @@
         "type": "ai",
         "data": {
         "content": "ありがとうございます。では先ほど3つの物の名前をおぼえていただきましたね。その3つをもう一度言ってみてください",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "human",
+        "data": {
+        "content": "猫",
+        "additional_kwargs": {}
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+        "content": "あと植物と乗り物の名前がありましたね。覚えていらっしゃいますか？",
         "additional_kwargs": {}
         }
     },
